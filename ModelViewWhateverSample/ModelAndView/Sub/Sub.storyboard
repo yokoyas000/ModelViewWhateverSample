@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SYg-QM-UFx">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Sub View Controller-->
+        <scene sceneID="hwh-wO-tek">
+            <objects>
+                <viewController id="SYg-QM-UFx" customClass="SubViewController" customModule="ModelViewWhateverSample" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eJs-3H-2m4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QrX-3T-SSp">
+                                <rect key="frame" x="172" y="40" width="30" height="30"/>
+                                <state key="normal" title="Star"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="QrX-3T-SSp" firstAttribute="top" secondItem="0G7-jD-bi0" secondAttribute="top" constant="20" id="Fvx-vx-zaw"/>
+                            <constraint firstItem="QrX-3T-SSp" firstAttribute="centerX" secondItem="eJs-3H-2m4" secondAttribute="centerX" id="QL9-H0-8Y5"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="0G7-jD-bi0"/>
+                    </view>
+                    <connections>
+                        <outlet property="starButton" destination="QrX-3T-SSp" id="6dr-gW-Wlg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B5w-AF-EVv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-129" y="176"/>
+        </scene>
+    </scenes>
+</document>
