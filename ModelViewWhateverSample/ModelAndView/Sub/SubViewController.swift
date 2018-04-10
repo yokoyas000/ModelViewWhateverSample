@@ -3,8 +3,8 @@ import UIKit
 class SubViewController: UIViewController {
 
     @IBOutlet var starButton: UIButton!
-    private var viewHandler: SubViewHandler!
-    private var model: StarModel!
+    private var viewHandler: SubViewHandler?
+    private var model: StarModel?
 
     static func create(model: StarModel) -> SubViewController? {
         let storyboard = UIStoryboard(name: "Sub", bundle: nil)
@@ -17,9 +17,13 @@ class SubViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        guard let model = self.model else {
+            return
+        }
+
         self.viewHandler = SubViewHandler(
             handle: self.starButton,
-            notifyTo: self.model
+            notifyTo: model
         )
     }
 

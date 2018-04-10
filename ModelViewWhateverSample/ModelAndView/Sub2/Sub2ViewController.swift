@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// init で初期化できるようにしたver
 class Sub2ViewController: UIViewController {
 
     private let model: StarModel

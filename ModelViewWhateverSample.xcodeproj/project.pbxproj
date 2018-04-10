@@ -163,7 +163,6 @@
 		3EC2E478207D1AFC0025A8AF /* Sub */ = {
 			isa = PBXGroup;
 			children = (
-				3EC2E479207D1AFC0025A8AF /* Sub.storyboard */,
 				3EC2E47A207D1AFC0025A8AF /* SubViewController.swift */,
 				3EC2E47B207D1AFC0025A8AF /* View */,
 			);
@@ -173,6 +172,7 @@
 		3EC2E47B207D1AFC0025A8AF /* View */ = {
 			isa = PBXGroup;
 			children = (
+				3EC2E479207D1AFC0025A8AF /* Sub.storyboard */,
 				3EC2E47C207D1AFC0025A8AF /* SubViewHandler.swift */,
 			);
 			path = View;
@@ -208,7 +208,6 @@
 			isa = PBXGroup;
 			children = (
 				3EC2E485207D1AFC0025A8AF /* MainViewController.swift */,
-				3EC2E486207D1AFC0025A8AF /* Main.storyboard */,
 				3EC2E487207D1AFC0025A8AF /* Model */,
 				3EC2E48D207D1AFC0025A8AF /* View */,
 			);
@@ -237,6 +236,7 @@
 		3EC2E48D207D1AFC0025A8AF /* View */ = {
 			isa = PBXGroup;
 			children = (
+				3EC2E486207D1AFC0025A8AF /* Main.storyboard */,
 				3EC2E48E207D1AFC0025A8AF /* MainViewHandler.swift */,
 			);
 			path = View;
