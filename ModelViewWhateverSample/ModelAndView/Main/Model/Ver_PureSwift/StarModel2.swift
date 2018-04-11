@@ -22,8 +22,8 @@ class StarModel2 {
 
     private var isStared: Bool
 
-    // - Weak型で持つ
-    private var receiveers: [Weak<AnyStarModelReceiver>] = []
+    // - WeakPool型で持つ
+    private var receiveers = WeekPool<AnyStarModelReceiver>()
 
     init(initialStared: Bool) {
         self.isStared = initialStared
@@ -36,17 +36,13 @@ class StarModel2 {
     }
 
     func append(receiver: StarModelReceiver2) {
-        self.receiveers.append(
-            Weak<AnyStarModelReceiver>(
-                AnyStarModelReceiver(receiver)
-            )
-        )
+        self.receiveers.append(receiver.asAny())
         self.notify()
     }
 
     private func notify() {
         self.receiveers.forEach { receiver in
-            receiver.value?.receive(isStared: self.isStared)
+            receiver.receive(isStared: self.isStared)
         }
     }
 }

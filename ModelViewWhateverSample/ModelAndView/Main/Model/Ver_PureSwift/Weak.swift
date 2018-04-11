@@ -7,6 +7,7 @@
 //
 
 struct Weak<T: AnyObject> {
+    // 弱参照
     private(set) weak var value: T?
 
     init(_ value: T) {

@@ -17,7 +17,7 @@ class MainViewController: UIViewController {
                 navigateToSubViewButton: navigateToSubViewButton
             ),
             notify: self.model,
-            navigateBy: Navigater(using: self)
+            navigateBy: Navigator(using: self)
         )
     }
 

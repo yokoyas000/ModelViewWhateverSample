@@ -27,6 +27,7 @@
 		3EC2E49A207D1AFC0025A8AF /* Weak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC2E48B207D1AFC0025A8AF /* Weak.swift */; };
 		3EC2E49B207D1AFC0025A8AF /* StarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC2E48C207D1AFC0025A8AF /* StarModel.swift */; };
 		3EC2E49C207D1AFC0025A8AF /* MainViewHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC2E48E207D1AFC0025A8AF /* MainViewHandler.swift */; };
+		3EC2E49E207DD0C50025A8AF /* WeakPool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC2E49D207DD0C50025A8AF /* WeakPool.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 		3EC2E48B207D1AFC0025A8AF /* Weak.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weak.swift; sourceTree = "<group>"; };
 		3EC2E48C207D1AFC0025A8AF /* StarModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarModel.swift; sourceTree = "<group>"; };
 		3EC2E48E207D1AFC0025A8AF /* MainViewHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewHandler.swift; sourceTree = "<group>"; };
+		3EC2E49D207DD0C50025A8AF /* WeakPool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakPool.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -229,6 +231,7 @@
 				3EC2E489207D1AFC0025A8AF /* StarModel2.swift */,
 				3EC2E48A207D1AFC0025A8AF /* AnyStarModelReceiver.swift */,
 				3EC2E48B207D1AFC0025A8AF /* Weak.swift */,
+				3EC2E49D207DD0C50025A8AF /* WeakPool.swift */,
 			);
 			path = Ver_PureSwift;
 			sourceTree = "<group>";
@@ -381,6 +384,7 @@
 			files = (
 				3EC2E498207D1AFC0025A8AF /* StarModel2.swift in Sources */,
 				3EC2E496207D1AFC0025A8AF /* MainViewController.swift in Sources */,
+				3EC2E49E207DD0C50025A8AF /* WeakPool.swift in Sources */,
 				3EC2E499207D1AFC0025A8AF /* AnyStarModelReceiver.swift in Sources */,
 				3EC2E495207D1AFC0025A8AF /* Sub2ViewController.swift in Sources */,
 				3EC2E491207D1AFC0025A8AF /* SubViewHandler.swift in Sources */,

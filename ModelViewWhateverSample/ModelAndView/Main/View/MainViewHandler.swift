@@ -13,7 +13,7 @@ class MainViewHandler {
     private let navigateToSubViewButton: UIButton
     private let starButton: UIButton
     private let model: StarModel
-    private let navigater: NavigaterContract
+    private let navigator: NavigatorContract
 
     init(
         handle: (
@@ -21,12 +21,12 @@ class MainViewHandler {
             navigateToSubViewButton: UIButton
         ),
         notify model: StarModel,
-        navigateBy navigater: NavigaterContract
+        navigateBy navigator: NavigatorContract
     ) {
         self.starButton = handle.starButton
         self.navigateToSubViewButton = handle.navigateToSubViewButton
         self.model = model
-        self.navigater = navigater
+        self.navigator = navigator
 
         // Modelの監視を開始する
         self.model.append(receiver: self)
@@ -51,7 +51,7 @@ class MainViewHandler {
             return
         }
 
-        self.navigater.navigate(to: subVC)
+        self.navigator.navigate(to: subVC)
     }
 
     @objc private func didTapStarButton() {
