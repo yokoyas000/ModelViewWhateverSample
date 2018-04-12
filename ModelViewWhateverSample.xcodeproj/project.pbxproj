@@ -74,6 +74,7 @@
 		3EC2E48C207D1AFC0025A8AF /* StarModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarModel.swift; sourceTree = "<group>"; };
 		3EC2E48E207D1AFC0025A8AF /* MainViewHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewHandler.swift; sourceTree = "<group>"; };
 		3EC2E49D207DD0C50025A8AF /* WeakPool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakPool.swift; sourceTree = "<group>"; };
+		3EC2E49F207F40750025A8AF /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +159,7 @@
 				3EC2E47D207D1AFC0025A8AF /* Navigator */,
 				3EC2E478207D1AFC0025A8AF /* Sub */,
 				3EC2E47F207D1AFC0025A8AF /* Sub2 */,
+				3EC2E49F207F40750025A8AF /* README.md */,
 			);
 			path = ModelAndView;
 			sourceTree = "<group>";
