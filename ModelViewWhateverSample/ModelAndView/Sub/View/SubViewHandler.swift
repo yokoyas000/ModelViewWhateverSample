@@ -15,7 +15,7 @@ class SubViewHandler {
 
     init(
         handle starButton: UIButton,
-        notifyTo model: StarModel
+        notify model: StarModel
     ) {
         self.starButton = starButton
         self.model = model

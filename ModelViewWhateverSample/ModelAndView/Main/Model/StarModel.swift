@@ -16,16 +16,16 @@ protocol StarModelReceiver {
 /// Starボタンの状態を持つModel
 class StarModel {
 
-    private var isStared: Bool
+    private var isStar: Bool
     private var receiveers = NSHashTable<StarModelReceiver>.weakObjects()
 
-    init(initialStared: Bool) {
-        self.isStared = initialStared
+    init(initialStar: Bool) {
+        self.isStar = initialStar
     }
 
     // 2. Viewから指示を受け、状態("☆/★")を変更する
     func toggleStar() {
-        self.isStared = !self.isStared
+        self.isStar = !self.isStar
 
         // 3. 指示の結果、状態("☆/★")が何であるかをViewへ知らせる
         self.notify()
@@ -38,7 +38,7 @@ class StarModel {
 
     private func notify() {
         self.receiveers.allObjects.forEach { receiver in
-            receiver.receive(isStared: self.isStared)
+            receiver.receive(isStared: self.isStar)
         }
     }
 }
