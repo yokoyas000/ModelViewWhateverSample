@@ -9,6 +9,8 @@
 // 本来は Weak<StarModelReceiver2> としたいが、
 // [エラーがでてつらいので](https://stackoverflow.com/questions/32807948/using-as-a-concrete-type-conforming-to-protocol-anyobject-is-not-supported)
 // AnyStarModelReceiver を定義し、 Weak<AnyStarModelReceiver> とすることで頑張る
+
+// AnyXxxx を避ける場合は、 StarModel3 のように、型宣言部で Generics を使う
 class AnyStarModelReceiver: StarModelReceiver2 {
 
     private let _receive: (Bool) -> Void

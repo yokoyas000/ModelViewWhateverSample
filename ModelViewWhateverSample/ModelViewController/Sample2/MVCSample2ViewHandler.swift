@@ -11,26 +11,32 @@ class MVCSample2ViewHandler {
 
     private let starButton: UIButton
     private let navigator: NavigatorContract
+    private let modalPresenter: ModalPresenterContract
 
     init(
         willUpdate starButton: UIButton,
-        navigateBy navigator: NavigatorContract
+        navigateBy navigator: NavigatorContract,
+        presentBy modalPresenter: ModalPresenterContract
     ) {
         self.starButton = starButton
         self.navigator = navigator
+        self.modalPresenter = modalPresenter
     }
 
-    func navigate(with model: StarModel) {
-        guard let vc = SubViewController.create(model: model) else {
-            return
-        }
+    func navigate(to next: UIViewController) {
+        self.navigator.navigate(to: next)
+    }
 
-        self.navigator.navigate(to: vc)
+    func alert(_ alert: UIAlertController) {
+        self.modalPresenter.present(to: alert)
     }
 
     func update(star: Bool) {
         let title = star ? "★": "☆"
         self.starButton.setTitle(title, for: .normal)
     }
+
+    
+
 
 }

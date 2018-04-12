@@ -10,49 +10,53 @@ import UIKit
 
 class MVPSample2ViewHandler {
 
-    private let transitionButton: UIButton
+    private let navigateButton: UIButton
     private let starButton: UIButton
     private let navigator: NavigatorContract
     private let presenter: MVPSample2Presenter
+    private let modalPresenter: ModalPresenterContract
 
     init(
         handle: (
             starButton: UIButton,
-            transitionButton: UIButton
+            navigateButton: UIButton
         ),
         interchange presenter: MVPSample2Presenter,
-        navigateBy navigator: NavigatorContract
+        navigateBy navigator: NavigatorContract,
+        presentBy modalPresenter: ModalPresenterContract
     ) {
         self.starButton = handle.starButton
-        self.transitionButton = handle.transitionButton
+        self.navigateButton = handle.navigateButton
         self.presenter = presenter
         self.navigator = navigator
+        self.modalPresenter = modalPresenter
 
-        self.presenter.append(delegate: self)
+        self.presenter.connect(view: self)
 
         // 1. 遷移ボタンを持ち、タップされた時にSub画面へ遷移する
-        self.transitionButton.addTarget(
+        self.navigateButton.addTarget(
             self.presenter,
-            action: #selector(MVPSample2Presenter.navigate),
+            action: #selector(MVPSample2Presenter.didTapNavigateButton),
             for: .touchUpInside
         )
 
         // 2. Starボタンを持ち、タップされた時にModelへ指示を出す
         self.starButton.addTarget(
             self.presenter,
-            action: #selector(MVPSample2Presenter.toggleStar),
+            action: #selector(MVPSample2Presenter.didTapStarButton),
             for: .touchUpInside
-        )
+        )   
     }
 
-}
-
-extension MVPSample2ViewHandler: MVPSample2PresenterDelegate {
-    func navigate(next viewController: SubViewController) {
-        self.navigator.navigate(to: viewController)
+    func navigate(to next: UIViewController) {
+        self.navigator.navigate(to: next)
     }
 
     func update(starTitle: String) {
         self.starButton.setTitle(starTitle, for: .normal)
+    }
+
+    func alert(_ alert: UIAlertController) {
+        self.modalPresenter.present(to: alert)
     }
 }

@@ -12,8 +12,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RootView" customModule="ModelViewWhateverSample" customModuleProvider="target">
             <connections>
+                <outlet property="navigateButton" destination="UfE-GQ-fbz" id="mk7-CA-1IG"/>
                 <outlet property="starButton" destination="gxS-hE-fQK" id="Mp0-ss-QHf"/>
-                <outlet property="transitionButton" destination="UfE-GQ-fbz" id="mk7-CA-1IG"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

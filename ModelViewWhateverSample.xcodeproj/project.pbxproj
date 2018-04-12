@@ -7,12 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E05285D207FB59F0096094E /* ModelPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E05285C207FB59F0096094E /* ModelPresenter.swift */; };
+		3E05285F208007E50096094E /* StarModel3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E05285E208007E50096094E /* StarModel3.swift */; };
 		3E8CCD612079F498004B0E3F /* ModelViewWhateverSampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8CCD602079F498004B0E3F /* ModelViewWhateverSampleTests.swift */; };
 		3E8CCD6C2079F499004B0E3F /* ModelViewWhateverSampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8CCD6B2079F499004B0E3F /* ModelViewWhateverSampleUITests.swift */; };
 		3EC2E455207CD5000025A8AF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EC2E449207CD5000025A8AF /* LaunchScreen.storyboard */; };
 		3EC2E456207CD5000025A8AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EC2E44A207CD5000025A8AF /* Assets.xcassets */; };
 		3EC2E45A207CD5000025A8AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC2E450207CD5000025A8AF /* AppDelegate.swift */; };
-		3EC2E45D207CD5000025A8AF /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3EC2E454207CD5000025A8AF /* Info.plist */; };
 		3EC2E48F207D1AFC0025A8AF /* Sub.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EC2E479207D1AFC0025A8AF /* Sub.storyboard */; };
 		3EC2E490207D1AFC0025A8AF /* SubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC2E47A207D1AFC0025A8AF /* SubViewController.swift */; };
 		3EC2E491207D1AFC0025A8AF /* SubViewHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC2E47C207D1AFC0025A8AF /* SubViewHandler.swift */; };
@@ -64,6 +65,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3E05285C207FB59F0096094E /* ModelPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelPresenter.swift; sourceTree = "<group>"; };
+		3E05285E208007E50096094E /* StarModel3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarModel3.swift; sourceTree = "<group>"; };
 		3E8CCD482079F498004B0E3F /* ModelViewWhateverSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ModelViewWhateverSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E8CCD5C2079F498004B0E3F /* ModelViewWhateverSampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ModelViewWhateverSampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E8CCD602079F498004B0E3F /* ModelViewWhateverSampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelViewWhateverSampleTests.swift; sourceTree = "<group>"; };
@@ -191,7 +194,6 @@
 			isa = PBXGroup;
 			children = (
 				3EC2E484207D1AFC0025A8AF /* Main */,
-				3EC2E47D207D1AFC0025A8AF /* Navigator */,
 				3EC2E478207D1AFC0025A8AF /* Sub */,
 				3EC2E47F207D1AFC0025A8AF /* Sub2 */,
 				3EC2E49F207F40750025A8AF /* README.md */,
@@ -221,6 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				3EC2E47E207D1AFC0025A8AF /* Navigator.swift */,
+				3E05285C207FB59F0096094E /* ModelPresenter.swift */,
 			);
 			path = Navigator;
 			sourceTree = "<group>";
@@ -266,6 +269,7 @@
 			isa = PBXGroup;
 			children = (
 				3EC2E489207D1AFC0025A8AF /* StarModel2.swift */,
+				3E05285E208007E50096094E /* StarModel3.swift */,
 				3EC2E48A207D1AFC0025A8AF /* AnyStarModelReceiver.swift */,
 				3EC2E48B207D1AFC0025A8AF /* Weak.swift */,
 				3EC2E49D207DD0C50025A8AF /* WeakPool.swift */,
@@ -343,6 +347,7 @@
 		3EF1EEFA207F8D2C00A4E1DB /* Share */ = {
 			isa = PBXGroup;
 			children = (
+				3EC2E47D207D1AFC0025A8AF /* Navigator */,
 				3EF1EEFC207F8D5C00A4E1DB /* View */,
 				3EF1EEFB207F8D3B00A4E1DB /* Top */,
 			);
@@ -480,7 +485,6 @@
 				3EC2E493207D1AFC0025A8AF /* Sub2RootView.xib in Resources */,
 				3EF1EF00207F8F8100A4E1DB /* RootView.xib in Resources */,
 				3EC2E497207D1AFC0025A8AF /* Main.storyboard in Resources */,
-				3EC2E45D207CD5000025A8AF /* Info.plist in Resources */,
 				3EC2E48F207D1AFC0025A8AF /* Sub.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -518,10 +522,12 @@
 				3EC2E499207D1AFC0025A8AF /* AnyStarModelReceiver.swift in Sources */,
 				3EC2E495207D1AFC0025A8AF /* Sub2ViewController.swift in Sources */,
 				3EF1EEE5207F4AF000A4E1DB /* MVPSample1ViewController.swift in Sources */,
+				3E05285D207FB59F0096094E /* ModelPresenter.swift in Sources */,
 				3EF1EEF1207F7AC400A4E1DB /* MVCSample2Controller.swift in Sources */,
 				3EC2E491207D1AFC0025A8AF /* SubViewHandler.swift in Sources */,
 				3EF1EF02207F930500A4E1DB /* MVPSample2ViewController.swift in Sources */,
 				3EF1EEE3207F4AF000A4E1DB /* MVPSample1Presenter.swift in Sources */,
+				3E05285F208007E50096094E /* StarModel3.swift in Sources */,
 				3EC2E492207D1AFC0025A8AF /* Navigator.swift in Sources */,
 				3EC2E49C207D1AFC0025A8AF /* MainViewHandler.swift in Sources */,
 				3EC2E45A207CD5000025A8AF /* AppDelegate.swift in Sources */,

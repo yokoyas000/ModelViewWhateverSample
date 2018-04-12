@@ -1,29 +1,22 @@
 //
-//  StarModel2.swift
+//  StarModel3.swift
 //  ModelViewWhateverSample
 //
-//  Created by yokoyas000 on 2018/04/11.
+//  Created by yokoyas000 on 2018/04/13.
 //  Copyright © 2018年 yokoyas000. All rights reserved.
 //
 
-protocol StarModelReceiver2: AnyObject {
+protocol StarModelReceiver3: AnyObject {
     func receive(isStar: Bool)
 }
 
-// - AnyXxxx への変換を楽にする
-extension StarModelReceiver2 {
-    func asAny() -> AnyStarModelReceiver {
-        return AnyStarModelReceiver(self)
-    }
-}
-
-// PureSwift で頑張るver
-class StarModel2 {
+// 型宣言部で Generics を使うと AnyXxxx しないでも動く
+class StarModel3<T: StarModelReceiver3> {
 
     private var isStar: Bool
 
     // - WeakPool型で持つ
-    private var receiveers = WeekPool<AnyStarModelReceiver>()
+    private var receiveers = WeekPool<T>()
 
     init(initialStar: Bool) {
         self.isStar = initialStar
@@ -35,8 +28,8 @@ class StarModel2 {
         self.notify()
     }
 
-    func append(receiver: StarModelReceiver2) {
-        self.receiveers.append(receiver.asAny())
+    func append(receiver: T) {
+        self.receiveers.append(receiver)
         self.notify()
     }
 
@@ -46,6 +39,3 @@ class StarModel2 {
         }
     }
 }
-
-
-

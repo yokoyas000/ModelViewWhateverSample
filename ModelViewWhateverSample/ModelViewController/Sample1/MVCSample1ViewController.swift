@@ -41,10 +41,11 @@ class MVCSample1ViewController: UIViewController {
         let controller = MVCSample1Controller(
             reactTo:(
                 starButton: rootView.starButton,
-                transitionButton: rootView.transitionButton
+                navigateButton: rootView.navigateButton
             ),
             willCommand: self.model,
-            navigateBy: self.navigator
+            navigateBy: self.navigator,
+            presentBy: ModalPresenter(using: self)
         )
 
         self.viewHandler = viewHandler

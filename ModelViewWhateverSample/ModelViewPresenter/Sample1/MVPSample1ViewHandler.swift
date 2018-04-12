@@ -10,39 +10,54 @@ import UIKit
 
 class MVPSample1ViewHandler {
 
-    private let transitionButton: UIButton
+    private let navigateButton: UIButton
     private let starButton: UIButton
     private let model: StarModel
     private let presenter: MVPSample1Presenter
+    private let navigator: NavigatorContract
+    private let modalPresenter: ModalPresenterContract
 
     init(
         handle: (
             starButton: UIButton,
-            transitionButton: UIButton
+            navigateButton: UIButton
         ),
         willNotify presenter: MVPSample1Presenter,
-        observe model: StarModel
+        observe model: StarModel,
+        navigateBy navigator: NavigatorContract,
+        presentBy modalPresenter: ModalPresenterContract
     ) {
         self.starButton = handle.starButton
-        self.transitionButton = handle.transitionButton
+        self.navigateButton = handle.navigateButton
         self.presenter = presenter
         self.model = model
+        self.navigator = navigator
+        self.modalPresenter = modalPresenter
 
+        self.presenter.view = self
         self.model.append(receiver: self)
 
         // 1. 遷移ボタンを持ち、タップされた時にSub画面へ遷移する
-        self.transitionButton.addTarget(
+        self.navigateButton.addTarget(
             self.presenter,
-            action: #selector(MVPSample1Presenter.navigate),
+            action: #selector(MVPSample1Presenter.didTapNavigateButton),
             for: .touchUpInside
         )
 
         // 2. Starボタンを持ち、タップされた時にModelへ指示を出す
         self.starButton.addTarget(
             self.presenter,
-            action: #selector(MVPSample1Presenter.toggleStar),
+            action: #selector(MVPSample1Presenter.didTapStarButton),
             for: .touchUpInside
         )
+    }
+
+    func navigate(to next: UIViewController) {
+        self.navigator.navigate(to: next)
+    }
+
+    func alert(_ alert: UIAlertController) {
+        self.modalPresenter.present(to: alert)
     }
 
 }

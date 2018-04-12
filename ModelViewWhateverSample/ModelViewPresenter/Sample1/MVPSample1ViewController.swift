@@ -17,7 +17,7 @@ class MVPSample1ViewController: UIViewController {
     init(
         model: StarModel,
         navigator: NavigatorContract
-        ) {
+    ) {
         self.model = model
         self.navigator = navigator
 
@@ -33,16 +33,17 @@ class MVPSample1ViewController: UIViewController {
         self.view = rootView
 
         let presenter = MVPSample1Presenter(
-            willCommand: self.model,
-            navigateBy: self.navigator
+            willCommand: self.model
         )
         let viewHandler = MVPSample1ViewHandler(
             handle:(
                 starButton: rootView.starButton,
-                transitionButton: rootView.transitionButton
+                navigateButton: rootView.navigateButton
             ),
             willNotify: presenter,
-            observe: self.model
+            observe: self.model,
+            navigateBy: self.navigator,
+            presentBy: ModalPresenter(using: self)
         )
 
         self.viewHandler = viewHandler

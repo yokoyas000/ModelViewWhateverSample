@@ -34,13 +34,14 @@ class MVCSample2ViewController: UIViewController {
 
         let viewHandler = MVCSample2ViewHandler(
             willUpdate: rootView.starButton,
-            navigateBy: self.navigator
+            navigateBy: self.navigator,
+            presentBy: ModalPresenter(using: self)
         )
 
         let controller = MVCSample2Controller(
             reactTo: (
                 starButton: rootView.starButton,
-                transitionButton: rootView.transitionButton
+                navigateButton: rootView.navigateButton
             ),
             interchange: self.model,
             willCommand: viewHandler

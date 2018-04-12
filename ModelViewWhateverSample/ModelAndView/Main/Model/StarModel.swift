@@ -16,7 +16,7 @@ protocol StarModelReceiver {
 /// Starボタンの状態を持つModel
 class StarModel {
 
-    private var isStar: Bool
+    private(set) var isStar: Bool
     private var receiveers = NSHashTable<StarModelReceiver>.weakObjects()
 
     init(initialStar: Bool) {

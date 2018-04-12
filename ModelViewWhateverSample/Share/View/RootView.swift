@@ -11,7 +11,7 @@ import UIKit
 class RootView: UIView {
 
     @IBOutlet var starButton: UIButton!
-    @IBOutlet var transitionButton: UIButton!
+    @IBOutlet var navigateButton: UIButton!
 
     override init(frame: CGRect) {
         super.init(frame: frame)

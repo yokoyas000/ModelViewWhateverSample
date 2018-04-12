@@ -10,7 +10,7 @@ import UIKit
 
 class MVCSample2Controller {
 
-    private let transitionButton: UIButton
+    private let navigateButton: UIButton
     private let starButton: UIButton
     private let model: StarModel
     private let view: MVCSample2ViewHandler
@@ -18,13 +18,13 @@ class MVCSample2Controller {
     init(
         reactTo views: (
             starButton: UIButton,
-            transitionButton: UIButton
+            navigateButton: UIButton
         ),
         interchange model: StarModel,
         willCommand view: MVCSample2ViewHandler
     ) {
         self.starButton = views.starButton
-        self.transitionButton = views.transitionButton
+        self.navigateButton = views.navigateButton
         self.model = model
         self.view = view
 
@@ -32,7 +32,7 @@ class MVCSample2Controller {
         self.model.append(receiver: self)
 
         // 1. 遷移ボタンを持ち、タップされた時にSub画面へ遷移する
-        self.transitionButton.addTarget(
+        self.navigateButton.addTarget(
             self,
             action: #selector(MVCSample2Controller.didTapNavigateButton),
             for: .touchUpInside
@@ -47,11 +47,42 @@ class MVCSample2Controller {
     }
 
     @objc private func didTapNavigateButton() {
-        self.view.navigate(with: self.model)
+        if self.model.isStar {
+            self.navigate()
+        } else {
+            self.view.alert(self.createNavigateAlert())
+        }
     }
 
     @objc private func didTapStarButton() {
         self.model.toggleStar()
+    }
+
+    private func createNavigateAlert() -> UIAlertController {
+        let alert = UIAlertController(title: "", message: "★にしないと遷移できません。", preferredStyle: .alert)
+        let navigate = UIAlertAction(
+            title: "無視して遷移する",
+            style: .default
+        ) { [weak self] _ in
+            self?.navigate()
+        }
+
+        let cancel = UIAlertAction(
+            title: "OK",
+            style: .cancel
+        )
+
+        alert.addAction(navigate)
+        alert.addAction(cancel)
+
+        return alert
+    }
+
+    private func navigate() {
+        guard let vc = SubViewController.create(model: self.model) else {
+            return
+        }
+        self.view.navigate(to: vc)
     }
 }
 

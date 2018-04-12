@@ -6,17 +6,12 @@
 //  Copyright © 2018年 yokoyas000. All rights reserved.
 //
 
-import Foundation
-
-protocol MVPSample2PresenterDelegate: class {
-    func navigate(next viewController: SubViewController)
-    func update(starTitle: String)
-}
+import UIKit
 
 class MVPSample2Presenter {
 
     private let model: StarModel
-    private weak var delegate: MVPSample2PresenterDelegate?
+    private weak var view: MVPSample2ViewHandler?
 
     init(
         interchange model: StarModel
@@ -24,26 +19,54 @@ class MVPSample2Presenter {
         self.model = model
     }
 
-    func append(delegate: MVPSample2PresenterDelegate) {
-        self.delegate = delegate
+    func connect(view: MVPSample2ViewHandler) {
+        self.view = view
         self.model.append(receiver: self)
     }
 
-    @objc func navigate() {
-        guard let vc = SubViewController.create(model: model) else {
-            return
+    @objc func didTapNavigateButton() {
+        if self.model.isStar {
+            self.navigate()
+        } else {
+            self.view?.alert(self.createNavigateAlert())
         }
-        self.delegate?.navigate(next: vc)
     }
 
-    @objc func toggleStar() {
+    @objc func didTapStarButton() {
         self.model.toggleStar()
+    }
+
+    private func navigate() {
+        guard let vc = SubViewController.create(model: self.model) else {
+            return
+        }
+        self.view?.navigate(to: vc)
+    }
+
+    private func createNavigateAlert() -> UIAlertController {
+        let alert = UIAlertController(title: "", message: "★にしないと遷移できません。", preferredStyle: .alert)
+        let navigate = UIAlertAction(
+            title: "無視して遷移する",
+            style: .default
+        ) { [weak self] _ in
+            self?.navigate()
+        }
+
+        let cancel = UIAlertAction(
+            title: "OK",
+            style: .cancel
+        )
+
+        alert.addAction(navigate)
+        alert.addAction(cancel)
+
+        return alert
     }
 }
 
 extension MVPSample2Presenter: StarModelReceiver {
     func receive(isStar: Bool) {
         let title = isStar ? "★": "☆"
-        self.delegate?.update(starTitle: title)
+        self.view?.update(starTitle: title)
     }
 }

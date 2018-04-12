@@ -6,31 +6,56 @@
 //  Copyright © 2018年 yokoyas000. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class MVPSample1Presenter {
 
     private let model: StarModel
-    private let navigator: NavigatorContract
+    weak var view: MVPSample1ViewHandler?
 
     init(
-        willCommand model: StarModel,
-        navigateBy navigator: NavigatorContract
+        willCommand model: StarModel
     ) {
         self.model = model
-        self.navigator = navigator
     }
 
-    @objc func navigate() {
-        guard let vc = SubViewController.create(model: self.model) else {
-            return
+    @objc func didTapNavigateButton() {
+        // 現在の状態による分岐などの場合, Viewの操作が許可される
+        if self.model.isStar {
+            self.navigate()
+        } else {
+            self.view?.alert(self.createNavigateAlert())
         }
-
-        self.navigator.navigate(to: vc)
     }
 
-    @objc func toggleStar() {
+    @objc func didTapStarButton() {
         self.model.toggleStar()
     }
 
+    private func navigate() {
+        guard let vc = SubViewController.create(model: self.model) else {
+            return
+        }
+        self.view?.navigate(to: vc)
+    }
+
+    private func createNavigateAlert() -> UIAlertController {
+        let alert = UIAlertController(title: "", message: "★にしないと遷移できません。", preferredStyle: .alert)
+        let navigate = UIAlertAction(
+            title: "無視して遷移する",
+            style: .default
+        ) { [weak self] _ in
+            self?.navigate()
+        }
+
+        let cancel = UIAlertAction(
+            title: "OK",
+            style: .cancel
+        )
+
+        alert.addAction(navigate)
+        alert.addAction(cancel)
+
+        return alert
+    }
 }

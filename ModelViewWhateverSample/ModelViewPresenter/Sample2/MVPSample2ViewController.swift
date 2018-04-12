@@ -32,15 +32,17 @@ class MVPSample2ViewController: UIViewController {
         let rootView = RootView()
         self.view = rootView
 
-        let presenter = MVPSample2Presenter(interchange: self.model)
-
+        let presenter = MVPSample2Presenter(
+            interchange: self.model
+        )
         let viewHandler = MVPSample2ViewHandler(
             handle:(
                 starButton: rootView.starButton,
-                transitionButton: rootView.transitionButton
+                navigateButton: rootView.navigateButton
             ),
             interchange: presenter,
-            navigateBy: navigator
+            navigateBy: navigator,
+            presentBy: ModalPresenter(using: self)
         )
 
         self.viewHandler = viewHandler

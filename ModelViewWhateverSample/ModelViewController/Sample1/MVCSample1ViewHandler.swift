@@ -8,9 +8,6 @@
 
 import UIKit
 
-// Updater
-// 表示に注力してる
-// 反映する
 class MVCSample1ViewHandler {
 
     private let starButton: UIButton
