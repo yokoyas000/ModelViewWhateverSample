@@ -15,7 +15,7 @@ class SubViewHandler {
 
     init(
         handle starButton: UIButton,
-        notify model: StarModel
+        interchange model: StarModel
     ) {
         self.starButton = starButton
         self.model = model
@@ -38,8 +38,8 @@ class SubViewHandler {
 
 extension SubViewHandler: StarModelReceiver {
 
-    func receive(isStared: Bool) {
-        let title = isStared ? "★": "☆"
+    func receive(isStar: Bool) {
+        let title = isStar ? "★": "☆"
         self.starButton.setTitle(title, for: .normal)
     }
 }

@@ -1,47 +1,44 @@
 //
-//  MainViewHandler.swift
+//  MVCSample1Controller.swift
 //  ModelViewWhateverSample
 //
-//  Created by yokoyas000 on 2018/04/10.
+//  Created by yokoyas000 on 2018/04/12.
 //  Copyright © 2018年 yokoyas000. All rights reserved.
 //
+
 import UIKit
 
-/// Main画面を表すView
-class MainViewHandler {
+class MVCSample1Controller {
 
-    private let navigateToSubViewButton: UIButton
+    private let transitionButton: UIButton
     private let starButton: UIButton
     private let model: StarModel
     private let navigator: NavigatorContract
 
     init(
-        handle: (
+        reactTo views: (
             starButton: UIButton,
-            navigateToSubViewButton: UIButton
+            transitionButton: UIButton
         ),
-        interchange model: StarModel,
+        willCommand model: StarModel,
         navigateBy navigator: NavigatorContract
     ) {
-        self.starButton = handle.starButton
-        self.navigateToSubViewButton = handle.navigateToSubViewButton
+        self.starButton = views.starButton
+        self.transitionButton = views.transitionButton
         self.model = model
         self.navigator = navigator
 
-        // Modelの監視を開始する
-        self.model.append(receiver: self)
-
         // 1. 遷移ボタンを持ち、タップされた時にSub画面へ遷移する
-        self.navigateToSubViewButton.addTarget(
+        self.transitionButton.addTarget(
             self,
-            action: #selector(MainViewHandler.didTapNavigateButton),
+            action: #selector(MVCSample1Controller.didTapNavigateButton),
             for: .touchUpInside
         )
 
         // 2. Starボタンを持ち、タップされた時にModelへ指示を出す
         self.starButton.addTarget(
             self,
-            action: #selector(MainViewHandler.didTapStarButton),
+            action: #selector(MVCSample1Controller.didTapStarButton),
             for: .touchUpInside
         )
     }
@@ -58,13 +55,4 @@ class MainViewHandler {
         self.model.toggleStar()
     }
 
-}
-
-extension MainViewHandler: StarModelReceiver {
-
-    // 3. ModelからStarボタンの状態("☆/★")を取得し、表示する
-    func receive(isStar: Bool) {
-        let title = isStar ? "★": "☆"
-        self.starButton.setTitle(title, for: .normal)
-    }
 }

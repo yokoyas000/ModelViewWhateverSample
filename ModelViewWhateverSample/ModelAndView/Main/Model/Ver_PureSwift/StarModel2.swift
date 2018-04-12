@@ -7,7 +7,7 @@
 //
 
 protocol StarModelReceiver2: AnyObject {
-    func receive(isStared: Bool)
+    func receive(isStar: Bool)
 }
 
 // - AnyXxxx への変換を楽にする
@@ -20,17 +20,17 @@ extension StarModelReceiver2 {
 // PureSwift で頑張るver
 class StarModel2 {
 
-    private var isStared: Bool
+    private var isStar: Bool
 
     // - WeakPool型で持つ
     private var receiveers = WeekPool<AnyStarModelReceiver>()
 
-    init(initialStared: Bool) {
-        self.isStared = initialStared
+    init(initialStar: Bool) {
+        self.isStar = initialStar
     }
 
     func toggleStar() {
-        self.isStared = !self.isStared
+        self.isStar = !self.isStar
 
         self.notify()
     }
@@ -42,7 +42,7 @@ class StarModel2 {
 
     private func notify() {
         self.receiveers.forEach { receiver in
-            receiver.receive(isStared: self.isStared)
+            receiver.receive(isStar: self.isStar)
         }
     }
 }

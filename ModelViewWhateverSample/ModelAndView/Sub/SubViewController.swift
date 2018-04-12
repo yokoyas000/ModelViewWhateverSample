@@ -23,7 +23,7 @@ class SubViewController: UIViewController {
 
         self.viewHandler = SubViewHandler(
             handle: self.starButton,
-            notify: model
+            interchange: model
         )
     }
 

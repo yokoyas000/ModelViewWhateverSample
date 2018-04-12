@@ -30,7 +30,7 @@ class Sub2ViewController: UIViewController {
 
         self.viewHandler = SubViewHandler(
             handle: rootView.starButton,
-            notify: self.model
+            interchange: self.model
         )
     }
 

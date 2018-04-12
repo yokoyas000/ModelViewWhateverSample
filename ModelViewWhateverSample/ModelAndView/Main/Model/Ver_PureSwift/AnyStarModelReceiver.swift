@@ -14,12 +14,12 @@ class AnyStarModelReceiver: StarModelReceiver2 {
     private let _receive: (Bool) -> Void
 
     init(_ receiver: StarModelReceiver2) {
-        self._receive = { [weak receiver] isStared in
-            receiver?.receive(isStared: isStared)
+        self._receive = { [weak receiver] isStar in
+            receiver?.receive(isStar: isStar)
         }
     }
 
-    func receive(isStared: Bool) {
-        return self._receive(isStared)
+    func receive(isStar: Bool) {
+        return self._receive(isStar)
     }
 }

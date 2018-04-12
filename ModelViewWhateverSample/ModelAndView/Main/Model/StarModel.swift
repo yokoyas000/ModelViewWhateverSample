@@ -10,7 +10,7 @@ import Foundation
 
 @objc
 protocol StarModelReceiver {
-    func receive(isStared: Bool)
+    func receive(isStar: Bool)
 }
 
 /// Starボタンの状態を持つModel
@@ -38,7 +38,7 @@ class StarModel {
 
     private func notify() {
         self.receiveers.allObjects.forEach { receiver in
-            receiver.receive(isStared: self.isStar)
+            receiver.receive(isStar: self.isStar)
         }
     }
 }
