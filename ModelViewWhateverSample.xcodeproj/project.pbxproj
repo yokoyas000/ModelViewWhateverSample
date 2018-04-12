@@ -219,15 +219,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		3EC2E47D207D1AFC0025A8AF /* Navigator */ = {
-			isa = PBXGroup;
-			children = (
-				3EC2E47E207D1AFC0025A8AF /* Navigator.swift */,
-				3E05285C207FB59F0096094E /* ModelPresenter.swift */,
-			);
-			path = Navigator;
-			sourceTree = "<group>";
-		};
 		3EC2E47F207D1AFC0025A8AF /* Sub2 */ = {
 			isa = PBXGroup;
 			children = (
@@ -347,7 +338,8 @@
 		3EF1EEFA207F8D2C00A4E1DB /* Share */ = {
 			isa = PBXGroup;
 			children = (
-				3EC2E47D207D1AFC0025A8AF /* Navigator */,
+				3EC2E47E207D1AFC0025A8AF /* Navigator.swift */,
+				3E05285C207FB59F0096094E /* ModelPresenter.swift */,
 				3EF1EEFC207F8D5C00A4E1DB /* View */,
 				3EF1EEFB207F8D3B00A4E1DB /* Top */,
 			);
