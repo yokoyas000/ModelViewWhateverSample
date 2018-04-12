@@ -25,15 +25,21 @@ class MVPSample2Presenter {
     }
 
     @objc func didTapNavigateButton() {
+        // 現在の状態による分岐
         if self.model.isStar {
             self.navigate()
         } else {
-            self.view?.alert(self.createNavigateAlert())
+            self.view?.alert()
         }
     }
 
     @objc func didTapStarButton() {
+        // Modelへ指示を行う
         self.model.toggleStar()
+    }
+
+    func didTapAlertAction() {
+        self.navigate()
     }
 
     private func navigate() {
@@ -43,25 +49,6 @@ class MVPSample2Presenter {
         self.view?.navigate(to: vc)
     }
 
-    private func createNavigateAlert() -> UIAlertController {
-        let alert = UIAlertController(title: "", message: "★にしないと遷移できません。", preferredStyle: .alert)
-        let navigate = UIAlertAction(
-            title: "無視して遷移する",
-            style: .default
-        ) { [weak self] _ in
-            self?.navigate()
-        }
-
-        let cancel = UIAlertAction(
-            title: "OK",
-            style: .cancel
-        )
-
-        alert.addAction(navigate)
-        alert.addAction(cancel)
-
-        return alert
-    }
 }
 
 extension MVPSample2Presenter: StarModelReceiver {

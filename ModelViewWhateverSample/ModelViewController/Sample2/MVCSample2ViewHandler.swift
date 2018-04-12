@@ -36,7 +36,4 @@ class MVCSample2ViewHandler {
         self.starButton.setTitle(title, for: .normal)
     }
 
-    
-
-
 }

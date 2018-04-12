@@ -35,16 +35,16 @@ class MVPSample1ViewHandler {
         self.modalPresenter = modalPresenter
 
         self.presenter.view = self
+
+        // Modelの監視を開始する
         self.model.append(receiver: self)
 
-        // 1. 遷移ボタンを持ち、タップされた時にSub画面へ遷移する
+        // ユーザー動作の受付
         self.navigateButton.addTarget(
             self.presenter,
             action: #selector(MVPSample1Presenter.didTapNavigateButton),
             for: .touchUpInside
         )
-
-        // 2. Starボタンを持ち、タップされた時にModelへ指示を出す
         self.starButton.addTarget(
             self.presenter,
             action: #selector(MVPSample1Presenter.didTapStarButton),
@@ -56,14 +56,36 @@ class MVPSample1ViewHandler {
         self.navigator.navigate(to: next)
     }
 
-    func alert(_ alert: UIAlertController) {
-        self.modalPresenter.present(to: alert)
+    func alert() {
+        self.modalPresenter.present(
+            to: self.createNavigateAlert()
+        )
     }
 
+    private func createNavigateAlert() -> UIAlertController {
+        let alert = UIAlertController(title: "", message: "★にしないと遷移できません。", preferredStyle: .alert)
+        let navigate = UIAlertAction(
+            title: "無視して遷移する",
+            style: .default
+        ) { [weak self] _ in
+            self?.presenter.didTapAlertAction()
+        }
+
+        let cancel = UIAlertAction(
+            title: "OK",
+            style: .cancel
+        )
+
+        alert.addAction(navigate)
+        alert.addAction(cancel)
+
+        return alert
+    }
 }
 
 extension MVPSample1ViewHandler: StarModelReceiver {
-    // 3. ModelからStarボタンの状態("☆/★")を取得し、表示する
+
+    // Modelの変更を画面へ反映する
     func receive(isStar: Bool) {
         let title = isStar ? "★": "☆"
         self.starButton.setTitle(title, for: .normal)

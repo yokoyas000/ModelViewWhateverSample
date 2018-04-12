@@ -10,36 +10,30 @@ import UIKit
 
 class MVCSample2Controller {
 
-    private let navigateButton: UIButton
-    private let starButton: UIButton
     private let model: StarModel
     private let view: MVCSample2ViewHandler
 
     init(
-        reactTo views: (
+        reactTo handle: (
             starButton: UIButton,
             navigateButton: UIButton
         ),
         interchange model: StarModel,
         willCommand view: MVCSample2ViewHandler
     ) {
-        self.starButton = views.starButton
-        self.navigateButton = views.navigateButton
         self.model = model
         self.view = view
 
         // Modelの監視を開始する
         self.model.append(receiver: self)
 
-        // 1. 遷移ボタンを持ち、タップされた時にSub画面へ遷移する
-        self.navigateButton.addTarget(
+        // ユーザー動作の受付
+        handle.navigateButton.addTarget(
             self,
             action: #selector(MVCSample2Controller.didTapNavigateButton),
             for: .touchUpInside
         )
-
-        // 2. Starボタンを持ち、タップされた時にModelへ指示を出す
-        self.starButton.addTarget(
+        handle.starButton.addTarget(
             self,
             action: #selector(MVCSample2Controller.didTapStarButton),
             for: .touchUpInside
@@ -47,6 +41,7 @@ class MVCSample2Controller {
     }
 
     @objc private func didTapNavigateButton() {
+        // 現在の状態による分岐処理
         if self.model.isStar {
             self.navigate()
         } else {
@@ -55,6 +50,7 @@ class MVCSample2Controller {
     }
 
     @objc private func didTapStarButton() {
+        // Modelへ指示を行う
         self.model.toggleStar()
     }
 
@@ -75,6 +71,7 @@ class MVCSample2Controller {
         alert.addAction(navigate)
         alert.addAction(cancel)
 
+        // 画面への反映は View が行う
         return alert
     }
 
@@ -82,14 +79,16 @@ class MVCSample2Controller {
         guard let vc = SubViewController.create(model: self.model) else {
             return
         }
+
+        // 画面への反映は View が行う
         self.view.navigate(to: vc)
     }
 }
 
 extension MVCSample2Controller: StarModelReceiver {
 
-    // 3. ModelからStarボタンの状態("☆/★")を取得し、表示する
     func receive(isStar: Bool) {
+        // 画面への反映は View が行う
         self.view.update(star: isStar)
     }
 }

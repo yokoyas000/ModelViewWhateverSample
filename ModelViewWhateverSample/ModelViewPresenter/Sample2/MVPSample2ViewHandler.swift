@@ -33,14 +33,12 @@ class MVPSample2ViewHandler {
 
         self.presenter.connect(view: self)
 
-        // 1. 遷移ボタンを持ち、タップされた時にSub画面へ遷移する
+        // ユーザー動作の受付
         self.navigateButton.addTarget(
             self.presenter,
             action: #selector(MVPSample2Presenter.didTapNavigateButton),
             for: .touchUpInside
         )
-
-        // 2. Starボタンを持ち、タップされた時にModelへ指示を出す
         self.starButton.addTarget(
             self.presenter,
             action: #selector(MVPSample2Presenter.didTapStarButton),
@@ -56,7 +54,29 @@ class MVPSample2ViewHandler {
         self.starButton.setTitle(starTitle, for: .normal)
     }
 
-    func alert(_ alert: UIAlertController) {
-        self.modalPresenter.present(to: alert)
+    func alert() {
+        self.modalPresenter.present(
+            to: self.createNavigateAlert()
+        )
+    }
+
+    private func createNavigateAlert() -> UIAlertController {
+        let alert = UIAlertController(title: "", message: "★にしないと遷移できません。", preferredStyle: .alert)
+        let navigate = UIAlertAction(
+            title: "無視して遷移する",
+            style: .default
+        ) { [weak self] _ in
+            self?.presenter.didTapAlertAction()
+        }
+
+        let cancel = UIAlertAction(
+            title: "OK",
+            style: .cancel
+        )
+
+        alert.addAction(navigate)
+        alert.addAction(cancel)
+
+        return alert
     }
 }

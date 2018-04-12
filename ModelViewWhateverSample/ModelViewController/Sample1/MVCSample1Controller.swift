@@ -10,36 +10,27 @@ import UIKit
 
 class MVCSample1Controller {
 
-    private let navigateButton: UIButton
-    private let starButton: UIButton
     private let model: StarModel
-    private let navigator: NavigatorContract
-    private let modalPresenter: ModalPresenterContract
+    private let view: MVCSample1ViewHandler
 
     init(
-        reactTo views: (
+        reactTo handle: (
             starButton: UIButton,
             navigateButton: UIButton
         ),
         willCommand model: StarModel,
-        navigateBy navigator: NavigatorContract,
-        presentBy modalPresenter: ModalPresenterContract
+        interchange view: MVCSample1ViewHandler
     ) {
-        self.starButton = views.starButton
-        self.navigateButton = views.navigateButton
         self.model = model
-        self.navigator = navigator
-        self.modalPresenter = modalPresenter
+        self.view = view
 
-        // 1. 遷移ボタンを持ち、タップされた時にSub画面へ遷移する
-        self.navigateButton.addTarget(
+        // ユーザー動作の受付
+        handle.navigateButton.addTarget(
             self,
             action: #selector(MVCSample1Controller.didTapNavigateButton),
             for: .touchUpInside
         )
-
-        // 2. Starボタンを持ち、タップされた時にModelへ指示を出す
-        self.starButton.addTarget(
+        handle.starButton.addTarget(
             self,
             action: #selector(MVCSample1Controller.didTapStarButton),
             for: .touchUpInside
@@ -47,6 +38,7 @@ class MVCSample1Controller {
     }
 
     @objc private func didTapNavigateButton() {
+        // 現在の状態による分岐処理
         if self.model.isStar {
             self.navigate()
         } else {
@@ -55,6 +47,7 @@ class MVCSample1Controller {
     }
 
     @objc private func didTapStarButton() {
+        // Modelへ指示を行う
         self.model.toggleStar()
     }
 
@@ -75,14 +68,17 @@ class MVCSample1Controller {
         alert.addAction(navigate)
         alert.addAction(cancel)
 
-        self.modalPresenter.present(to: alert)
+        // 画面への反映は View が行う
+        self.view.alert(alert)
     }
 
     private func navigate() {
         guard let vc = SubViewController.create(model: self.model) else {
             return
         }
-        self.navigator.navigate(to: vc)
+
+        // 画面への反映は View が行う
+        self.view.navigate(to: vc)
     }
 
 }
