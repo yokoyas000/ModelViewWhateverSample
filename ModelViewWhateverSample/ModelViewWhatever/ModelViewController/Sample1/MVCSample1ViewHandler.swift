@@ -43,28 +43,28 @@ class MVCSample1ViewHandler {
         self.modalPresenter.present(to: alert)
     }
 
-    private func update(star title: String, color: UIColor) {
-        self.starButton.setTitle(title, for: .normal)
-        self.starButton.setTitleColor(color, for: .normal)
-    }
 }
 
 extension MVCSample1ViewHandler: DelayStarModelReceiver {
 
     // Modelの変更を画面へ反映する
-    func receive(status: DelayStarModel.State) {
-        switch status {
+    func receive(state: DelayStarModel.State) {
+        switch state {
         case .processing(next: .star):
-            self.update(star: "★", color: UIColor.darkGray)
+            self.starButton.setTitle("★", for: .normal)
+            self.starButton.setTitleColor(.darkGray, for: .normal)
         case .processing(next: .unstar):
-            self.update(star: "☆", color: UIColor.darkGray)
+            self.starButton.setTitle("☆", for: .normal)
+            self.starButton.setTitleColor(.darkGray, for: .normal)
         case .sleeping(current: .star):
-            self.update(star: "★", color: UIColor.red)
+            self.starButton.setTitle("★", for: .normal)
+            self.starButton.setTitleColor(.red, for: .normal)
 
             // ★にした時だけアラートを表示する
             self.present(alert: self.createStarAlert())
         case .sleeping(current: .unstar):
-            self.update(star: "☆", color: UIColor.red)
+            self.starButton.setTitle("☆", for: .normal)
+            self.starButton.setTitleColor(.red, for: .normal)
         }
     }
 

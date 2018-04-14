@@ -9,7 +9,7 @@
 import Foundation
 
 protocol DelayStarModelReceiver: class {
-    func receive(status: DelayStarModel.State)
+    func receive(state: DelayStarModel.State)
 }
 
 /// 指示を受けてから状態の変更までの間にタイムラグがあるモデル
@@ -37,7 +37,7 @@ class DelayStarModel {
 
         // 状態の変更、外部への通知までにタイムラグがある
         DispatchQueue.global(qos: .default).async { [weak self] in
-            sleep(UInt32(3.0))
+            sleep(UInt32(2.0))
 
             DispatchQueue.main.async {
                 self?.state = .sleeping(current: .star)
@@ -56,7 +56,7 @@ class DelayStarModel {
 
         // 状態の変更、外部への通知までにタイムラグがある
         DispatchQueue.global(qos: .default).async { [weak self] in
-            sleep(UInt32(3.0))
+            sleep(UInt32(2.0))
 
             DispatchQueue.main.async {
                 self?.state = .sleeping(current: .unstar)
@@ -66,12 +66,12 @@ class DelayStarModel {
 
     func append(receiver: DelayStarModelReceiver) {
         self.receiveers.append(receiver)
-        receiver.receive(status: self.state)
+        receiver.receive(state: self.state)
     }
 
     private func notify() {
         self.receiveers.forEach { receiver in
-            receiver.receive(status: self.state)
+            receiver.receive(state: self.state)
         }
     }
 }

@@ -60,8 +60,8 @@ class SyncStarViewHandler {
 
 extension SyncStarViewHandler: DelayStarModelReceiver {
 
-    func receive(status: DelayStarModel.State) {
-        switch status {
+    func receive(state: DelayStarModel.State) {
+        switch state {
         case .processing(next: .star):
             self.update(star: true, color: UIColor.darkGray)
         case .processing(next: .unstar):

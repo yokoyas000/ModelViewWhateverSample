@@ -30,7 +30,7 @@ class MVCSample1ViewController: UIViewController {
     }
 
     override func loadView() {
-        let rootView = MVCSample1RootView()
+        let rootView = MVCSampleRootView()
         self.view = rootView
 
         let viewHandler = MVCSample1ViewHandler(

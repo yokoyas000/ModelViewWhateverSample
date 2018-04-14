@@ -10,4 +10,4 @@ import UIKit
 
 // Viewの役割:
 //  - 画面の構築/表示
-class MVCSample1RootView: RootView {}
+class MVCSampleRootView: RootView {}

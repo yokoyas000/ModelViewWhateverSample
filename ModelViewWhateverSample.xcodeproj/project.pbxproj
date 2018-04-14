@@ -333,6 +333,7 @@
 		3EC2E4A0207F419A0025A8AF /* ModelViewController */ = {
 			isa = PBXGroup;
 			children = (
+				3E05287520821FF50096094E /* MVCSample1RootView.swift */,
 				3EF1EED8207F4AB900A4E1DB /* Sample1 */,
 				3EF1EEE6207F4DBE00A4E1DB /* Sample2 */,
 			);
@@ -352,7 +353,6 @@
 			isa = PBXGroup;
 			children = (
 				3EF1EED9207F4AB900A4E1DB /* MVCSample1ViewController.swift */,
-				3E05287520821FF50096094E /* MVCSample1RootView.swift */,
 				3EF1EEDA207F4AB900A4E1DB /* MVCSample1ViewHandler.swift */,
 				3EF1EEDB207F4AB900A4E1DB /* MVCSample1Controller.swift */,
 			);

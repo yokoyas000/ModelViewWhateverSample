@@ -48,7 +48,7 @@ class MVCSample1Controller {
             self.view.navigate(with: self.model)
         case .sleeping(current: .unstar), .processing(next: .unstar):
             self.view.present(
-                alert: self.createAlertForNavigation()
+                alert: self.createNavigateAlert()
             )
         }
     }
@@ -63,7 +63,7 @@ class MVCSample1Controller {
         }
     }
 
-    private func createAlertForNavigation() -> UIAlertController {
+    private func createNavigateAlert() -> UIAlertController {
         let alert = UIAlertController(
             title: "",
             message: "★にしないと遷移できません。",

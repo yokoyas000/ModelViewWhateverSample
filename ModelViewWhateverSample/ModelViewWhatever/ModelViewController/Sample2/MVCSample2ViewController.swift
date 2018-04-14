@@ -10,12 +10,12 @@ import UIKit
 
 class MVCSample2ViewController: UIViewController {
 
-    private let model: StarModel
+    private let model: DelayStarModel
     private let navigator: NavigatorContract
     private var controller: MVCSample2Controller?
 
     init(
-        model: StarModel,
+        model: DelayStarModel,
         navigator: NavigatorContract
         ) {
         self.model = model
@@ -44,7 +44,7 @@ class MVCSample2ViewController: UIViewController {
                 navigateButton: rootView.navigateButton
             ),
             interchange: self.model,
-            willCommand: viewHandler
+            command: viewHandler
         )
 
         self.controller = controller

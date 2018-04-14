@@ -7,6 +7,9 @@
 //
 
 import UIKit
+
+// Viewの役割:
+//  - 内部表現を視覚表現へ変換する
 class MVCSample2ViewHandler {
 
     private let starButton: UIButton
@@ -23,17 +26,46 @@ class MVCSample2ViewHandler {
         self.modalPresenter = modalPresenter
     }
 
-    func navigate(to next: UIViewController) {
-        self.navigator.navigate(to: next)
+    func navigate(with model: DelayStarModel) {
+        self.navigator.navigate(
+            to: SyncStarViewController(model: model)
+        )
     }
 
-    func alert(_ alert: UIAlertController) {
+    func present(alert: UIAlertController) {
         self.modalPresenter.present(to: alert)
     }
 
-    func update(star: Bool) {
-        let title = star ? "★": "☆"
-        self.starButton.setTitle(title, for: .normal)
+    func update(by status: DelayStarModel.State) {
+        switch status {
+        case .processing(next: .star):
+            self.starButton.setTitle("★", for: .normal)
+            self.starButton.setTitleColor(.darkGray, for: .normal)
+        case .processing(next: .unstar):
+            self.starButton.setTitle("☆", for: .normal)
+            self.starButton.setTitleColor(.darkGray, for: .normal)
+        case .sleeping(current: .star):
+            self.starButton.setTitle("★", for: .normal)
+            self.starButton.setTitleColor(.red, for: .normal)
+
+            // ★にした時だけアラートを表示する
+            self.present(alert: self.createStarAlert())
+        case .sleeping(current: .unstar):
+            self.starButton.setTitle("☆", for: .normal)
+            self.starButton.setTitleColor(.red, for: .normal)
+        }
+    }
+
+    private func createStarAlert() -> UIAlertController {
+        let alert = UIAlertController(
+            title: "",
+            message: "★をつけました！",
+            preferredStyle: .alert
+        )
+        let cancel = UIAlertAction(title: "OK",style: .cancel)
+        alert.addAction(cancel)
+
+        return alert
     }
 
 }

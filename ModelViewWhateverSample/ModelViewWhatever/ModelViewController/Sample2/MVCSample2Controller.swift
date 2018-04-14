@@ -8,9 +8,14 @@
 
 import UIKit
 
+// Controllerの役割:
+//  - ユーザー操作の受付
+//  - 状態に適した処理の振り分け
+//  - Modelへ指示を送る
+//  - Modelから指示の結果/途中経過を受け取る
 class MVCSample2Controller {
 
-    private let model: StarModel
+    private weak var model: DelayStarModel?
     private let view: MVCSample2ViewHandler
 
     init(
@@ -18,14 +23,14 @@ class MVCSample2Controller {
             starButton: UIButton,
             navigateButton: UIButton
         ),
-        interchange model: StarModel,
-        willCommand view: MVCSample2ViewHandler
+        interchange model: DelayStarModel,
+        command view: MVCSample2ViewHandler
     ) {
         self.model = model
         self.view = view
 
         // Modelの監視を開始する
-        self.model.append(receiver: self)
+        self.model?.append(receiver: self)
 
         // ユーザー動作の受付
         handle.navigateButton.addTarget(
@@ -41,17 +46,33 @@ class MVCSample2Controller {
     }
 
     @objc private func didTapNavigateButton() {
-        // 現在の状態による分岐処理
-        if self.model.isStar {
-            self.navigate()
-        } else {
-            self.view.alert(self.createNavigateAlert())
+        guard let model = self.model else {
+            return
+        }
+
+        // 現在の Model の状態による分岐処理
+        switch model.state {
+        case .sleeping(current: .star), .processing(next: .star):
+            self.view.navigate(with: model)
+        case .sleeping(current: .unstar), .processing(next: .unstar):
+            self.view.present(
+                alert: self.createNavigateAlert()
+            )
         }
     }
 
     @objc private func didTapStarButton() {
-        // Modelへ指示を行う
-        self.model.toggleStar()
+        guard let model = self.model else {
+            return
+        }
+
+        // 現在の Model の状態による分岐処理
+        switch model.state {
+        case .sleeping(current: .star), .processing(next: .star):
+            model.unstar()
+        case .sleeping(current: .unstar), .processing(next: .unstar):
+            model.star()
+        }
     }
 
     private func createNavigateAlert() -> UIAlertController {
@@ -60,7 +81,10 @@ class MVCSample2Controller {
             title: "無視して遷移する",
             style: .default
         ) { [weak self] _ in
-            self?.navigate()
+            guard let this = self, let model = this.model else {
+                return
+            }
+            this.view.navigate(with: model)
         }
 
         let cancel = UIAlertAction(
@@ -75,20 +99,10 @@ class MVCSample2Controller {
         return alert
     }
 
-    private func navigate() {
-        guard let vc = SubViewController.create(model: self.model) else {
-            return
-        }
-
-        // 画面への反映は View が行う
-        self.view.navigate(to: vc)
-    }
 }
 
-extension MVCSample2Controller: StarModelReceiver {
-
-    func receive(isStar: Bool) {
-        // 画面への反映は View が行う
-        self.view.update(star: isStar)
+extension MVCSample2Controller: DelayStarModelReceiver {
+    func receive(state: DelayStarModel.State) {
+        self.view.update(by: state)
     }
 }
