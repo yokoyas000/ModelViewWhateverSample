@@ -89,5 +89,15 @@ extension MVPSample1ViewHandler: StarModelReceiver {
     func receive(isStar: Bool) {
         let title = isStar ? "★": "☆"
         self.starButton.setTitle(title, for: .normal)
+
+        // 少し遅らせてから isStar の状態によって
+        // 遷移ボタンの isEnable を変更する
+        DispatchQueue.global(qos: .default).async {
+            sleep(UInt32(3.0))
+
+            DispatchQueue.main.async {
+                self.navigateButton.isEnabled = isStar
+            }
+        }
     }
 }

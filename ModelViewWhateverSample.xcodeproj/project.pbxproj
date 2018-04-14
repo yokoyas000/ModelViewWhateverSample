@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		3E05285D207FB59F0096094E /* ModelPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E05285C207FB59F0096094E /* ModelPresenter.swift */; };
 		3E05285F208007E50096094E /* StarModel3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E05285E208007E50096094E /* StarModel3.swift */; };
+		3E052862208099BF0096094E /* DelayStarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E052861208099BF0096094E /* DelayStarModel.swift */; };
+		3E0528662080A6E00096094E /* SyncStarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0528652080A6E00096094E /* SyncStarViewController.swift */; };
+		3E0528682080A7DF0096094E /* SyncStarViewHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0528672080A7DF0096094E /* SyncStarViewHandler.swift */; };
+		3E0528742081C6950096094E /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3E0528732081C6950096094E /* Info.plist */; };
+		3E05287620821FF50096094E /* MVCSample1RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E05287520821FF50096094E /* MVCSample1RootView.swift */; };
 		3E8CCD612079F498004B0E3F /* ModelViewWhateverSampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8CCD602079F498004B0E3F /* ModelViewWhateverSampleTests.swift */; };
 		3E8CCD6C2079F499004B0E3F /* ModelViewWhateverSampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8CCD6B2079F499004B0E3F /* ModelViewWhateverSampleUITests.swift */; };
 		3EC2E455207CD5000025A8AF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EC2E449207CD5000025A8AF /* LaunchScreen.storyboard */; };
@@ -67,6 +72,11 @@
 /* Begin PBXFileReference section */
 		3E05285C207FB59F0096094E /* ModelPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelPresenter.swift; sourceTree = "<group>"; };
 		3E05285E208007E50096094E /* StarModel3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarModel3.swift; sourceTree = "<group>"; };
+		3E052861208099BF0096094E /* DelayStarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelayStarModel.swift; sourceTree = "<group>"; };
+		3E0528652080A6E00096094E /* SyncStarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncStarViewController.swift; sourceTree = "<group>"; };
+		3E0528672080A7DF0096094E /* SyncStarViewHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncStarViewHandler.swift; sourceTree = "<group>"; };
+		3E0528732081C6950096094E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3E05287520821FF50096094E /* MVCSample1RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVCSample1RootView.swift; sourceTree = "<group>"; };
 		3E8CCD482079F498004B0E3F /* ModelViewWhateverSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ModelViewWhateverSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E8CCD5C2079F498004B0E3F /* ModelViewWhateverSampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ModelViewWhateverSampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E8CCD602079F498004B0E3F /* ModelViewWhateverSampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelViewWhateverSampleTests.swift; sourceTree = "<group>"; };
@@ -77,7 +87,6 @@
 		3EC2E449207CD5000025A8AF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3EC2E44A207CD5000025A8AF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3EC2E450207CD5000025A8AF /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3EC2E454207CD5000025A8AF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3EC2E479207D1AFC0025A8AF /* Sub.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Sub.storyboard; sourceTree = "<group>"; };
 		3EC2E47A207D1AFC0025A8AF /* SubViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubViewController.swift; sourceTree = "<group>"; };
 		3EC2E47C207D1AFC0025A8AF /* SubViewHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubViewHandler.swift; sourceTree = "<group>"; };
@@ -137,6 +146,51 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3E052860208099B10096094E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3E052861208099BF0096094E /* DelayStarModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3E0528632080A65F0096094E /* SyncStar */ = {
+			isa = PBXGroup;
+			children = (
+				3E0528652080A6E00096094E /* SyncStarViewController.swift */,
+				3E0528672080A7DF0096094E /* SyncStarViewHandler.swift */,
+			);
+			path = SyncStar;
+			sourceTree = "<group>";
+		};
+		3E0528642080A6BF0096094E /* Screen */ = {
+			isa = PBXGroup;
+			children = (
+				3E0528632080A65F0096094E /* SyncStar */,
+			);
+			path = Screen;
+			sourceTree = "<group>";
+		};
+		3E05286F2081C1A90096094E /* ModelViewWhatever */ = {
+			isa = PBXGroup;
+			children = (
+				3E0528702081C20F0096094E /* Share */,
+				3EC2E4A0207F419A0025A8AF /* ModelViewController */,
+				3EC2E4A1207F41E30025A8AF /* ModelViewPresenter */,
+			);
+			path = ModelViewWhatever;
+			sourceTree = "<group>";
+		};
+		3E0528702081C20F0096094E /* Share */ = {
+			isa = PBXGroup;
+			children = (
+				3EF1EEFC207F8D5C00A4E1DB /* View */,
+				3E0528642080A6BF0096094E /* Screen */,
+				3E052860208099B10096094E /* Model */,
+			);
+			path = Share;
+			sourceTree = "<group>";
+		};
 		3E8CCD3F2079F498004B0E3F = {
 			isa = PBXGroup;
 			children = (
@@ -178,14 +232,13 @@
 		3EC2E448207CD5000025A8AF /* ModelViewWhateverSample */ = {
 			isa = PBXGroup;
 			children = (
-				3EF1EEFA207F8D2C00A4E1DB /* Share */,
+				3E0528732081C6950096094E /* Info.plist */,
 				3EC2E449207CD5000025A8AF /* LaunchScreen.storyboard */,
 				3EC2E44A207CD5000025A8AF /* Assets.xcassets */,
 				3EC2E450207CD5000025A8AF /* AppDelegate.swift */,
-				3EC2E454207CD5000025A8AF /* Info.plist */,
+				3EF1EEFA207F8D2C00A4E1DB /* Share */,
 				3EC2E477207D1AFC0025A8AF /* ModelAndView */,
-				3EC2E4A0207F419A0025A8AF /* ModelViewController */,
-				3EC2E4A1207F41E30025A8AF /* ModelViewPresenter */,
+				3E05286F2081C1A90096094E /* ModelViewWhatever */,
 			);
 			path = ModelViewWhateverSample;
 			sourceTree = "<group>";
@@ -240,6 +293,7 @@
 		3EC2E484207D1AFC0025A8AF /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				3EC2E485207D1AFC0025A8AF /* MainViewController.swift */,
 				3EC2E487207D1AFC0025A8AF /* Model */,
 				3EC2E48D207D1AFC0025A8AF /* View */,
 			);
@@ -249,7 +303,6 @@
 		3EC2E487207D1AFC0025A8AF /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				3EC2E485207D1AFC0025A8AF /* MainViewController.swift */,
 				3EC2E488207D1AFC0025A8AF /* Ver_PureSwift */,
 				3EC2E48C207D1AFC0025A8AF /* StarModel.swift */,
 			);
@@ -299,6 +352,7 @@
 			isa = PBXGroup;
 			children = (
 				3EF1EED9207F4AB900A4E1DB /* MVCSample1ViewController.swift */,
+				3E05287520821FF50096094E /* MVCSample1RootView.swift */,
 				3EF1EEDA207F4AB900A4E1DB /* MVCSample1ViewHandler.swift */,
 				3EF1EEDB207F4AB900A4E1DB /* MVCSample1Controller.swift */,
 			);
@@ -338,10 +392,9 @@
 		3EF1EEFA207F8D2C00A4E1DB /* Share */ = {
 			isa = PBXGroup;
 			children = (
+				3EF1EEFB207F8D3B00A4E1DB /* Top */,
 				3EC2E47E207D1AFC0025A8AF /* Navigator.swift */,
 				3E05285C207FB59F0096094E /* ModelPresenter.swift */,
-				3EF1EEFC207F8D5C00A4E1DB /* View */,
-				3EF1EEFB207F8D3B00A4E1DB /* Top */,
 			);
 			path = Share;
 			sourceTree = "<group>";
@@ -471,6 +524,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E0528742081C6950096094E /* Info.plist in Resources */,
 				3EF1EEF9207F87A400A4E1DB /* Top.storyboard in Resources */,
 				3EC2E456207CD5000025A8AF /* Assets.xcassets in Resources */,
 				3EC2E455207CD5000025A8AF /* LaunchScreen.storyboard in Resources */,
@@ -506,6 +560,7 @@
 				3EF1EEEB207F4E4A00A4E1DB /* MVPSample2Presenter.swift in Sources */,
 				3EC2E496207D1AFC0025A8AF /* MainViewController.swift in Sources */,
 				3EF1EEE9207F4E3F00A4E1DB /* MVPSample2ViewHandler.swift in Sources */,
+				3E0528682080A7DF0096094E /* SyncStarViewHandler.swift in Sources */,
 				3EF1EEF7207F876C00A4E1DB /* TopViewController.swift in Sources */,
 				3EF1EEEF207F7ABA00A4E1DB /* MVCSample2ViewHandler.swift in Sources */,
 				3EF1EEDE207F4AB900A4E1DB /* MVCSample1Controller.swift in Sources */,
@@ -520,6 +575,7 @@
 				3EF1EF02207F930500A4E1DB /* MVPSample2ViewController.swift in Sources */,
 				3EF1EEE3207F4AF000A4E1DB /* MVPSample1Presenter.swift in Sources */,
 				3E05285F208007E50096094E /* StarModel3.swift in Sources */,
+				3E0528662080A6E00096094E /* SyncStarViewController.swift in Sources */,
 				3EC2E492207D1AFC0025A8AF /* Navigator.swift in Sources */,
 				3EC2E49C207D1AFC0025A8AF /* MainViewHandler.swift in Sources */,
 				3EC2E45A207CD5000025A8AF /* AppDelegate.swift in Sources */,
@@ -530,7 +586,9 @@
 				3EF1EEFE207F8D7100A4E1DB /* RootView.swift in Sources */,
 				3EC2E494207D1AFC0025A8AF /* Sub2RootView.swift in Sources */,
 				3EC2E490207D1AFC0025A8AF /* SubViewController.swift in Sources */,
+				3E05287620821FF50096094E /* MVCSample1RootView.swift in Sources */,
 				3EC2E49B207D1AFC0025A8AF /* StarModel.swift in Sources */,
+				3E052862208099BF0096094E /* DelayStarModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

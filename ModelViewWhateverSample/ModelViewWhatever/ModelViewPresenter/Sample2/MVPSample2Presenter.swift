@@ -8,10 +8,19 @@
 
 import UIKit
 
+// Presenter -> View への値の受  け渡しは
+// 直接的方法(Presenter が View を知っている)ではなく、
+// 間接的方法(この場合 Observer パターン)を利用する
+protocol MVPSample2PresenterReceiver: class {
+    func navigate(to next: UIViewController)
+    func update(starTitle: String, navigateEnable: Bool)
+    func alert()
+}
+
 class MVPSample2Presenter {
 
     private let model: StarModel
-    private weak var view: MVPSample2ViewHandler?
+    private weak var receiver: MVPSample2PresenterReceiver?
 
     init(
         interchange model: StarModel
@@ -19,8 +28,8 @@ class MVPSample2Presenter {
         self.model = model
     }
 
-    func connect(view: MVPSample2ViewHandler) {
-        self.view = view
+    func connect(receiver: MVPSample2PresenterReceiver) {
+        self.receiver = receiver
         self.model.append(receiver: self)
     }
 
@@ -29,7 +38,7 @@ class MVPSample2Presenter {
         if self.model.isStar {
             self.navigate()
         } else {
-            self.view?.alert()
+            self.receiver?.alert()
         }
     }
 
@@ -46,7 +55,7 @@ class MVPSample2Presenter {
         guard let vc = SubViewController.create(model: self.model) else {
             return
         }
-        self.view?.navigate(to: vc)
+        self.receiver?.navigate(to: vc)
     }
 
 }
@@ -54,6 +63,6 @@ class MVPSample2Presenter {
 extension MVPSample2Presenter: StarModelReceiver {
     func receive(isStar: Bool) {
         let title = isStar ? "★": "☆"
-        self.view?.update(starTitle: title)
+        self.receiver?.update(starTitle: title, navigateEnable: isStar)
     }
 }

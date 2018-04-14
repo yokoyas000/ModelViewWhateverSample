@@ -31,7 +31,7 @@ class MVPSample2ViewHandler {
         self.navigator = navigator
         self.modalPresenter = modalPresenter
 
-        self.presenter.connect(view: self)
+        self.presenter.connect(receiver: self)
 
         // ユーザー動作の受付
         self.navigateButton.addTarget(
@@ -46,12 +46,25 @@ class MVPSample2ViewHandler {
         )   
     }
 
+}
+
+extension MVPSample2ViewHandler: MVPSample2PresenterReceiver {
+
     func navigate(to next: UIViewController) {
         self.navigator.navigate(to: next)
     }
 
-    func update(starTitle: String) {
+    func update(starTitle: String, navigateEnable: Bool) {
         self.starButton.setTitle(starTitle, for: .normal)
+
+        // 少し遅らせてから遷移ボタンの isEnable を変更する
+        DispatchQueue.global(qos: .default).async {
+            sleep(UInt32(3.0))
+
+            DispatchQueue.main.async {
+                self.navigateButton.isEnabled = navigateEnable
+            }
+        }
     }
 
     func alert() {

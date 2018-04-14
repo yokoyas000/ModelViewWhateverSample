@@ -17,7 +17,7 @@ class MVPSample2ViewController: UIViewController {
     init(
         model: StarModel,
         navigator: NavigatorContract
-        ) {
+    ) {
         self.model = model
         self.navigator = navigator
 
