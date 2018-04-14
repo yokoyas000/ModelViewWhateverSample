@@ -34,7 +34,7 @@ class MainViewHandler {
         // 1. 遷移ボタンを持ち、タップされた時にSub画面へ遷移する
         self.navigateToSubViewButton.addTarget(
             self,
-            action: #selector(MainViewHandler.didTapNavigateButton),
+            action: #selector(MainViewHandler.didTapnavigationButton),
             for: .touchUpInside
         )
 
@@ -46,7 +46,7 @@ class MainViewHandler {
         )
     }
 
-    @objc private func didTapNavigateButton() {
+    @objc private func didTapnavigationButton() {
         guard let subVC = SubViewController.create(model: self.model) else {
             return
         }

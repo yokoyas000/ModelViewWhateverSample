@@ -12,7 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RootView" customModule="ModelViewWhateverSample" customModuleProvider="target">
             <connections>
-                <outlet property="navigateButton" destination="UfE-GQ-fbz" id="mk7-CA-1IG"/>
+                <outlet property="navigationButton" destination="UfE-GQ-fbz" id="mk7-CA-1IG"/>
                 <outlet property="starButton" destination="gxS-hE-fQK" id="Mp0-ss-QHf"/>
             </connections>
         </placeholder>

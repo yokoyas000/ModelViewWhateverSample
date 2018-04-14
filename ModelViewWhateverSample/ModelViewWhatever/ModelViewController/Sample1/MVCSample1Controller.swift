@@ -20,7 +20,7 @@ class MVCSample1Controller {
     init(
         reactTo handle: (
             starButton: UIButton,
-            navigateButton: UIButton
+            navigationButton: UIButton
         ),
         command model: DelayStarModel,
         update view: MVCSample1ViewHandler
@@ -29,9 +29,9 @@ class MVCSample1Controller {
         self.view = view
 
         // ユーザー動作の受付
-        handle.navigateButton.addTarget(
+        handle.navigationButton.addTarget(
             self,
-            action: #selector(MVCSample1Controller.didTapNavigateButton),
+            action: #selector(MVCSample1Controller.didTapnavigationButton),
             for: .touchUpInside
         )
         handle.starButton.addTarget(
@@ -41,7 +41,7 @@ class MVCSample1Controller {
         )
     }
 
-    @objc private func didTapNavigateButton() {
+    @objc private func didTapnavigationButton() {
         // 現在の Model の状態による分岐処理
         switch self.model.state {
         case .sleeping(current: .star), .processing(next: .star):

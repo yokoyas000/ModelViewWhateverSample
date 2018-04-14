@@ -10,7 +10,7 @@ import UIKit
 
 class MVPSample2ViewHandler {
 
-    private let navigateButton: UIButton
+    private let navigationButton: UIButton
     private let starButton: UIButton
     private let navigator: NavigatorContract
     private let presenter: MVPSample2Presenter
@@ -19,14 +19,14 @@ class MVPSample2ViewHandler {
     init(
         handle: (
             starButton: UIButton,
-            navigateButton: UIButton
+            navigationButton: UIButton
         ),
         interchange presenter: MVPSample2Presenter,
         navigateBy navigator: NavigatorContract,
         presentBy modalPresenter: ModalPresenterContract
     ) {
         self.starButton = handle.starButton
-        self.navigateButton = handle.navigateButton
+        self.navigationButton = handle.navigationButton
         self.presenter = presenter
         self.navigator = navigator
         self.modalPresenter = modalPresenter
@@ -34,9 +34,9 @@ class MVPSample2ViewHandler {
         self.presenter.connect(receiver: self)
 
         // ユーザー動作の受付
-        self.navigateButton.addTarget(
+        self.navigationButton.addTarget(
             self.presenter,
-            action: #selector(MVPSample2Presenter.didTapNavigateButton),
+            action: #selector(MVPSample2Presenter.didTapnavigationButton),
             for: .touchUpInside
         )
         self.starButton.addTarget(
@@ -62,7 +62,7 @@ extension MVPSample2ViewHandler: MVPSample2PresenterReceiver {
             sleep(UInt32(3.0))
 
             DispatchQueue.main.async {
-                self.navigateButton.isEnabled = navigateEnable
+                self.navigationButton.isEnabled = navigateEnable
             }
         }
     }

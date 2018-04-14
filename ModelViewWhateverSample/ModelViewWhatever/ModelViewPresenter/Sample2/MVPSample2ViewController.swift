@@ -38,7 +38,7 @@ class MVPSample2ViewController: UIViewController {
         let viewHandler = MVPSample2ViewHandler(
             handle:(
                 starButton: rootView.starButton,
-                navigateButton: rootView.navigateButton
+                navigationButton: rootView.navigationButton
             ),
             interchange: presenter,
             navigateBy: navigator,

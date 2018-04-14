@@ -33,7 +33,7 @@ class MVPSample2Presenter {
         self.model.append(receiver: self)
     }
 
-    @objc func didTapNavigateButton() {
+    @objc func didTapnavigationButton() {
         // 現在の状態による分岐
         if self.model.isStar {
             self.navigate()

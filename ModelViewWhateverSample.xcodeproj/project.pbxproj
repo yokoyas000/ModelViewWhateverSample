@@ -14,6 +14,7 @@
 		3E0528682080A7DF0096094E /* SyncStarViewHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0528672080A7DF0096094E /* SyncStarViewHandler.swift */; };
 		3E0528742081C6950096094E /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3E0528732081C6950096094E /* Info.plist */; };
 		3E05287620821FF50096094E /* MVCSample1RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E05287520821FF50096094E /* MVCSample1RootView.swift */; };
+		3E58A8E42082754B00DDC738 /* MVPSampleRootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E58A8E32082754B00DDC738 /* MVPSampleRootView.xib */; };
 		3E8CCD612079F498004B0E3F /* ModelViewWhateverSampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8CCD602079F498004B0E3F /* ModelViewWhateverSampleTests.swift */; };
 		3E8CCD6C2079F499004B0E3F /* ModelViewWhateverSampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8CCD6B2079F499004B0E3F /* ModelViewWhateverSampleUITests.swift */; };
 		3EC2E455207CD5000025A8AF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EC2E449207CD5000025A8AF /* LaunchScreen.storyboard */; };
@@ -34,6 +35,7 @@
 		3EC2E49B207D1AFC0025A8AF /* StarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC2E48C207D1AFC0025A8AF /* StarModel.swift */; };
 		3EC2E49C207D1AFC0025A8AF /* MainViewHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC2E48E207D1AFC0025A8AF /* MainViewHandler.swift */; };
 		3EC2E49E207DD0C50025A8AF /* WeakPool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC2E49D207DD0C50025A8AF /* WeakPool.swift */; };
+		3EE6CA912082317B003069B6 /* MVPSampleRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE6CA902082317B003069B6 /* MVPSampleRootView.swift */; };
 		3EF1EEDC207F4AB900A4E1DB /* MVCSample1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF1EED9207F4AB900A4E1DB /* MVCSample1ViewController.swift */; };
 		3EF1EEDD207F4AB900A4E1DB /* MVCSample1ViewHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF1EEDA207F4AB900A4E1DB /* MVCSample1ViewHandler.swift */; };
 		3EF1EEDE207F4AB900A4E1DB /* MVCSample1Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF1EEDB207F4AB900A4E1DB /* MVCSample1Controller.swift */; };
@@ -77,6 +79,7 @@
 		3E0528672080A7DF0096094E /* SyncStarViewHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncStarViewHandler.swift; sourceTree = "<group>"; };
 		3E0528732081C6950096094E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3E05287520821FF50096094E /* MVCSample1RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVCSample1RootView.swift; sourceTree = "<group>"; };
+		3E58A8E32082754B00DDC738 /* MVPSampleRootView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MVPSampleRootView.xib; sourceTree = "<group>"; };
 		3E8CCD482079F498004B0E3F /* ModelViewWhateverSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ModelViewWhateverSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E8CCD5C2079F498004B0E3F /* ModelViewWhateverSampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ModelViewWhateverSampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E8CCD602079F498004B0E3F /* ModelViewWhateverSampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelViewWhateverSampleTests.swift; sourceTree = "<group>"; };
@@ -103,6 +106,7 @@
 		3EC2E48E207D1AFC0025A8AF /* MainViewHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewHandler.swift; sourceTree = "<group>"; };
 		3EC2E49D207DD0C50025A8AF /* WeakPool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakPool.swift; sourceTree = "<group>"; };
 		3EC2E49F207F40750025A8AF /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		3EE6CA902082317B003069B6 /* MVPSampleRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVPSampleRootView.swift; sourceTree = "<group>"; };
 		3EF1EED9207F4AB900A4E1DB /* MVCSample1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVCSample1ViewController.swift; sourceTree = "<group>"; };
 		3EF1EEDA207F4AB900A4E1DB /* MVCSample1ViewHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVCSample1ViewHandler.swift; sourceTree = "<group>"; };
 		3EF1EEDB207F4AB900A4E1DB /* MVCSample1Controller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVCSample1Controller.swift; sourceTree = "<group>"; };
@@ -343,6 +347,8 @@
 		3EC2E4A1207F41E30025A8AF /* ModelViewPresenter */ = {
 			isa = PBXGroup;
 			children = (
+				3EE6CA902082317B003069B6 /* MVPSampleRootView.swift */,
+				3E58A8E32082754B00DDC738 /* MVPSampleRootView.xib */,
 				3EF1EEDF207F4AF000A4E1DB /* Sample1 */,
 				3EF1EEE7207F4DDA00A4E1DB /* Sample2 */,
 			);
@@ -529,6 +535,7 @@
 				3EC2E456207CD5000025A8AF /* Assets.xcassets in Resources */,
 				3EC2E455207CD5000025A8AF /* LaunchScreen.storyboard in Resources */,
 				3EC2E493207D1AFC0025A8AF /* Sub2RootView.xib in Resources */,
+				3E58A8E42082754B00DDC738 /* MVPSampleRootView.xib in Resources */,
 				3EF1EF00207F8F8100A4E1DB /* RootView.xib in Resources */,
 				3EC2E497207D1AFC0025A8AF /* Main.storyboard in Resources */,
 				3EC2E48F207D1AFC0025A8AF /* Sub.storyboard in Resources */,
@@ -570,6 +577,7 @@
 				3EC2E495207D1AFC0025A8AF /* Sub2ViewController.swift in Sources */,
 				3EF1EEE5207F4AF000A4E1DB /* MVPSample1ViewController.swift in Sources */,
 				3E05285D207FB59F0096094E /* ModelPresenter.swift in Sources */,
+				3EE6CA912082317B003069B6 /* MVPSampleRootView.swift in Sources */,
 				3EF1EEF1207F7AC400A4E1DB /* MVCSample2Controller.swift in Sources */,
 				3EC2E491207D1AFC0025A8AF /* SubViewHandler.swift in Sources */,
 				3EF1EF02207F930500A4E1DB /* MVPSample2ViewController.swift in Sources */,

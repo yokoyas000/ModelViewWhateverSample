@@ -41,7 +41,7 @@ class MVCSample2ViewController: UIViewController {
         let controller = MVCSample2Controller(
             reactTo: (
                 starButton: rootView.starButton,
-                navigateButton: rootView.navigateButton
+                navigationButton: rootView.navigationButton
             ),
             interchange: self.model,
             command: viewHandler

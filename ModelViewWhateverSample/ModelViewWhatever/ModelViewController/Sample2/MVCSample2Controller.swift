@@ -21,7 +21,7 @@ class MVCSample2Controller {
     init(
         reactTo handle: (
             starButton: UIButton,
-            navigateButton: UIButton
+            navigationButton: UIButton
         ),
         interchange model: DelayStarModel,
         command view: MVCSample2ViewHandler
@@ -33,9 +33,9 @@ class MVCSample2Controller {
         self.model?.append(receiver: self)
 
         // ユーザー動作の受付
-        handle.navigateButton.addTarget(
+        handle.navigationButton.addTarget(
             self,
-            action: #selector(MVCSample2Controller.didTapNavigateButton),
+            action: #selector(MVCSample2Controller.didTapnavigationButton),
             for: .touchUpInside
         )
         handle.starButton.addTarget(
@@ -45,7 +45,7 @@ class MVCSample2Controller {
         )
     }
 
-    @objc private func didTapNavigateButton() {
+    @objc private func didTapnavigationButton() {
         guard let model = self.model else {
             return
         }
