@@ -35,9 +35,9 @@ class StarModel2 {
         self.notify()
     }
 
-    func append(receiver: StarModelReceiver2) {
+    func append(receiver: AnyStarModelReceiver) {
         self.receiveers.append(receiver.asAny())
-        self.notify()
+        receiver.receive(isStar: self.isStar)
     }
 
     private func notify() {
