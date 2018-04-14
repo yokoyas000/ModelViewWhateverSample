@@ -10,13 +10,13 @@ import UIKit
 
 class MVCSample1ViewController: UIViewController {
 
-    private let model: StarModel
+    private let model: DelayStarModel
     private let navigator: NavigatorContract
     private var viewHandler: MVCSample1ViewHandler?
     private var controller: MVCSample1Controller?
 
     init(
-        model: StarModel,
+        model: DelayStarModel,
         navigator: NavigatorContract
     ) {
         self.model = model
@@ -30,12 +30,14 @@ class MVCSample1ViewController: UIViewController {
     }
 
     override func loadView() {
-        let rootView = RootView()
+        let rootView = MVCSample1RootView()
         self.view = rootView
 
         let viewHandler = MVCSample1ViewHandler(
             willUpdate: rootView.starButton,
-            observe: self.model
+            observe: self.model,
+            navigateBy: self.navigator,
+            presentBy: ModalPresenter(using: self)
         )
 
         let controller = MVCSample1Controller(
@@ -43,9 +45,8 @@ class MVCSample1ViewController: UIViewController {
                 starButton: rootView.starButton,
                 navigateButton: rootView.navigateButton
             ),
-            willCommand: self.model,
-            navigateBy: self.navigator,
-            presentBy: ModalPresenter(using: self)
+            command: self.model,
+            update: viewHandler
         )
 
         self.viewHandler = viewHandler

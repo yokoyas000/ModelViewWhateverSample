@@ -9,7 +9,7 @@
 // Weakを配列で持ってもいいが、そうするとStarModel.receiversが増え続ける問題があるので、
 // append()時に掃除してくれる型を作成
 class WeekPool<T: AnyObject> {
-    private (set) var weaks: [Weak<T>] = []
+    private var weaks: [Weak<T>] = []
 
     func append(_ element: T) {
         self.creanUp()

@@ -39,6 +39,3 @@ class Sub2ViewController: UIViewController {
     }
 
 }
-
-
-
