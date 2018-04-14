@@ -8,11 +8,15 @@
 
 import UIKit
 
+// Viewの役割:
+//  - ユーザー操作の受付
+//  - 内部表現を視覚表現へ変換する
+//  - Modelから指示の結果/途中経過を受け取る
 class MVPSample1ViewHandler {
 
     private let navigateButton: UIButton
     private let starButton: UIButton
-    private let model: StarModel
+    private let model: DelayStarModel
     private let presenter: MVPSample1Presenter
     private let navigator: NavigatorContract
     private let modalPresenter: ModalPresenterContract
@@ -23,7 +27,7 @@ class MVPSample1ViewHandler {
             navigateButton: UIButton
         ),
         willNotify presenter: MVPSample1Presenter,
-        observe model: StarModel,
+        observe model: DelayStarModel,
         navigateBy navigator: NavigatorContract,
         presentBy modalPresenter: ModalPresenterContract
     ) {
@@ -57,9 +61,7 @@ class MVPSample1ViewHandler {
     }
 
     func alert() {
-        self.modalPresenter.present(
-            to: self.createNavigateAlert()
-        )
+        self.modalPresenter.present(to: self.createNavigateAlert())
     }
 
     private func createNavigateAlert() -> UIAlertController {
@@ -83,21 +85,40 @@ class MVPSample1ViewHandler {
     }
 }
 
-extension MVPSample1ViewHandler: StarModelReceiver {
+extension MVPSample1ViewHandler: DelayStarModelReceiver {
 
     // Modelの変更を画面へ反映する
-    func receive(isStar: Bool) {
-        let title = isStar ? "★": "☆"
-        self.starButton.setTitle(title, for: .normal)
+    func receive(state: DelayStarModel.State) {
+        switch state {
+        case .processing(next: .star):
+            self.starButton.setTitle("★", for: .normal)
+            self.starButton.setTitleColor(.darkGray, for: .normal)
+        case .processing(next: .unstar):
+            self.starButton.setTitle("☆", for: .normal)
+            self.starButton.setTitleColor(.darkGray, for: .normal)
+        case .sleeping(current: .star):
+            self.starButton.setTitle("★", for: .normal)
+            self.starButton.setTitleColor(.red, for: .normal)
 
-        // 少し遅らせてから isStar の状態によって
-        // 遷移ボタンの isEnable を変更する
-        DispatchQueue.global(qos: .default).async {
-            sleep(UInt32(3.0))
-
-            DispatchQueue.main.async {
-                self.navigateButton.isEnabled = isStar
-            }
+            // ★にした時だけアラートを表示する
+            self.modalPresenter.present(
+                to: self.createStarAlert()
+            )
+        case .sleeping(current: .unstar):
+            self.starButton.setTitle("☆", for: .normal)
+            self.starButton.setTitleColor(.red, for: .normal)
         }
+    }
+
+    private func createStarAlert() -> UIAlertController {
+        let alert = UIAlertController(
+            title: "",
+            message: "★をつけました！",
+            preferredStyle: .alert
+        )
+        let cancel = UIAlertAction(title: "OK",style: .cancel)
+        alert.addAction(cancel)
+
+        return alert
     }
 }

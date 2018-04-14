@@ -8,41 +8,55 @@
 
 import UIKit
 
+// Presenterの役割:
+// - 状態に適した処理の振り分け
+// - Modelへ指示を送る
 class MVPSample1Presenter {
 
-    private let model: StarModel
+    private weak var model: DelayStarModel?
     weak var view: MVPSample1ViewHandler?
 
     init(
-        willCommand model: StarModel
+        willCommand model: DelayStarModel
     ) {
         self.model = model
     }
 
     @objc func didTapNavigateButton() {
-        // 現在の状態による分岐
-        if self.model.isStar {
-            self.navigate()
-        } else {
+        guard let model = self.model else {
+            return
+        }
+
+        // 現在の Model の状態による分岐処理
+        switch model.state {
+        case .sleeping(current: .star), .processing(next: .star):
+            self.view?.navigate(
+                to: SyncStarViewController(model: model)
+            )
+        case .sleeping(current: .unstar), .processing(next: .unstar):
             self.view?.alert()
         }
     }
 
     @objc func didTapStarButton() {
-        // Modelへ指示を行う
-        self.model.toggleStar()
+        guard let model = self.model else {
+            return
+        }
+
+        // 現在の Model の状態による分岐処理
+        switch model.state {
+        case .sleeping(current: .star), .processing(next: .star):
+            model.unstar()
+        case .sleeping(current: .unstar), .processing(next: .unstar):
+            model.star()
+        }
     }
 
     func didTapAlertAction() {
-        self.navigate()
-    }
-
-    private func navigate() {
-        guard let vc = SubViewController.create(model: self.model) else {
+        guard let model = self.model else {
             return
         }
-        self.view?.navigate(to: vc)
+        self.view?.navigate(to: SyncStarViewController(model: model))
     }
-
 
 }
