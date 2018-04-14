@@ -11,56 +11,44 @@ import UIKit
 // Viewの役割:
 //  - ユーザー操作の受付
 //  - 内部表現を視覚表現へ変換する
-//  - Modelから指示の結果/途中経過を受け取る
+//  - アクションの結果/途中経過を受け取る
+protocol MVPSample1ViewHandlerDelegate: class {
+    func didTapNavigationAlertAction()
+}
+
 class MVPSample1ViewHandler {
 
-    private let navigateButton: UIButton
+    private let navigationButton: UIButton
     private let starButton: UIButton
     private let model: DelayStarModel
-    private let presenter: MVPSample1Presenter
     private let navigator: NavigatorContract
     private let modalPresenter: ModalPresenterContract
+    weak var delegate: MVPSample1ViewHandlerDelegate?
 
     init(
         handle: (
             starButton: UIButton,
-            navigateButton: UIButton
+            navigationButton: UIButton
         ),
-        willNotify presenter: MVPSample1Presenter,
         observe model: DelayStarModel,
         navigateBy navigator: NavigatorContract,
         presentBy modalPresenter: ModalPresenterContract
     ) {
         self.starButton = handle.starButton
-        self.navigateButton = handle.navigateButton
-        self.presenter = presenter
+        self.navigationButton = handle.navigationButton
         self.model = model
         self.navigator = navigator
         self.modalPresenter = modalPresenter
 
-        self.presenter.view = self
-
         // Modelの監視を開始する
         self.model.append(receiver: self)
-
-        // ユーザー動作の受付
-        self.navigateButton.addTarget(
-            self.presenter,
-            action: #selector(MVPSample1Presenter.didTapNavigateButton),
-            for: .touchUpInside
-        )
-        self.starButton.addTarget(
-            self.presenter,
-            action: #selector(MVPSample1Presenter.didTapStarButton),
-            for: .touchUpInside
-        )
     }
 
     func navigate(to next: UIViewController) {
         self.navigator.navigate(to: next)
     }
 
-    func alert() {
+    func alertForNavigation() {
         self.modalPresenter.present(to: self.createNavigateAlert())
     }
 
@@ -70,7 +58,7 @@ class MVPSample1ViewHandler {
             title: "無視して遷移する",
             style: .default
         ) { [weak self] _ in
-            self?.presenter.didTapAlertAction()
+            self?.delegate?.didTapNavigationAlertAction()
         }
 
         let cancel = UIAlertAction(

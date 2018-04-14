@@ -12,7 +12,7 @@ class MVPSample1ViewController: UIViewController {
 
     private let model: DelayStarModel
     private let navigator: NavigatorContract
-    private var viewHandler: MVPSample1ViewHandler?
+    private var presenter: MVPSample1Presenter?
 
     init(
         model: DelayStarModel,
@@ -29,24 +29,26 @@ class MVPSample1ViewController: UIViewController {
     }
 
     override func loadView() {
-        let rootView = RootView()
+        let rootView = MVPSampleRootView()
         self.view = rootView
 
-        let presenter = MVPSample1Presenter(
-            willCommand: self.model
-        )
         let viewHandler = MVPSample1ViewHandler(
             handle:(
                 starButton: rootView.starButton,
-                navigateButton: rootView.navigateButton
+                navigationButton: rootView.navigationButton
             ),
-            willNotify: presenter,
             observe: self.model,
             navigateBy: self.navigator,
             presentBy: ModalPresenter(using: self)
         )
+        let presenter = MVPSample1Presenter(
+            willCommand: self.model,
+            and: viewHandler
+        )
 
-        self.viewHandler = viewHandler
+        viewHandler.delegate = presenter
+        rootView.delegate = presenter
+        self.presenter = presenter
     }
 }
 

@@ -9,20 +9,25 @@
 import UIKit
 
 // Presenterの役割:
-// - 状態に適した処理の振り分け
-// - Modelへ指示を送る
+// - 状態に適したアクションの振り分け
 class MVPSample1Presenter {
 
     private weak var model: DelayStarModel?
-    weak var view: MVPSample1ViewHandler?
+    private let view: MVPSample1ViewHandler
 
     init(
-        willCommand model: DelayStarModel
+        willCommand model: DelayStarModel,
+        and view: MVPSample1ViewHandler
     ) {
         self.model = model
+        self.view = view
     }
 
-    @objc func didTapNavigateButton() {
+}
+
+extension MVPSample1Presenter: MVPSampleRootViewDelegate, MVPSample1ViewHandlerDelegate {
+
+    @objc func didTapnavigationButton() {
         guard let model = self.model else {
             return
         }
@@ -30,11 +35,11 @@ class MVPSample1Presenter {
         // 現在の Model の状態による分岐処理
         switch model.state {
         case .sleeping(current: .star), .processing(next: .star):
-            self.view?.navigate(
+            self.view.navigate(
                 to: SyncStarViewController(model: model)
             )
         case .sleeping(current: .unstar), .processing(next: .unstar):
-            self.view?.alert()
+            self.view.alertForNavigation()
         }
     }
 
@@ -52,11 +57,11 @@ class MVPSample1Presenter {
         }
     }
 
-    func didTapAlertAction() {
+    func didTapNavigationAlertAction() {
         guard let model = self.model else {
             return
         }
-        self.view?.navigate(to: SyncStarViewController(model: model))
+        self.view.navigate(to: SyncStarViewController(model: model))
     }
 
 }
