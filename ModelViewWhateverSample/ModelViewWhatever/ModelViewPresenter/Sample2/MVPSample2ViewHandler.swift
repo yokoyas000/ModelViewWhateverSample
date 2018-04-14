@@ -8,66 +8,53 @@
 
 import UIKit
 
+// Viewの役割:
+//  - 画面の構築/表示
+//  - UI要素とアクションの接続
+protocol MVPSample2ViewHandlerDelegate: class {
+    func didTapNavigationAlertAction()
+}
+
 class MVPSample2ViewHandler {
 
     private let navigationButton: UIButton
     private let starButton: UIButton
     private let navigator: NavigatorContract
-    private let presenter: MVPSample2Presenter
     private let modalPresenter: ModalPresenterContract
+    weak var delegate: MVPSample2ViewHandlerDelegate?
 
     init(
         handle: (
             starButton: UIButton,
             navigationButton: UIButton
         ),
-        interchange presenter: MVPSample2Presenter,
         navigateBy navigator: NavigatorContract,
         presentBy modalPresenter: ModalPresenterContract
     ) {
         self.starButton = handle.starButton
         self.navigationButton = handle.navigationButton
-        self.presenter = presenter
         self.navigator = navigator
         self.modalPresenter = modalPresenter
+    }
 
-        self.presenter.connect(receiver: self)
-
-        // ユーザー動作の受付
-        self.navigationButton.addTarget(
-            self.presenter,
-            action: #selector(MVPSample2Presenter.didTapnavigationButton),
-            for: .touchUpInside
+    func navigate(with model: DelayStarModel) {
+        self.navigator.navigate(
+            to: SyncStarViewController(model: model)
         )
-        self.starButton.addTarget(
-            self.presenter,
-            action: #selector(MVPSample2Presenter.didTapStarButton),
-            for: .touchUpInside
-        )   
     }
 
-}
-
-extension MVPSample2ViewHandler: MVPSample2PresenterReceiver {
-
-    func navigate(to next: UIViewController) {
-        self.navigator.navigate(to: next)
+    func updateStarButton(title: String, color: UIColor) {
+        self.starButton.setTitle(title, for: .normal)
+        self.starButton.setTitleColor(color, for: .normal)
     }
 
-    func update(starTitle: String, navigateEnable: Bool) {
-        self.starButton.setTitle(starTitle, for: .normal)
-
-        // 少し遅らせてから遷移ボタンの isEnable を変更する
-        DispatchQueue.global(qos: .default).async {
-            sleep(UInt32(3.0))
-
-            DispatchQueue.main.async {
-                self.navigationButton.isEnabled = navigateEnable
-            }
-        }
+    func alertFinithStar() {
+        self.modalPresenter.present(
+            to: self.createStarAlert()
+        )
     }
 
-    func alert() {
+    func alertForNavigation() {
         self.modalPresenter.present(
             to: self.createNavigateAlert()
         )
@@ -79,7 +66,7 @@ extension MVPSample2ViewHandler: MVPSample2PresenterReceiver {
             title: "無視して遷移する",
             style: .default
         ) { [weak self] _ in
-            self?.presenter.didTapAlertAction()
+            self?.delegate?.didTapNavigationAlertAction()
         }
 
         let cancel = UIAlertAction(
@@ -88,6 +75,18 @@ extension MVPSample2ViewHandler: MVPSample2PresenterReceiver {
         )
 
         alert.addAction(navigate)
+        alert.addAction(cancel)
+
+        return alert
+    }
+
+    private func createStarAlert() -> UIAlertController {
+        let alert = UIAlertController(
+            title: "",
+            message: "★をつけました！",
+            preferredStyle: .alert
+        )
+        let cancel = UIAlertAction(title: "OK",style: .cancel)
         alert.addAction(cancel)
 
         return alert

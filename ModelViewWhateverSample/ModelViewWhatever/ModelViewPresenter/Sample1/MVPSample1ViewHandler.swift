@@ -9,7 +9,8 @@
 import UIKit
 
 // Viewの役割:
-//  - ユーザー操作の受付
+//  - 画面の構築/表示
+//  - UI要素とアクションの接続
 //  - 内部表現を視覚表現へ変換する
 //  - アクションの結果/途中経過を受け取る
 protocol MVPSample1ViewHandlerDelegate: class {
@@ -44,8 +45,10 @@ class MVPSample1ViewHandler {
         self.model.append(receiver: self)
     }
 
-    func navigate(to next: UIViewController) {
-        self.navigator.navigate(to: next)
+    func navigate(with model: DelayStarModel) {
+        self.navigator.navigate(
+            to: SyncStarViewController(model: model)
+        )
     }
 
     func alertForNavigation() {

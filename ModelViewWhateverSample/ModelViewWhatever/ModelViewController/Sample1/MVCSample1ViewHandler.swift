@@ -10,7 +10,7 @@ import UIKit
 
 // Viewの役割:
 //  - 内部表現を視覚表現へ変換する
-//  - Modelから指示の結果/途中経過を受け取る
+//  - アクションの結果/途中経過を受け取る
 class MVCSample1ViewHandler {
 
     private let starButton: UIButton

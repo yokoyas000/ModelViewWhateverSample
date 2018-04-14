@@ -9,9 +9,8 @@
 import UIKit
 
 // Controllerの役割:
-//  - ユーザー操作の受付
-//  - 状態に適した処理の振り分け
-//  - Modelへ指示を送る
+//  - UI要素とアクションの接続
+//  - 状態に適したアクションの振り分け
 class MVCSample1Controller {
 
     private let model: DelayStarModel

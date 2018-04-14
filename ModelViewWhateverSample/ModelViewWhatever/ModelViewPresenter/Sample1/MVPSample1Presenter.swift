@@ -35,9 +35,7 @@ extension MVPSample1Presenter: MVPSampleRootViewDelegate, MVPSample1ViewHandlerD
         // 現在の Model の状態による分岐処理
         switch model.state {
         case .sleeping(current: .star), .processing(next: .star):
-            self.view.navigate(
-                to: SyncStarViewController(model: model)
-            )
+            self.view.navigate(with: model)
         case .sleeping(current: .unstar), .processing(next: .unstar):
             self.view.alertForNavigation()
         }
@@ -61,7 +59,7 @@ extension MVPSample1Presenter: MVPSampleRootViewDelegate, MVPSample1ViewHandlerD
         guard let model = self.model else {
             return
         }
-        self.view.navigate(to: SyncStarViewController(model: model))
+        self.view.navigate(with: model)
     }
 
 }
