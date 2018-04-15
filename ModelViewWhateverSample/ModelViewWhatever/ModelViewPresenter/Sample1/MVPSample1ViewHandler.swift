@@ -14,14 +14,15 @@ import UIKit
 //  - 内部表現を視覚表現へ変換する
 //  - アクションの結果/途中経過を受け取る
 protocol MVPSample1ViewHandlerDelegate: class {
-    func didTapNavigationAlertAction()
+    func didRequestForceNavigate()
 }
 
 class MVPSample1ViewHandler {
 
     private let navigationButton: UIButton
     private let starButton: UIButton
-    private let model: DelayStarModel
+    private weak var starModel: DelayStarModel?
+    private weak var navigationModel: NavigationRequestModel?
     private let navigator: NavigatorContract
     private let modalPresenter: ModalPresenterContract
     weak var delegate: MVPSample1ViewHandlerDelegate?
@@ -31,21 +32,29 @@ class MVPSample1ViewHandler {
             starButton: UIButton,
             navigationButton: UIButton
         ),
-        observe model: DelayStarModel,
+        observe models:(
+            starModel: DelayStarModel,
+            navigationModel: NavigationRequestModel
+        ),
         navigateBy navigator: NavigatorContract,
         presentBy modalPresenter: ModalPresenterContract
     ) {
         self.starButton = handle.starButton
         self.navigationButton = handle.navigationButton
-        self.model = model
+        self.starModel = models.starModel
+        self.navigationModel = models.navigationModel
         self.navigator = navigator
         self.modalPresenter = modalPresenter
 
         // Modelの監視を開始する
-        self.model.append(receiver: self)
+        self.starModel?.append(receiver: self)
+        self.navigationModel?.append(receiver: self)
     }
 
-    func navigate(with model: DelayStarModel) {
+    func navigate() {
+        guard let model = self.starModel else {
+            return
+        }
         self.navigator.navigate(
             to: SyncStarViewController(model: model)
         )
@@ -58,10 +67,10 @@ class MVPSample1ViewHandler {
     private func createNavigateAlert() -> UIAlertController {
         let alert = UIAlertController(title: "", message: "★にしないと遷移できません。", preferredStyle: .alert)
         let navigate = UIAlertAction(
-            title: "無視して遷移する",
+            title: "★にして遷移する",
             style: .default
         ) { [weak self] _ in
-            self?.delegate?.didTapNavigationAlertAction()
+            self?.delegate?.didRequestForceNavigate()
         }
 
         let cancel = UIAlertAction(
@@ -79,8 +88,8 @@ class MVPSample1ViewHandler {
 extension MVPSample1ViewHandler: DelayStarModelReceiver {
 
     // Modelの変更を画面へ反映する
-    func receive(state: DelayStarModel.State) {
-        switch state {
+    func receive(starState: DelayStarModel.State) {
+        switch starState {
         case .processing(next: .star):
             self.starButton.setTitle("★", for: .normal)
             self.starButton.setTitleColor(.darkGray, for: .normal)
@@ -90,26 +99,20 @@ extension MVPSample1ViewHandler: DelayStarModelReceiver {
         case .sleeping(current: .star):
             self.starButton.setTitle("★", for: .normal)
             self.starButton.setTitleColor(.red, for: .normal)
-
-            // ★にした時だけアラートを表示する
-            self.modalPresenter.present(
-                to: self.createStarAlert()
-            )
         case .sleeping(current: .unstar):
             self.starButton.setTitle("☆", for: .normal)
             self.starButton.setTitleColor(.red, for: .normal)
         }
     }
+}
 
-    private func createStarAlert() -> UIAlertController {
-        let alert = UIAlertController(
-            title: "",
-            message: "★をつけました！",
-            preferredStyle: .alert
-        )
-        let cancel = UIAlertAction(title: "OK",style: .cancel)
-        alert.addAction(cancel)
-
-        return alert
+extension MVPSample1ViewHandler: NavigationRequestModelReceiver {
+    func receive(requestState: NavigationRequestModel.State) {
+        switch requestState {
+        case .nothing:
+            return
+        case .requested:
+            self.navigate()
+        }
     }
 }

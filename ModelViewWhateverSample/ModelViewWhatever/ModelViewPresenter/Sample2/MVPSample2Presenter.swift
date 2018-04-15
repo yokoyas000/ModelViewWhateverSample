@@ -14,34 +14,48 @@ import UIKit
 //  - アクションの結果/途中経過を受け取る
 class MVPSample2Presenter {
 
-    private let model: DelayStarModel
+    private weak var starModel: DelayStarModel?
+    private weak var navigationModel: NavigationRequestModel?
     private let view: MVPSample2ViewHandler
 
     init(
-        interchange model: DelayStarModel,
+        interchange models: (
+            starModel: DelayStarModel,
+            navigationModel: NavigationRequestModel
+        ),
         willUpdate view: MVPSample2ViewHandler
     ) {
-        self.model = model
+        self.starModel = models.starModel
+        self.navigationModel = models.navigationModel
         self.view = view
 
-        self.model.append(receiver: self)
+        self.starModel?.append(receiver: self)
+        self.navigationModel?.append(receiver: self)
     }
 
 }
 
 extension MVPSample2Presenter: MVPSampleRootViewDelegate, MVPSample2ViewHandlerDelegate {
-
+ 
     @objc func didTapnavigationButton() {
+        guard let model = self.starModel else {
+            return
+        }
+
         // 現在の Model の状態による分岐処理
-        switch self.model.state {
-        case .sleeping(current: .star), .processing(next: .star):
+        switch model.state {
+        case .sleeping(current: .star):
             self.view.navigate(with: model)
-        case .sleeping(current: .unstar), .processing(next: .unstar):
+        case .sleeping(current: .unstar), .processing:
             self.view.alertForNavigation()
         }
     }
 
     @objc func didTapStarButton() {
+        guard let model = self.starModel else {
+            return
+        }
+
         // 現在の Model の状態による分岐処理
         switch model.state {
         case .sleeping(current: .star), .processing(next: .star):
@@ -51,8 +65,9 @@ extension MVPSample2Presenter: MVPSampleRootViewDelegate, MVPSample2ViewHandlerD
         }
     }
 
-    func didTapNavigationAlertAction() {
-        self.view.navigate(with: self.model)
+    func didRequestForceNavigate() {
+        self.navigationModel?.requestToNavigate()
+        self.starModel?.star()
     }
 
     private func update(by state: DelayStarModel.State) {
@@ -63,9 +78,6 @@ extension MVPSample2Presenter: MVPSampleRootViewDelegate, MVPSample2ViewHandlerD
             self.view.updateStarButton(title: "☆", color: .darkGray)
         case .sleeping(current: .star):
             self.view.updateStarButton(title: "★", color: .red)
-
-            // ★にした時だけアラートを表示する
-            self.view.alertFinithStar()
         case .sleeping(current: .unstar):
             self.view.updateStarButton(title: "☆", color: .red)
         }
@@ -74,8 +86,21 @@ extension MVPSample2Presenter: MVPSampleRootViewDelegate, MVPSample2ViewHandlerD
 }
 
 extension MVPSample2Presenter: DelayStarModelReceiver {
-    func receive(state: DelayStarModel.State) {
-        self.update(by: state)
+    func receive(starState: DelayStarModel.State) {
+        self.update(by: starState)
     }
+}
 
+extension MVPSample2Presenter: NavigationRequestModelReceiver {
+    func receive(requestState: NavigationRequestModel.State) {
+        switch requestState {
+        case .nothing:
+            return
+        case .requested:
+            guard let model = self.starModel else {
+                return
+            }
+            self.view.navigate(with: model)
+        }
+    }
 }

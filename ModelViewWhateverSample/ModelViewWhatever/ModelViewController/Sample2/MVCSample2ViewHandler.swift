@@ -37,36 +37,25 @@ class MVCSample2ViewHandler {
         self.modalPresenter.present(to: alert)
     }
 
-    func update(by status: DelayStarModel.State) {
-        switch status {
+    func update(by starState: DelayStarModel.State) {
+        switch starState {
         case .processing(next: .star):
             self.starButton.setTitle("★", for: .normal)
             self.starButton.setTitleColor(.darkGray, for: .normal)
+            self.starButton.isEnabled = false
         case .processing(next: .unstar):
             self.starButton.setTitle("☆", for: .normal)
             self.starButton.setTitleColor(.darkGray, for: .normal)
+            self.starButton.isEnabled = false
         case .sleeping(current: .star):
             self.starButton.setTitle("★", for: .normal)
             self.starButton.setTitleColor(.red, for: .normal)
-
-            // ★にした時だけアラートを表示する
-            self.present(alert: self.createStarAlert())
+            self.starButton.isEnabled = true
         case .sleeping(current: .unstar):
             self.starButton.setTitle("☆", for: .normal)
             self.starButton.setTitleColor(.red, for: .normal)
+            self.starButton.isEnabled = true
         }
-    }
-
-    private func createStarAlert() -> UIAlertController {
-        let alert = UIAlertController(
-            title: "",
-            message: "★をつけました！",
-            preferredStyle: .alert
-        )
-        let cancel = UIAlertAction(title: "OK",style: .cancel)
-        alert.addAction(cancel)
-
-        return alert
     }
 
 }

@@ -12,14 +12,19 @@ import UIKit
 // - 状態に適したアクションの振り分け
 class MVPSample1Presenter {
 
-    private weak var model: DelayStarModel?
+    private let starModel: DelayStarModel
+    private let navigationModel: NavigationRequestModel
     private let view: MVPSample1ViewHandler
 
     init(
-        willCommand model: DelayStarModel,
+        willCommand models:(
+            starModel: DelayStarModel,
+            navigationModel: NavigationRequestModel
+        ),
         and view: MVPSample1ViewHandler
     ) {
-        self.model = model
+        self.starModel = models.starModel
+        self.navigationModel = models.navigationModel
         self.view = view
     }
 
@@ -28,38 +33,28 @@ class MVPSample1Presenter {
 extension MVPSample1Presenter: MVPSampleRootViewDelegate, MVPSample1ViewHandlerDelegate {
 
     @objc func didTapnavigationButton() {
-        guard let model = self.model else {
-            return
-        }
-
         // 現在の Model の状態による分岐処理
-        switch model.state {
-        case .sleeping(current: .star), .processing(next: .star):
-            self.view.navigate(with: model)
-        case .sleeping(current: .unstar), .processing(next: .unstar):
+        switch self.starModel.state {
+        case .sleeping(current: .star):
+            self.view.navigate()
+        case .sleeping(current: .unstar), .processing:
             self.view.alertForNavigation()
         }
     }
 
     @objc func didTapStarButton() {
-        guard let model = self.model else {
-            return
-        }
-
         // 現在の Model の状態による分岐処理
-        switch model.state {
+        switch self.starModel.state {
         case .sleeping(current: .star), .processing(next: .star):
-            model.unstar()
+            self.starModel.unstar()
         case .sleeping(current: .unstar), .processing(next: .unstar):
-            model.star()
+            self.starModel.star()
         }
     }
 
-    func didTapNavigationAlertAction() {
-        guard let model = self.model else {
-            return
-        }
-        self.view.navigate(with: model)
+    func didRequestForceNavigate() {
+        self.navigationModel.requestToNavigate()
+        self.starModel.star()
     }
 
 }

@@ -12,7 +12,6 @@ class MVCSample1ViewController: UIViewController {
 
     private let model: DelayStarModel
     private let navigator: NavigatorContract
-    private var viewHandler: MVCSample1ViewHandler?
     private var controller: MVCSample1Controller?
 
     init(
@@ -33,9 +32,17 @@ class MVCSample1ViewController: UIViewController {
         let rootView = MVCSampleRootView()
         self.view = rootView
 
+        let navigationModel = NavigationRequestModel(
+            initialNavigationRequest: .nothing,
+            observe: model
+        )
+
         let viewHandler = MVCSample1ViewHandler(
             willUpdate: rootView.starButton,
-            observe: self.model,
+            observe: (
+                starModel: self.model,
+                navigationModel: navigationModel
+            ),
             navigateBy: self.navigator,
             presentBy: ModalPresenter(using: self)
         )
@@ -45,11 +52,13 @@ class MVCSample1ViewController: UIViewController {
                 starButton: rootView.starButton,
                 navigationButton: rootView.navigationButton
             ),
-            command: self.model,
+            command: (
+                starModel: self.model,
+                navigationModel: navigationModel
+            ),
             update: viewHandler
         )
 
-        self.viewHandler = viewHandler
         self.controller = controller
     }
 

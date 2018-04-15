@@ -12,6 +12,7 @@ class MVPSample2ViewController: UIViewController {
 
     private let model: DelayStarModel
     private let navigator: NavigatorContract
+    private var navigationModel: NavigationRequestModel?
     private var presenter: MVPSample2Presenter?
 
     init(
@@ -40,11 +41,19 @@ class MVPSample2ViewController: UIViewController {
             navigateBy: navigator,
             presentBy: ModalPresenter(using: self)
         )
+        let navigationModel = NavigationRequestModel(
+            initialNavigationRequest: .nothing,
+            observe: self.model
+        )
         let presenter = MVPSample2Presenter(
-            interchange: self.model,
+            interchange: (
+                starModel: self.model,
+                navigationModel: navigationModel
+            ),
             willUpdate: viewHandler
         )
 
+        self.navigationModel = navigationModel
         rootView.delegate = presenter
         viewHandler.delegate = presenter
         self.presenter = presenter

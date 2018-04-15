@@ -12,7 +12,7 @@ import UIKit
 //  - 画面の構築/表示
 //  - UI要素とアクションの接続
 protocol MVPSample2ViewHandlerDelegate: class {
-    func didTapNavigationAlertAction()
+    func didRequestForceNavigate()
 }
 
 class MVPSample2ViewHandler {
@@ -48,12 +48,6 @@ class MVPSample2ViewHandler {
         self.starButton.setTitleColor(color, for: .normal)
     }
 
-    func alertFinithStar() {
-        self.modalPresenter.present(
-            to: self.createStarAlert()
-        )
-    }
-
     func alertForNavigation() {
         self.modalPresenter.present(
             to: self.createNavigateAlert()
@@ -66,7 +60,7 @@ class MVPSample2ViewHandler {
             title: "無視して遷移する",
             style: .default
         ) { [weak self] _ in
-            self?.delegate?.didTapNavigationAlertAction()
+            self?.delegate?.didRequestForceNavigate()
         }
 
         let cancel = UIAlertAction(
@@ -80,15 +74,4 @@ class MVPSample2ViewHandler {
         return alert
     }
 
-    private func createStarAlert() -> UIAlertController {
-        let alert = UIAlertController(
-            title: "",
-            message: "★をつけました！",
-            preferredStyle: .alert
-        )
-        let cancel = UIAlertAction(title: "OK",style: .cancel)
-        alert.addAction(cancel)
-
-        return alert
-    }
 }

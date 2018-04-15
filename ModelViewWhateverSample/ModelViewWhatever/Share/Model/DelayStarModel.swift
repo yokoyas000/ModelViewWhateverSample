@@ -9,7 +9,7 @@
 import Foundation
 
 protocol DelayStarModelReceiver: class {
-    func receive(state: DelayStarModel.State)
+    func receive(starState: DelayStarModel.State)
 }
 
 /// 指示を受けてから状態の変更までの間にタイムラグがあるモデル
@@ -29,15 +29,19 @@ class DelayStarModel {
     func star() {
         switch self.state {
         case .processing:
+            // 何もしない
             return
-        case .sleeping:
+        case .sleeping(current: .star):
+            // 現在の状態と同じなら再通知する
+            self.state = .sleeping(current: .star)
+        case .sleeping(current: .unstar):
             break
         }
         self.state = .processing(next: .star)
 
         // 状態の変更、外部への通知までにタイムラグがある
         DispatchQueue.global(qos: .default).async { [weak self] in
-            sleep(UInt32(2.0))
+            sleep(UInt32(5.0))
 
             DispatchQueue.main.async {
                 self?.state = .sleeping(current: .star)
@@ -48,8 +52,12 @@ class DelayStarModel {
     func unstar() {
         switch self.state {
         case .processing:
+            // 何もしない
             return
-        case .sleeping:
+        case .sleeping(current: .unstar):
+            // 現在の状態と同じなら再通知する
+            self.state = .sleeping(current: .unstar)
+        case .sleeping(current: .star):
             break
         }
         self.state = .processing(next: .unstar)
@@ -66,12 +74,12 @@ class DelayStarModel {
 
     func append(receiver: DelayStarModelReceiver) {
         self.receiveers.append(receiver)
-        receiver.receive(state: self.state)
+        receiver.receive(starState: self.state)
     }
 
     private func notify() {
         self.receiveers.forEach { receiver in
-            receiver.receive(state: self.state)
+            receiver.receive(starState: self.state)
         }
     }
 }

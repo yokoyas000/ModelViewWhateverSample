@@ -60,29 +60,16 @@ class SyncStarViewHandler {
 
 extension SyncStarViewHandler: DelayStarModelReceiver {
 
-    func receive(state: DelayStarModel.State) {
-        switch state {
+    func receive(starState: DelayStarModel.State) {
+        switch starState {
         case .processing(next: .star):
             self.update(star: true, color: UIColor.darkGray)
         case .processing(next: .unstar):
             self.update(star: false, color: UIColor.darkGray)
         case .sleeping(current: .star):
             self.update(star: true, color: UIColor.red)
-            self.modalPresenter.present(to: self.createStarAlert())
         case .sleeping(current: .unstar):
             self.update(star: false, color: UIColor.red)
         }
-    }
-
-    private func createStarAlert() -> UIAlertController {
-        let alert = UIAlertController(
-            title: "",
-            message: "★をつけました！",
-            preferredStyle: .alert
-        )
-        let cancel = UIAlertAction(title: "OK",style: .cancel)
-        alert.addAction(cancel)
-
-        return alert
     }
 }

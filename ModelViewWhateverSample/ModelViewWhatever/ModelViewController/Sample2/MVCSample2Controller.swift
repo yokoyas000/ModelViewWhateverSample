@@ -14,7 +14,8 @@ import UIKit
 //  - アクションの結果/途中経過を受け取る
 class MVCSample2Controller {
 
-    private weak var model: DelayStarModel?
+    private weak var starModel: DelayStarModel?
+    private weak var navigationModel: NavigationRequestModel?
     private let view: MVCSample2ViewHandler
 
     init(
@@ -22,14 +23,19 @@ class MVCSample2Controller {
             starButton: UIButton,
             navigationButton: UIButton
         ),
-        interchange model: DelayStarModel,
+        interchange models: (
+            starModel: DelayStarModel,
+            navigationModel: NavigationRequestModel
+        ),
         command view: MVCSample2ViewHandler
     ) {
-        self.model = model
+        self.starModel = models.starModel
+        self.navigationModel = models.navigationModel
         self.view = view
 
         // Modelの監視を開始する
-        self.model?.append(receiver: self)
+        self.starModel?.append(receiver: self)
+        self.navigationModel?.append(receiver: self)
 
         // ユーザー動作の受付
         handle.navigationButton.addTarget(
@@ -45,15 +51,15 @@ class MVCSample2Controller {
     }
 
     @objc private func didTapnavigationButton() {
-        guard let model = self.model else {
+        guard let model = self.starModel else {
             return
         }
 
         // 現在の Model の状態による分岐処理
         switch model.state {
-        case .sleeping(current: .star), .processing(next: .star):
+        case .sleeping(current: .star):
             self.view.navigate(with: model)
-        case .sleeping(current: .unstar), .processing(next: .unstar):
+        case .sleeping(current: .unstar), .processing:
             self.view.present(
                 alert: self.createNavigateAlert()
             )
@@ -61,7 +67,7 @@ class MVCSample2Controller {
     }
 
     @objc private func didTapStarButton() {
-        guard let model = self.model else {
+        guard let model = self.starModel else {
             return
         }
 
@@ -80,10 +86,8 @@ class MVCSample2Controller {
             title: "無視して遷移する",
             style: .default
         ) { [weak self] _ in
-            guard let this = self, let model = this.model else {
-                return
-            }
-            this.view.navigate(with: model)
+            self?.navigationModel?.requestToNavigate()
+            self?.starModel?.star()
         }
 
         let cancel = UIAlertAction(
@@ -101,7 +105,22 @@ class MVCSample2Controller {
 }
 
 extension MVCSample2Controller: DelayStarModelReceiver {
-    func receive(state: DelayStarModel.State) {
-        self.view.update(by: state)
+    func receive(starState: DelayStarModel.State) {
+        self.view.update(by: starState)
     }
 }
+
+extension MVCSample2Controller: NavigationRequestModelReceiver {
+    func receive(requestState: NavigationRequestModel.State) {
+        switch requestState {
+        case .nothing:
+            return
+        case .requested:
+            guard let model = self.starModel else {
+                return
+            }
+            self.view.navigate(with: model)
+        }
+    }
+}
+

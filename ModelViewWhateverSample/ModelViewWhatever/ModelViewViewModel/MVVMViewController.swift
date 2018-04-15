@@ -83,8 +83,8 @@ class MVVMSampleViewModel: NSObject {
 }
 
 extension MVVMSampleViewModel: DelayStarModelReceiver {
-    func receive(state: DelayStarModel.State) {
-        switch state {
+    func receive(starState: DelayStarModel.State) {
+        switch starState {
         case .processing(next: .star):
             self.starText = "★"
             self.starTextColor = .darkGray

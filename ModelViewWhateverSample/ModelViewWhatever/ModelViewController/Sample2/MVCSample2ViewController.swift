@@ -12,6 +12,7 @@ class MVCSample2ViewController: UIViewController {
 
     private let model: DelayStarModel
     private let navigator: NavigatorContract
+    private var navigationModel: NavigationRequestModel?
     private var controller: MVCSample2Controller?
 
     init(
@@ -38,15 +39,24 @@ class MVCSample2ViewController: UIViewController {
             presentBy: ModalPresenter(using: self)
         )
 
+        let navigationModel = NavigationRequestModel(
+            initialNavigationRequest: .nothing,
+            observe: self.model
+        )
+
         let controller = MVCSample2Controller(
             reactTo: (
                 starButton: rootView.starButton,
                 navigationButton: rootView.navigationButton
             ),
-            interchange: self.model,
+            interchange: (
+                starModel: self.model,
+                navigationModel: navigationModel
+            ),
             command: viewHandler
         )
 
+        self.navigationModel = navigationModel
         self.controller = controller
     }
 }
