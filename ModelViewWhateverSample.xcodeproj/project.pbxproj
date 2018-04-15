@@ -17,6 +17,10 @@
 		3E58A8E42082754B00DDC738 /* MVPSampleRootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E58A8E32082754B00DDC738 /* MVPSampleRootView.xib */; };
 		3E58A8E72082925D00DDC738 /* MVVMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E58A8E62082925D00DDC738 /* MVVMViewController.swift */; };
 		3E6460F1208351CA0066F98A /* NavigationRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6460F0208351CA0066F98A /* NavigationRequestModel.swift */; };
+		3E6460F3208363A90066F98A /* MVVMSampleRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6460F2208363A90066F98A /* MVVMSampleRootView.swift */; };
+		3E6460F5208363C00066F98A /* MVVMSampleRootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E6460F4208363C00066F98A /* MVVMSampleRootView.xib */; };
+		3E6460F72083773F0066F98A /* MVVMSampleViewBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6460F62083773F0066F98A /* MVVMSampleViewBinding.swift */; };
+		3E6460F92083777F0066F98A /* MVVMSampleViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6460F82083777F0066F98A /* MVVMSampleViewPresenter.swift */; };
 		3E8CCD612079F498004B0E3F /* ModelViewWhateverSampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8CCD602079F498004B0E3F /* ModelViewWhateverSampleTests.swift */; };
 		3E8CCD6C2079F499004B0E3F /* ModelViewWhateverSampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8CCD6B2079F499004B0E3F /* ModelViewWhateverSampleUITests.swift */; };
 		3EC2E455207CD5000025A8AF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EC2E449207CD5000025A8AF /* LaunchScreen.storyboard */; };
@@ -84,6 +88,10 @@
 		3E58A8E32082754B00DDC738 /* MVPSampleRootView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MVPSampleRootView.xib; sourceTree = "<group>"; };
 		3E58A8E62082925D00DDC738 /* MVVMViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVVMViewController.swift; sourceTree = "<group>"; };
 		3E6460F0208351CA0066F98A /* NavigationRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationRequestModel.swift; sourceTree = "<group>"; };
+		3E6460F2208363A90066F98A /* MVVMSampleRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVVMSampleRootView.swift; sourceTree = "<group>"; };
+		3E6460F4208363C00066F98A /* MVVMSampleRootView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MVVMSampleRootView.xib; sourceTree = "<group>"; };
+		3E6460F62083773F0066F98A /* MVVMSampleViewBinding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVVMSampleViewBinding.swift; sourceTree = "<group>"; };
+		3E6460F82083777F0066F98A /* MVVMSampleViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVVMSampleViewPresenter.swift; sourceTree = "<group>"; };
 		3E8CCD482079F498004B0E3F /* ModelViewWhateverSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ModelViewWhateverSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E8CCD5C2079F498004B0E3F /* ModelViewWhateverSampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ModelViewWhateverSampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E8CCD602079F498004B0E3F /* ModelViewWhateverSampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelViewWhateverSampleTests.swift; sourceTree = "<group>"; };
@@ -204,9 +212,21 @@
 		3E58A8E52082922B00DDC738 /* ModelViewViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				3E58A8E62082925D00DDC738 /* MVVMViewController.swift */,
+				3E6460F2208363A90066F98A /* MVVMSampleRootView.swift */,
+				3E6460F4208363C00066F98A /* MVVMSampleRootView.xib */,
+				3E6460FA2083A29A0066F98A /* Sample */,
 			);
 			path = ModelViewViewModel;
+			sourceTree = "<group>";
+		};
+		3E6460FA2083A29A0066F98A /* Sample */ = {
+			isa = PBXGroup;
+			children = (
+				3E58A8E62082925D00DDC738 /* MVVMViewController.swift */,
+				3E6460F82083777F0066F98A /* MVVMSampleViewPresenter.swift */,
+				3E6460F62083773F0066F98A /* MVVMSampleViewBinding.swift */,
+			);
+			path = Sample;
 			sourceTree = "<group>";
 		};
 		3E8CCD3F2079F498004B0E3F = {
@@ -552,6 +572,7 @@
 				3E58A8E42082754B00DDC738 /* MVPSampleRootView.xib in Resources */,
 				3EF1EF00207F8F8100A4E1DB /* RootView.xib in Resources */,
 				3EC2E497207D1AFC0025A8AF /* Main.storyboard in Resources */,
+				3E6460F5208363C00066F98A /* MVVMSampleRootView.xib in Resources */,
 				3EC2E48F207D1AFC0025A8AF /* Sub.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -581,6 +602,7 @@
 				3EF1EEEB207F4E4A00A4E1DB /* MVPSample2Presenter.swift in Sources */,
 				3EC2E496207D1AFC0025A8AF /* MainViewController.swift in Sources */,
 				3EF1EEE9207F4E3F00A4E1DB /* MVPSample2ViewHandler.swift in Sources */,
+				3E6460F72083773F0066F98A /* MVVMSampleViewBinding.swift in Sources */,
 				3E0528682080A7DF0096094E /* SyncStarViewHandler.swift in Sources */,
 				3EF1EEF7207F876C00A4E1DB /* TopViewController.swift in Sources */,
 				3EF1EEEF207F7ABA00A4E1DB /* MVCSample2ViewHandler.swift in Sources */,
@@ -602,6 +624,7 @@
 				3EC2E492207D1AFC0025A8AF /* Navigator.swift in Sources */,
 				3EC2E49C207D1AFC0025A8AF /* MainViewHandler.swift in Sources */,
 				3EC2E45A207CD5000025A8AF /* AppDelegate.swift in Sources */,
+				3E6460F3208363A90066F98A /* MVVMSampleRootView.swift in Sources */,
 				3EF1EEE4207F4AF000A4E1DB /* MVPSample1ViewHandler.swift in Sources */,
 				3EF1EEDC207F4AB900A4E1DB /* MVCSample1ViewController.swift in Sources */,
 				3EC2E49A207D1AFC0025A8AF /* Weak.swift in Sources */,
@@ -609,6 +632,7 @@
 				3EF1EEFE207F8D7100A4E1DB /* RootView.swift in Sources */,
 				3EC2E494207D1AFC0025A8AF /* Sub2RootView.swift in Sources */,
 				3EC2E490207D1AFC0025A8AF /* SubViewController.swift in Sources */,
+				3E6460F92083777F0066F98A /* MVVMSampleViewPresenter.swift in Sources */,
 				3E05287620821FF50096094E /* MVCSample1RootView.swift in Sources */,
 				3E6460F1208351CA0066F98A /* NavigationRequestModel.swift in Sources */,
 				3EC2E49B207D1AFC0025A8AF /* StarModel.swift in Sources */,

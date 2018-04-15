@@ -74,6 +74,14 @@
                                     <action selector="presentMVPSample2:" destination="3cp-Y5-ck3" eventType="touchUpInside" id="nAe-sH-VW3"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O0w-ga-MaN">
+                                <rect key="frame" x="139" y="297" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="MVVMSample"/>
+                                <connections>
+                                    <action selector="presentMVVMSample:" destination="3cp-Y5-ck3" eventType="touchUpInside" id="cvZ-ww-l8B"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Uex-tv-eso"/>

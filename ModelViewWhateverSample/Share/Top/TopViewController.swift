@@ -67,4 +67,14 @@ class TopViewController: UIViewController {
             animated: true
         )
     }
+
+    @IBAction func presentMVVMSample(_ sender: UIButton) {
+        self.navigationController?.pushViewController(
+            MVVMSampleViewController(
+                model: DelayStarModel(initialStarMode: .unstar),
+                navigator: Navigator(using: self)
+            ),
+            animated: true
+        )
+    }
 }
