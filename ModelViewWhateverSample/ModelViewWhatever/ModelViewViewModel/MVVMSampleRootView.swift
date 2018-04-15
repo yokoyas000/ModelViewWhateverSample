@@ -51,7 +51,7 @@ class MVVMSampleRootView: UIView {
 
     private func loadFromXib() {
         guard let view = Bundle.main
-            .loadNibNamed("MVVMSampleRootView", owner: self, options: nil)?
+            .loadNibNamed("AddActionRootView", owner: self, options: nil)?
             .first as? UIView else {
                 return
         }

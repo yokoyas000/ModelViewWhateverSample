@@ -12,34 +12,39 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MVPSampleRootView" customModule="ModelViewWhateverSample" customModuleProvider="target">
             <connections>
-                <outlet property="navigationButton" destination="UUE-LU-xkQ" id="4lf-V9-hfd"/>
-                <outlet property="starButton" destination="jqK-ld-6hy" id="z3x-Gk-f0c"/>
+                <outlet property="navigationButton" destination="4zK-EM-LJU" id="Avx-IQ-0XJ"/>
+                <outlet property="starButton" destination="fuU-cf-fO5" id="c2u-H1-aKc"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="adV-hG-Nq1">
+        <view contentMode="scaleToFill" id="RtN-6w-UTH">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jqK-ld-6hy">
-                    <rect key="frame" x="172" y="71" width="30" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fuU-cf-fO5">
+                    <rect key="frame" x="140" y="174" width="93" height="60"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Star"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="71"/>
+                    <state key="normal" title="★"/>
                     <connections>
-                        <action selector="didTapStarButton:" destination="-1" eventType="touchUpInside" id="Kap-jb-sin"/>
+                        <action selector="didTapStarButton:" destination="-1" eventType="touchUpInside" id="zcm-c7-hlQ"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UUE-LU-xkQ">
-                    <rect key="frame" x="172" y="109" width="31" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4zK-EM-LJU">
+                    <rect key="frame" x="147" y="249" width="80" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="遷移"/>
+                    <color key="backgroundColor" red="1" green="0.73731702570000002" blue="0.2292565107" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <state key="normal" title="遷移">
+                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                    </state>
                     <connections>
-                        <action selector="didTapNavigationButton:" destination="-1" eventType="touchUpInside" id="sJv-bb-dpo"/>
+                        <action selector="didTapNavigationButton:" destination="-1" eventType="touchUpInside" id="wXv-ci-Hts"/>
                     </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-            <viewLayoutGuide key="safeArea" id="ncK-M4-TUN"/>
+            <viewLayoutGuide key="safeArea" id="vc7-7G-rfU"/>
+            <point key="canvasLocation" x="33.5" y="71.5"/>
         </view>
     </objects>
 </document>

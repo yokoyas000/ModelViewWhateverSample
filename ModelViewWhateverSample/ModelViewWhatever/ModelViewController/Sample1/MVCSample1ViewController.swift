@@ -29,7 +29,7 @@ class MVCSample1ViewController: UIViewController {
     }
 
     override func loadView() {
-        let rootView = MVCSampleRootView()
+        let rootView = RootView()
         self.view = rootView
 
         let navigationModel = NavigationRequestModel(

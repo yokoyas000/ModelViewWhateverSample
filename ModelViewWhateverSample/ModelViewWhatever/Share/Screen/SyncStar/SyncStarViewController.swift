@@ -23,7 +23,8 @@ class SyncStarViewController: UIViewController {
     }
 
     override func loadView() {
-        let rootView = Sub2RootView()
+        let rootView = RootView()
+        rootView.navigationButton.isHidden = true
         self.view = rootView
 
         self.viewHandler = SyncStarViewHandler(

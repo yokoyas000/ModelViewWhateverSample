@@ -8,6 +8,7 @@
 
 import UIKit
 
+@IBDesignable
 class RootView: UIView {
 
     @IBOutlet var starButton: UIButton!
@@ -24,7 +25,7 @@ class RootView: UIView {
     }
 
     private func loadFromXib() {
-        guard let view = Bundle.main
+        guard let view = Bundle(for: self.classForCoder)
             .loadNibNamed("RootView", owner: self, options: nil)?
             .first as? UIView else {
                 return
