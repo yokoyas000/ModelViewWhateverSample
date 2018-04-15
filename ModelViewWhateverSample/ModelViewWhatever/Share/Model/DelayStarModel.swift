@@ -34,6 +34,7 @@ class DelayStarModel {
         case .sleeping(current: .star):
             // 現在の状態と同じなら再通知する
             self.state = .sleeping(current: .star)
+            return
         case .sleeping(current: .unstar):
             break
         }
@@ -41,7 +42,7 @@ class DelayStarModel {
 
         // 状態の変更、外部への通知までにタイムラグがある
         DispatchQueue.global(qos: .default).async { [weak self] in
-            sleep(UInt32(5.0))
+            sleep(UInt32(3.0))
 
             DispatchQueue.main.async {
                 self?.state = .sleeping(current: .star)

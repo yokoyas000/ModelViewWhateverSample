@@ -33,6 +33,14 @@ class MVPSampleRootView: UIView {
         self.setup()
     }
 
+    @IBAction func didTapStarButton(_ sender: UIButton) {
+        self.delegate?.didTapStarButton()
+    }
+
+    @IBAction func didTapNavigationButton(_ sender: UIButton) {
+        self.delegate?.didTapnavigationButton()
+    }
+
     private func setup() {
         self.loadFromXib()
     }
@@ -46,14 +54,6 @@ class MVPSampleRootView: UIView {
 
         self.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(view)
-    }
-
-    @IBAction func didTapStarButton(_ sender: UIButton) {
-        self.delegate?.didTapStarButton()
-    }
-    
-    @IBAction func didTapNavigationButton(_ sender: UIButton) {
-        self.delegate?.didTapnavigationButton()
     }
 
 }

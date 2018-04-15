@@ -23,7 +23,7 @@ class NavigationRequestModel {
     init(
         initialNavigationRequest state: State,
         observe model: DelayStarModel
-        ) {
+    ) {
         self.state = state
 
         model.append(receiver: self)
