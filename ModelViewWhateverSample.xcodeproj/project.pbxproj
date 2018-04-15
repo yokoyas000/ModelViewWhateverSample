@@ -275,13 +275,13 @@
 				3EC2E44A207CD5000025A8AF /* Assets.xcassets */,
 				3EC2E450207CD5000025A8AF /* AppDelegate.swift */,
 				3EF1EEFA207F8D2C00A4E1DB /* Share */,
-				3EC2E477207D1AFC0025A8AF /* ModelAndView */,
+				3EC2E477207D1AFC0025A8AF /* OnlyModelAndView */,
 				3E05286F2081C1A90096094E /* ModelViewWhatever */,
 			);
 			path = ModelViewWhateverSample;
 			sourceTree = "<group>";
 		};
-		3EC2E477207D1AFC0025A8AF /* ModelAndView */ = {
+		3EC2E477207D1AFC0025A8AF /* OnlyModelAndView */ = {
 			isa = PBXGroup;
 			children = (
 				3EC2E484207D1AFC0025A8AF /* Main */,
@@ -289,7 +289,7 @@
 				3EC2E47F207D1AFC0025A8AF /* Sub2 */,
 				3EC2E49F207F40750025A8AF /* README.md */,
 			);
-			path = ModelAndView;
+			path = OnlyModelAndView;
 			sourceTree = "<group>";
 		};
 		3EC2E478207D1AFC0025A8AF /* Sub */ = {
