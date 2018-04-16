@@ -35,15 +35,10 @@ class MVVMSampleViewController: UIViewController {
         let rootView = MVVMSampleRootView()
         self.view = rootView
 
-        self.starViewModel = MVVMSampleStarViewModel(
-            binding: rootView,
-            to: self.model
+        let starViewModel = MVVMSampleStarViewModel(
+            observe: self.model
         )
-        self.starViewModel?.outputStarButton = { title, color, isEnable in
-            rootView.starButton.setTitle(title, for: .normal)
-            rootView.starButton.setTitleColor(color, for: .normal)
-            rootView.starButton.isEnabled = isEnable
-        }
+        self.starViewModel = starViewModel
 
         let navigationModel = NavigationRequestModel(
             initialNavigationRequest: .nothing,
@@ -51,14 +46,18 @@ class MVVMSampleViewController: UIViewController {
         )
         self.navigationModel = navigationModel
 
-        self.navigationViewModel = MVVMSampleNavigationViewModel(
+        let navigationViewModel = MVVMSampleNavigationViewModel(
             dependency: (
                 starModel: self.model,
                 navigator: self.navigator,
                 modalPresenter: ModalPresenter(using: self)
             ),
-            binding: rootView,
-            to: navigationModel
+            observe: navigationModel
         )
+        self.navigationViewModel = navigationViewModel
+
+        rootView.starButtonOutput = starViewModel
+        rootView.navigationButtonOutput = navigationViewModel
+        starViewModel.output = rootView
     }
 }

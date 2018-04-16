@@ -8,12 +8,15 @@
 
 import UIKit
 
+protocol MVVMSampleNavigationViewModelInput: MVVMSampleRootViewNavigationOutput {}
+
+
 // ViewModel:
 //  - UI要素とアクションの接続
 //  - 内部表現を視覚表現へ変換する
 //  - 状態に適したアクションの振り分け
 //  - アクションの結果/途中経過を受け取る
-class MVVMSampleNavigationViewModel {
+class MVVMSampleNavigationViewModel: MVVMSampleNavigationViewModelInput {
 
     typealias Dependency = (
         starModel: DelayStarModel,
@@ -26,22 +29,14 @@ class MVVMSampleNavigationViewModel {
 
     init(
         dependency: Dependency,
-        binding input: MVVMSampleRootView,
-        to navigationModel: NavigationRequestModel
+        observe navigationModel: NavigationRequestModel
     ) {
         self.dependency = dependency
-
-        // UILabel, UIButton 等は ViewModel とみなせる
-        // (xib, storyboard を View とみなす)
         self.navigationModel = navigationModel
 
         self.navigationModel?.append(receiver: self)
-        input.navigateButtonDelegate = self
     }
 
-}
-
-extension MVVMSampleNavigationViewModel: MVVMSampleRootViewNavigateButtonDelegate {
     func didTapnavigationButton() {
         switch self.dependency.starModel.state {
         case .sleeping(current: .star):
