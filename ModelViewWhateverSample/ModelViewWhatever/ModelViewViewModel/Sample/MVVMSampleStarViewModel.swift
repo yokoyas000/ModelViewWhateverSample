@@ -44,17 +44,7 @@ class MVVMSampleStarViewModel: MVVMSampleStarViewModelInput {
     }
 
     func didTapStarButton() {
-        guard let starModel = self.starModel else {
-            return
-        }
-
-        // 現在の Model の状態による分岐処理
-        switch starModel.state {
-        case .sleeping(current: .star), .processing(next: .star):
-            starModel.unstar()
-        case .sleeping(current: .unstar), .processing(next: .unstar):
-            starModel.star()
-        }
+        self.starModel?.toggle()
     }
 }
 

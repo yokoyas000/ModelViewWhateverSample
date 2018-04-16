@@ -52,17 +52,7 @@ extension MVPSample2Presenter: MVPSampleRootViewDelegate, MVPSample2ViewHandlerD
     }
 
     @objc func didTapStarButton() {
-        guard let model = self.starModel else {
-            return
-        }
-
-        // 現在の Model の状態による分岐処理
-        switch model.state {
-        case .sleeping(current: .star), .processing(next: .star):
-            model.unstar()
-        case .sleeping(current: .unstar), .processing(next: .unstar):
-            model.star()
-        }
+        self.starModel?.toggle()
     }
 
     func didRequestForceNavigate() {

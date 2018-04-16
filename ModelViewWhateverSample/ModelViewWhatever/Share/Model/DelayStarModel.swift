@@ -26,6 +26,20 @@ class DelayStarModel {
         self.state = .sleeping(current: initialStarMode)
     }
 
+    func toggle() {
+        switch self.state {
+        case .processing:
+            // 何もしない
+            return
+        case .sleeping(current: .star):
+            self.state = .processing(next: .unstar)
+            self.starImpl()
+        case .sleeping(current: .unstar):
+            self.state = .processing(next: .star)
+            self.unstarImpl()
+        }
+    }
+
     func star() {
         switch self.state {
         case .processing:
@@ -36,17 +50,8 @@ class DelayStarModel {
             self.state = .sleeping(current: .star)
             return
         case .sleeping(current: .unstar):
-            break
-        }
-        self.state = .processing(next: .star)
-
-        // 状態の変更、外部への通知までにタイムラグがある
-        DispatchQueue.global(qos: .default).async { [weak self] in
-            sleep(UInt32(3.0))
-
-            DispatchQueue.main.async {
-                self?.state = .sleeping(current: .star)
-            }
+            self.state = .processing(next: .star)
+            self.starImpl()
         }
     }
 
@@ -59,17 +64,8 @@ class DelayStarModel {
             // 現在の状態と同じなら再通知する
             self.state = .sleeping(current: .unstar)
         case .sleeping(current: .star):
-            break
-        }
-        self.state = .processing(next: .unstar)
-
-        // 状態の変更、外部への通知までにタイムラグがある
-        DispatchQueue.global(qos: .default).async { [weak self] in
-            sleep(UInt32(2.0))
-
-            DispatchQueue.main.async {
-                self?.state = .sleeping(current: .unstar)
-            }
+            self.state = .processing(next: .unstar)
+            self.unstarImpl()
         }
     }
 
@@ -81,6 +77,28 @@ class DelayStarModel {
     private func notify() {
         self.receiveers.forEach { receiver in
             receiver.receive(starState: self.state)
+        }
+    }
+
+    private func starImpl() {
+        // 状態の変更、外部への通知までにタイムラグがある
+        DispatchQueue.global(qos: .default).async { [weak self] in
+            sleep(UInt32(3.0))
+
+            DispatchQueue.main.async {
+                self?.state = .sleeping(current: .star)
+            }
+        }
+    }
+
+    private func unstarImpl() {
+        // 状態の変更、外部への通知までにタイムラグがある
+        DispatchQueue.global(qos: .default).async { [weak self] in
+            sleep(UInt32(2.0))
+
+            DispatchQueue.main.async {
+                self?.state = .sleeping(current: .unstar)
+            }
         }
     }
 }

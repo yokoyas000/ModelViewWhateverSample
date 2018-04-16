@@ -8,11 +8,6 @@
 
 import UIKit
 
-//protocol MVVMSampleRootViewInput {
-//    var starButton: UIButton { get set }
-//    var navigationButton: UIButton { get set }
-//}
-
 protocol MVVMSampleRootViewStarOutput: class {
     func didTapStarButton()
 }
@@ -20,8 +15,8 @@ protocol MVVMSampleRootViewNavigationOutput: class {
     func didTapnavigationButton()
 }
 
-// Viewの役割:
-//  - 画面の構築/表示
+// ViewModel
+// (xib を View とすると このクラスは ViewModel):
 //  - ユーザー操作の受付
 class MVVMSampleRootView: UIView {
 
@@ -53,6 +48,7 @@ class MVVMSampleRootView: UIView {
     }
 
     private func loadFromXib() {
+        // xib が View
         guard let view = Bundle.main
             .loadNibNamed("AddActionRootView", owner: self, options: nil)?
             .first as? UIView else {

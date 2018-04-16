@@ -58,13 +58,7 @@ class MVCSample1Controller {
     }
 
     @objc private func didTapStarButton() {
-        // 現在の Model の状態による分岐処理
-        switch self.starModel.state {
-        case .sleeping(current: .star), .processing(next: .star):
-            self.starModel.unstar()
-        case .sleeping(current: .unstar), .processing(next: .unstar):
-            self.starModel.star()
-        }
+        self.starModel.toggle()
     }
 
     // アクションの完了(Model結果)に伴い画面遷移(Viewへ指示)する

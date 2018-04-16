@@ -43,13 +43,7 @@ extension MVPSample1Presenter: MVPSampleRootViewDelegate, MVPSample1ViewHandlerD
     }
 
     @objc func didTapStarButton() {
-        // 現在の Model の状態による分岐処理
-        switch self.starModel.state {
-        case .sleeping(current: .star), .processing(next: .star):
-            self.starModel.unstar()
-        case .sleeping(current: .unstar), .processing(next: .unstar):
-            self.starModel.star()
-        }
+        self.starModel.toggle()
     }
 
     func didRequestForceNavigate() {
