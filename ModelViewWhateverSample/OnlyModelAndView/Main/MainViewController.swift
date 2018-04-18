@@ -7,11 +7,11 @@ class MainViewController: UIViewController {
 
     private var viewHandler: MainViewHandler?
     private var model: StarModel?
-    private var navigator: NavigatorContract?
+    private var navigator: NavigatorProtocol?
 
     static func create(
         model: StarModel,
-        navigator: NavigatorContract
+        navigator: NavigatorProtocol
     ) -> MainViewController? {
         let vc = UIStoryboard(name: "Main", bundle: nil)
             .instantiateInitialViewController() as? MainViewController

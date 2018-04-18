@@ -23,7 +23,7 @@ class MVPSample1ViewHandler {
     private let starButton: UIButton
     private weak var starModel: DelayStarModelProtocol?
     private weak var navigationModel: NavigationRequestModel?
-    private let navigator: NavigatorContract
+    private let navigator: NavigatorProtocol
     private let modalPresenter: ModalPresenterContract
     weak var delegate: MVPSample1ViewHandlerDelegate?
 
@@ -36,7 +36,7 @@ class MVPSample1ViewHandler {
             starModel: DelayStarModelProtocol,
             navigationModel: NavigationRequestModel
         ),
-        navigateBy navigator: NavigatorContract,
+        navigateBy navigator: NavigatorProtocol,
         presentBy modalPresenter: ModalPresenterContract
     ) {
         self.starButton = handle.starButton

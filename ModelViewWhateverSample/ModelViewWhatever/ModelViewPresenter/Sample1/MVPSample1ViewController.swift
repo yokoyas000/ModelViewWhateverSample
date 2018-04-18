@@ -11,12 +11,12 @@ import UIKit
 class MVPSample1ViewController: UIViewController {
 
     private let model: DelayStarModelProtocol
-    private let navigator: NavigatorContract
+    private let navigator: NavigatorProtocol
     private var presenter: MVPSample1Presenter?
 
     init(
         model: DelayStarModelProtocol,
-        navigator: NavigatorContract
+        navigator: NavigatorProtocol
     ) {
         self.model = model
         self.navigator = navigator

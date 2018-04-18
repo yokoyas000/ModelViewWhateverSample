@@ -14,12 +14,12 @@ import UIKit
 class MVCSample2ViewHandler {
 
     private let starButton: UIButton
-    private let navigator: NavigatorContract
+    private let navigator: NavigatorProtocol
     private let modalPresenter: ModalPresenterContract
 
     init(
         willUpdate starButton: UIButton,
-        navigateBy navigator: NavigatorContract,
+        navigateBy navigator: NavigatorProtocol,
         presentBy modalPresenter: ModalPresenterContract
     ) {
         self.starButton = starButton

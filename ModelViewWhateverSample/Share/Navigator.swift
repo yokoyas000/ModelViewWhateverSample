@@ -8,11 +8,11 @@
 
 import UIKit
 
-protocol NavigatorContract {
+protocol NavigatorProtocol {
     func navigate(to next: UIViewController)
 }
 
-class Navigator: NavigatorContract {
+class Navigator: NavigatorProtocol {
 
     private weak var viewController: UIViewController?
 

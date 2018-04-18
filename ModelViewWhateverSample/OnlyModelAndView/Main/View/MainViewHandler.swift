@@ -13,7 +13,7 @@ class MainViewHandler {
     private let navigateToSubViewButton: UIButton
     private let starButton: UIButton
     private let model: StarModel
-    private let navigator: NavigatorContract
+    private let navigator: NavigatorProtocol
 
     init(
         handle: (
@@ -21,7 +21,7 @@ class MainViewHandler {
             navigateToSubViewButton: UIButton
         ),
         interchange model: StarModel,
-        navigateBy navigator: NavigatorContract
+        navigateBy navigator: NavigatorProtocol
     ) {
         self.starButton = handle.starButton
         self.navigateToSubViewButton = handle.navigateToSubViewButton
