@@ -14,7 +14,7 @@ import UIKit
 //  - アクションの結果/途中経過を受け取る
 class MVCSample2Controller {
 
-    private weak var starModel: DelayStarModel?
+    private weak var starModel: DelayStarModelProtocol?
     private weak var navigationModel: NavigationRequestModel?
     private let view: MVCSample2ViewHandler
 
@@ -24,7 +24,7 @@ class MVCSample2Controller {
             navigationButton: UIButton
         ),
         interchange models: (
-            starModel: DelayStarModel,
+            starModel: DelayStarModelProtocol,
             navigationModel: NavigationRequestModel
         ),
         command view: MVCSample2ViewHandler
@@ -67,7 +67,7 @@ class MVCSample2Controller {
     }
 
     @objc private func didTapStarButton() {
-        self.starModel?.toggle()
+        self.starModel?.toggleStar()
     }
 
     private func createNavigateAlert() -> UIAlertController {
@@ -95,7 +95,7 @@ class MVCSample2Controller {
 }
 
 extension MVCSample2Controller: DelayStarModelReceiver {
-    func receive(starState: DelayStarModel.State) {
+    func receive(starState: DelayStarModelState) {
         self.view.update(by: starState)
     }
 }

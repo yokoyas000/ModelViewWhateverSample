@@ -20,6 +20,7 @@
 		3E6460F72083773F0066F98A /* MVVMSampleStarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6460F62083773F0066F98A /* MVVMSampleStarViewModel.swift */; };
 		3E6460F92083777F0066F98A /* MVVMSampleNavigationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6460F82083777F0066F98A /* MVVMSampleNavigationViewModel.swift */; };
 		3E6460FC2083B5600066F98A /* AddActionRootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E6460FB2083B5600066F98A /* AddActionRootView.xib */; };
+		3E6460FE208708F80066F98A /* DelayStarModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6460FD208708F80066F98A /* DelayStarModelProtocol.swift */; };
 		3E8CCD612079F498004B0E3F /* ModelViewWhateverSampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8CCD602079F498004B0E3F /* ModelViewWhateverSampleTests.swift */; };
 		3E8CCD6C2079F499004B0E3F /* ModelViewWhateverSampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8CCD6B2079F499004B0E3F /* ModelViewWhateverSampleUITests.swift */; };
 		3EC2E455207CD5000025A8AF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EC2E449207CD5000025A8AF /* LaunchScreen.storyboard */; };
@@ -90,6 +91,7 @@
 		3E6460F62083773F0066F98A /* MVVMSampleStarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVVMSampleStarViewModel.swift; sourceTree = "<group>"; };
 		3E6460F82083777F0066F98A /* MVVMSampleNavigationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVVMSampleNavigationViewModel.swift; sourceTree = "<group>"; };
 		3E6460FB2083B5600066F98A /* AddActionRootView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddActionRootView.xib; sourceTree = "<group>"; };
+		3E6460FD208708F80066F98A /* DelayStarModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelayStarModelProtocol.swift; sourceTree = "<group>"; };
 		3E8CCD482079F498004B0E3F /* ModelViewWhateverSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ModelViewWhateverSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E8CCD5C2079F498004B0E3F /* ModelViewWhateverSampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ModelViewWhateverSampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E8CCD602079F498004B0E3F /* ModelViewWhateverSampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelViewWhateverSampleTests.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 		3E052860208099B10096094E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				3E6460FD208708F80066F98A /* DelayStarModelProtocol.swift */,
 				3E052861208099BF0096094E /* DelayStarModel.swift */,
 				3E6460F0208351CA0066F98A /* NavigationRequestModel.swift */,
 			);
@@ -621,6 +624,7 @@
 				3EC2E49C207D1AFC0025A8AF /* MainViewHandler.swift in Sources */,
 				3EC2E45A207CD5000025A8AF /* AppDelegate.swift in Sources */,
 				3E6460F3208363A90066F98A /* MVVMSampleRootView.swift in Sources */,
+				3E6460FE208708F80066F98A /* DelayStarModelProtocol.swift in Sources */,
 				3EF1EEE4207F4AF000A4E1DB /* MVPSample1ViewHandler.swift in Sources */,
 				3EF1EEDC207F4AB900A4E1DB /* MVCSample1ViewController.swift in Sources */,
 				3EC2E49A207D1AFC0025A8AF /* Weak.swift in Sources */,

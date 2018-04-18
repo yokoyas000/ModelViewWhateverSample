@@ -19,7 +19,7 @@ protocol MVVMSampleNavigationViewModelInput: MVVMSampleRootViewNavigationOutput 
 class MVVMSampleNavigationViewModel: MVVMSampleNavigationViewModelInput {
 
     typealias Dependency = (
-        starModel: DelayStarModel,
+        starModel: DelayStarModelProtocol,
         navigator: NavigatorContract,
         modalPresenter: ModalPresenter
     )

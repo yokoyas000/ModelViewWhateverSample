@@ -15,7 +15,7 @@ import UIKit
 class MVCSample1ViewHandler {
 
     private let starButton: UIButton
-    private weak var starModel: DelayStarModel?
+    private weak var starModel: DelayStarModelProtocol?
     private weak var navigationModel: NavigationRequestModel?
     private let navigator: NavigatorContract
     private let modalPresenter: ModalPresenterContract
@@ -23,7 +23,7 @@ class MVCSample1ViewHandler {
     init(
         willUpdate starButton: UIButton,
         observe models: (
-            starModel: DelayStarModel,
+            starModel: DelayStarModelProtocol,
             navigationModel: NavigationRequestModel
         ),
         navigateBy navigator: NavigatorContract,
@@ -59,7 +59,7 @@ class MVCSample1ViewHandler {
 extension MVCSample1ViewHandler: DelayStarModelReceiver {
 
     // Modelの変更を画面へ反映する
-    func receive(starState: DelayStarModel.State) {
+    func receive(starState: DelayStarModelState) {
         switch starState {
         case .processing(next: .star):
             self.starButton.setTitle("★", for: .normal)

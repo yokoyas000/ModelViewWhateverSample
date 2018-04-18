@@ -8,35 +8,31 @@
 
 import Foundation
 
-protocol DelayStarModelReceiver: class {
-    func receive(starState: DelayStarModel.State)
-}
-
-/// 指示を受けてから状態の変更までの間にタイムラグがあるモデル
-class DelayStarModel {
+/// Model本体
+class DelayStarModel: DelayStarModelProtocol {
 
     private var receiveers: [DelayStarModelReceiver] = []
-    private(set) var state: State {
+    private(set) var state: DelayStarModelState {
         didSet {
             self.notify()
         }
     }
 
-    init(initialStarMode: StarMode) {
-        self.state = .sleeping(current: initialStarMode)
+    init(initialState: DelayStarModelState) {
+        self.state = initialState
     }
 
-    func toggle() {
+    func toggleStar() {
         switch self.state {
         case .processing:
             // 何もしない
             return
         case .sleeping(current: .star):
             self.state = .processing(next: .unstar)
-            self.starImpl()
+            self.unstarImpl()
         case .sleeping(current: .unstar):
             self.state = .processing(next: .star)
-            self.unstarImpl()
+            self.starImpl()
         }
     }
 
@@ -101,17 +97,5 @@ class DelayStarModel {
             }
         }
     }
-}
 
-extension DelayStarModel {
-
-    enum StarMode {
-        case star
-        case unstar
-    }
-
-    enum State {
-        case sleeping(current: StarMode)
-        case processing(next: StarMode)
-    }
 }

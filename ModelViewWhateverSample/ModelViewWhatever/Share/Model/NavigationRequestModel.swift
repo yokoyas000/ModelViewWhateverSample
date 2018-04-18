@@ -22,7 +22,7 @@ class NavigationRequestModel {
 
     init(
         initialNavigationRequest state: State,
-        observe model: DelayStarModel
+        observe model: DelayStarModelProtocol
     ) {
         self.state = state
 
@@ -41,7 +41,7 @@ class NavigationRequestModel {
 }
 
 extension NavigationRequestModel: DelayStarModelReceiver {
-    func receive(starState: DelayStarModel.State) {
+    func receive(starState: DelayStarModelState) {
         guard self.state == .requested else {
             return
         }

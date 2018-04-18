@@ -12,13 +12,13 @@ import UIKit
 // - 状態に適したアクションの振り分け
 class MVPSample1Presenter {
 
-    private let starModel: DelayStarModel
+    private let starModel: DelayStarModelProtocol
     private let navigationModel: NavigationRequestModel
     private let view: MVPSample1ViewHandler
 
     init(
         willCommand models:(
-            starModel: DelayStarModel,
+            starModel: DelayStarModelProtocol,
             navigationModel: NavigationRequestModel
         ),
         and view: MVPSample1ViewHandler
@@ -43,7 +43,7 @@ extension MVPSample1Presenter: MVPSampleRootViewDelegate, MVPSample1ViewHandlerD
     }
 
     @objc func didTapStarButton() {
-        self.starModel.toggle()
+        self.starModel.toggleStar()
     }
 
     func didRequestForceNavigate() {

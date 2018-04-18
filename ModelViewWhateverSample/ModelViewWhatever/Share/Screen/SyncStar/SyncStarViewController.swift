@@ -10,10 +10,10 @@ import UIKit
 
 class SyncStarViewController: UIViewController {
 
-    private let model: DelayStarModel
+    private let model: DelayStarModelProtocol
     private var viewHandler: SyncStarViewHandler?
 
-    init(model: DelayStarModel) {
+    init(model: DelayStarModelProtocol) {
         self.model = model
         super.init(nibName: nil, bundle: nil)
     }

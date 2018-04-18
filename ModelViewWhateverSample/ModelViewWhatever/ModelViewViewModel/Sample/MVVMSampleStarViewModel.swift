@@ -20,17 +20,17 @@ protocol MVVMSampleStarViewModelOutput: class {
 //  - アクションの結果/途中経過を受け取る
 class MVVMSampleStarViewModel: MVVMSampleStarViewModelInput {
 
-    private weak var starModel: DelayStarModel?
+    private weak var starModel: DelayStarModelProtocol?
     weak var output: MVVMSampleStarViewModelOutput?
 
     init(
-        observe starModel: DelayStarModel
+        observe starModel: DelayStarModelProtocol
     ) {
         self.starModel = starModel
         self.starModel?.append(receiver: self)
     }
 
-    private func update(by starState: DelayStarModel.State) {
+    private func update(by starState: DelayStarModelState) {
         switch starState {
         case .processing(next: .star):
             self.output?.update(title: "★", color: .darkGray, isEnable: false)
@@ -44,12 +44,12 @@ class MVVMSampleStarViewModel: MVVMSampleStarViewModelInput {
     }
 
     func didTapStarButton() {
-        self.starModel?.toggle()
+        self.starModel?.toggleStar()
     }
 }
 
 extension MVVMSampleStarViewModel: DelayStarModelReceiver {
-    func receive(starState: DelayStarModel.State) {
+    func receive(starState: DelayStarModelState) {
         self.update(by: starState)
     }
 }

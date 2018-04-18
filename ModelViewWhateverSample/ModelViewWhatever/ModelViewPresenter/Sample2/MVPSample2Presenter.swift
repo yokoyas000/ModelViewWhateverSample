@@ -14,13 +14,13 @@ import UIKit
 //  - アクションの結果/途中経過を受け取る
 class MVPSample2Presenter {
 
-    private weak var starModel: DelayStarModel?
+    private weak var starModel: DelayStarModelProtocol?
     private weak var navigationModel: NavigationRequestModel?
     private let view: MVPSample2ViewHandler
 
     init(
         interchange models: (
-            starModel: DelayStarModel,
+            starModel: DelayStarModelProtocol,
             navigationModel: NavigationRequestModel
         ),
         willUpdate view: MVPSample2ViewHandler
@@ -52,7 +52,7 @@ extension MVPSample2Presenter: MVPSampleRootViewDelegate, MVPSample2ViewHandlerD
     }
 
     @objc func didTapStarButton() {
-        self.starModel?.toggle()
+        self.starModel?.toggleStar()
     }
 
     func didRequestForceNavigate() {
@@ -60,7 +60,7 @@ extension MVPSample2Presenter: MVPSampleRootViewDelegate, MVPSample2ViewHandlerD
         self.starModel?.star()
     }
 
-    private func update(by state: DelayStarModel.State) {
+    private func update(by state: DelayStarModelState) {
         switch state {
         case .processing(next: .star):
             self.view.updateStarButton(title: "★", color: .darkGray)
@@ -76,7 +76,7 @@ extension MVPSample2Presenter: MVPSampleRootViewDelegate, MVPSample2ViewHandlerD
 }
 
 extension MVPSample2Presenter: DelayStarModelReceiver {
-    func receive(starState: DelayStarModel.State) {
+    func receive(starState: DelayStarModelState) {
         self.update(by: starState)
     }
 }

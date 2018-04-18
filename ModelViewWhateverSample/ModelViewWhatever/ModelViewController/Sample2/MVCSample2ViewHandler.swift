@@ -27,7 +27,7 @@ class MVCSample2ViewHandler {
         self.modalPresenter = modalPresenter
     }
 
-    func navigate(with model: DelayStarModel) {
+    func navigate(with model: DelayStarModelProtocol) {
         self.navigator.navigate(
             to: SyncStarViewController(model: model)
         )
@@ -37,7 +37,7 @@ class MVCSample2ViewHandler {
         self.modalPresenter.present(to: alert)
     }
 
-    func update(by starState: DelayStarModel.State) {
+    func update(by starState: DelayStarModelState) {
         switch starState {
         case .processing(next: .star):
             self.starButton.setTitle("★", for: .normal)

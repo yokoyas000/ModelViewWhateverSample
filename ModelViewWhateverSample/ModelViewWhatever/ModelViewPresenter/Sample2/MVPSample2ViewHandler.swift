@@ -37,7 +37,7 @@ class MVPSample2ViewHandler {
         self.modalPresenter = modalPresenter
     }
 
-    func navigate(with model: DelayStarModel) {
+    func navigate(with model: DelayStarModelProtocol) {
         self.navigator.navigate(
             to: SyncStarViewController(model: model)
         )

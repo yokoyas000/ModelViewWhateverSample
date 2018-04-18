@@ -13,7 +13,7 @@ import UIKit
 //  - 状態に適したアクションの振り分け
 class MVCSample1Controller {
 
-    private let starModel: DelayStarModel
+    private let starModel: DelayStarModelProtocol
     private let navigationModel: NavigationRequestModel
     private let view: MVCSample1ViewHandler
 
@@ -23,7 +23,7 @@ class MVCSample1Controller {
             navigationButton: UIButton
         ),
         command models: (
-            starModel: DelayStarModel,
+            starModel: DelayStarModelProtocol,
             navigationModel: NavigationRequestModel
         ),
         update view: MVCSample1ViewHandler
@@ -58,7 +58,7 @@ class MVCSample1Controller {
     }
 
     @objc private func didTapStarButton() {
-        self.starModel.toggle()
+        self.starModel.toggleStar()
     }
 
     // アクションの完了(Model結果)に伴い画面遷移(Viewへ指示)する
