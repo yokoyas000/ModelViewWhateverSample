@@ -16,7 +16,7 @@ class MVCSample1ViewHandler {
 
     private let starButton: UIButton
     private weak var starModel: DelayStarModelProtocol?
-    private weak var navigationModel: NavigationRequestModel?
+    private weak var navigationModel: NavigationRequestModelProtocol?
     private let navigator: NavigatorProtocol
     private let modalPresenter: ModalPresenterContract
 
@@ -24,7 +24,7 @@ class MVCSample1ViewHandler {
         willUpdate starButton: UIButton,
         observe models: (
             starModel: DelayStarModelProtocol,
-            navigationModel: NavigationRequestModel
+            navigationModel: NavigationRequestModelProtocol
         ),
         navigateBy navigator: NavigatorProtocol,
         presentBy modalPresenter: ModalPresenterContract

@@ -14,7 +14,7 @@ import UIKit
 class MVCSample1Controller {
 
     private let starModel: DelayStarModelProtocol
-    private let navigationModel: NavigationRequestModel
+    private let navigationModel: NavigationRequestModelProtocol
     private let view: MVCSample1ViewHandler
 
     init(
@@ -24,7 +24,7 @@ class MVCSample1Controller {
         ),
         command models: (
             starModel: DelayStarModelProtocol,
-            navigationModel: NavigationRequestModel
+            navigationModel: NavigationRequestModelProtocol
         ),
         update view: MVCSample1ViewHandler
     ) {

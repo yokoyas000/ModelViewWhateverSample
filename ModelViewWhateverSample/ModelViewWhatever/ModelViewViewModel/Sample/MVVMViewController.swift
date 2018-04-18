@@ -13,7 +13,7 @@ class MVVMSampleViewController: UIViewController {
 
     private let model: DelayStarModelProtocol
     private let navigator: NavigatorProtocol
-    private var navigationModel: NavigationRequestModel?
+    private var navigationModel: NavigationRequestModelProtocol?
     private var starViewModel: MVVMSampleStarViewModel?
     private var navigationViewModel: MVVMSampleNavigationViewModel?
 

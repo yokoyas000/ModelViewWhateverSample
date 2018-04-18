@@ -25,11 +25,11 @@ class MVVMSampleNavigationViewModel: MVVMSampleNavigationViewModelInput {
     )
 
     private let dependency: Dependency
-    private weak var navigationModel: NavigationRequestModel?
+    private weak var navigationModel: NavigationRequestModelProtocol?
 
     init(
         dependency: Dependency,
-        observe navigationModel: NavigationRequestModel
+        observe navigationModel: NavigationRequestModelProtocol
     ) {
         self.dependency = dependency
         self.navigationModel = navigationModel

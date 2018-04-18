@@ -15,13 +15,13 @@ import UIKit
 class MVPSample2Presenter {
 
     private weak var starModel: DelayStarModelProtocol?
-    private weak var navigationModel: NavigationRequestModel?
+    private weak var navigationModel: NavigationRequestModelProtocol?
     private let view: MVPSample2ViewHandler
 
     init(
         interchange models: (
             starModel: DelayStarModelProtocol,
-            navigationModel: NavigationRequestModel
+            navigationModel: NavigationRequestModelProtocol
         ),
         willUpdate view: MVPSample2ViewHandler
     ) {

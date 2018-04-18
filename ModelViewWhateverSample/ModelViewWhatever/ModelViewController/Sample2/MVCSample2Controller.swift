@@ -15,7 +15,7 @@ import UIKit
 class MVCSample2Controller {
 
     private weak var starModel: DelayStarModelProtocol?
-    private weak var navigationModel: NavigationRequestModel?
+    private weak var navigationModel: NavigationRequestModelProtocol?
     private let view: MVCSample2ViewHandler
 
     init(
@@ -25,7 +25,7 @@ class MVCSample2Controller {
         ),
         interchange models: (
             starModel: DelayStarModelProtocol,
-            navigationModel: NavigationRequestModel
+            navigationModel: NavigationRequestModelProtocol
         ),
         command view: MVCSample2ViewHandler
     ) {

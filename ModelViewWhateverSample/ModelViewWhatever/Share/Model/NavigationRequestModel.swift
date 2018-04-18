@@ -6,9 +6,9 @@
 //  Copyright © 2018年 yokoyas000. All rights reserved.
 //
 
-class NavigationRequestModel {
+class NavigationRequestModel: NavigationRequestModelProtocol {
 
-    private var state: NavigationRequestModelState {
+    private(set) var state: NavigationRequestModelState {
         didSet {
             self.receiver?.receive(requestState: self.state)
         }

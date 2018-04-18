@@ -13,13 +13,13 @@ import UIKit
 class MVPSample1Presenter {
 
     private let starModel: DelayStarModelProtocol
-    private let navigationModel: NavigationRequestModel
+    private let navigationModel: NavigationRequestModelProtocol
     private let view: MVPSample1ViewHandler
 
     init(
         willCommand models:(
             starModel: DelayStarModelProtocol,
-            navigationModel: NavigationRequestModel
+            navigationModel: NavigationRequestModelProtocol
         ),
         and view: MVPSample1ViewHandler
     ) {
