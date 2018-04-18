@@ -42,7 +42,6 @@ class MVPSample2ViewController: UIViewController {
             presentBy: ModalPresenter(using: self)
         )
         let navigationModel = NavigationRequestModel(
-            initialNavigationRequest: .nothing,
             observe: self.model
         )
         let presenter = MVPSample2Presenter(

@@ -73,11 +73,11 @@ class MVVMSampleNavigationViewModel: MVVMSampleNavigationViewModelInput {
 }
 
 extension MVVMSampleNavigationViewModel: NavigationRequestModelReceiver {
-    func receive(requestState: NavigationRequestModel.State) {
+    func receive(requestState: NavigationRequestModelState) {
         switch requestState {
-        case .nothing:
+        case .haveNeverRequest, .notReady:
             return
-        case .requested:
+        case .ready:
             self.dependency.navigator.navigate(
                 to: SyncStarViewController(model: self.dependency.starModel)
             )

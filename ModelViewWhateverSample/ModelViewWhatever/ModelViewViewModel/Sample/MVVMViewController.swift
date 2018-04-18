@@ -41,7 +41,6 @@ class MVVMSampleViewController: UIViewController {
         self.starViewModel = starViewModel
 
         let navigationModel = NavigationRequestModel(
-            initialNavigationRequest: .nothing,
             observe: self.model
         )
         self.navigationModel = navigationModel

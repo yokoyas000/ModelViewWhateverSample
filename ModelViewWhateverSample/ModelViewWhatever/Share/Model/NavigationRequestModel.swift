@@ -6,31 +6,24 @@
 //  Copyright © 2018年 yokoyas000. All rights reserved.
 //
 
-protocol NavigationRequestModelReceiver: class {
-    func receive(requestState: NavigationRequestModel.State)
-}
-
 class NavigationRequestModel {
 
-    enum State {
-        case nothing
-        case requested
+    private var state: NavigationRequestModelState {
+        didSet {
+            self.receiver?.receive(requestState: self.state)
+        }
     }
-
-    private var state: State
     private var receiver: NavigationRequestModelReceiver?
 
     init(
-        initialNavigationRequest state: State,
         observe model: DelayStarModelProtocol
     ) {
-        self.state = state
-
+        self.state = .haveNeverRequest
         model.append(receiver: self)
     }
 
     func requestToNavigate() {
-        self.state = .requested
+        self.state = .notReady
     }
 
     func append(receiver: NavigationRequestModelReceiver) {
@@ -42,7 +35,7 @@ class NavigationRequestModel {
 
 extension NavigationRequestModel: DelayStarModelReceiver {
     func receive(starState: DelayStarModelState) {
-        guard self.state == .requested else {
+        guard self.state == .notReady else {
             return
         }
 
@@ -52,8 +45,7 @@ extension NavigationRequestModel: DelayStarModelReceiver {
             return
 
         case .sleeping(current: .star):
-            self.receiver?.receive(requestState: self.state)
-            self.state = .nothing
+            self.state = .ready
         }
     }
 }

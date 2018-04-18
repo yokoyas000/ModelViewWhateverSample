@@ -40,7 +40,6 @@ class MVCSample2ViewController: UIViewController {
         )
 
         let navigationModel = NavigationRequestModel(
-            initialNavigationRequest: .nothing,
             observe: self.model
         )
 

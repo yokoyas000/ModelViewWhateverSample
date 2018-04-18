@@ -101,11 +101,11 @@ extension MVCSample2Controller: DelayStarModelReceiver {
 }
 
 extension MVCSample2Controller: NavigationRequestModelReceiver {
-    func receive(requestState: NavigationRequestModel.State) {
+    func receive(requestState: NavigationRequestModelState) {
         switch requestState {
-        case .nothing:
+        case .haveNeverRequest, .notReady:
             return
-        case .requested:
+        case .ready:
             guard let model = self.starModel else {
                 return
             }

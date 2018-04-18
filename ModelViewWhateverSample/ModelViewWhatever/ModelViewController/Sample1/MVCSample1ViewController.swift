@@ -33,7 +33,6 @@ class MVCSample1ViewController: UIViewController {
         self.view = rootView
 
         let navigationModel = NavigationRequestModel(
-            initialNavigationRequest: .nothing,
             observe: model
         )
 
