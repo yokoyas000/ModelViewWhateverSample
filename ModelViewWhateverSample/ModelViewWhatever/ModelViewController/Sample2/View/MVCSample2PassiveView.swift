@@ -1,5 +1,5 @@
 //
-//  MVCSample2ViewHandler.swift
+//  MVCSample2PassiveView.swift
 //  ModelViewWhateverSample
 //
 //  Created by yokoyas000 on 2018/04/12.

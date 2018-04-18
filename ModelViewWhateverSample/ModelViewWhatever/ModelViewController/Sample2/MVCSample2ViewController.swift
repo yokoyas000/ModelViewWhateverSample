@@ -33,7 +33,7 @@ class MVCSample2ViewController: UIViewController {
         let rootView = MVCSampleRootView()
         self.view = rootView
 
-        let viewHandler = MVCSample2PassiveView(
+        let passiveView = MVCSample2PassiveView(
             willUpdate: rootView.starButton,
             navigateBy: self.navigator,
             presentBy: ModalPresenter(using: self)
@@ -52,7 +52,7 @@ class MVCSample2ViewController: UIViewController {
                 starModel: self.model,
                 navigationModel: navigationModel
             ),
-            update: viewHandler
+            update: passiveView
         )
 
         self.navigationModel = navigationModel

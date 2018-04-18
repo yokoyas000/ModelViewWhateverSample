@@ -1,5 +1,5 @@
 //
-//  MVPSample1ViewHandler.swift
+//  MVPSample1InteractiveView.swift
 //  ModelViewWhateverSample
 //
 //  Created by yokoyas000 on 2018/04/12.

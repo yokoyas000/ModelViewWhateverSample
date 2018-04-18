@@ -36,7 +36,7 @@ class MVPSample1ViewController: UIViewController {
             observe: self.model
         )
 
-        let viewHandler = MVPSample1InteractiveView(
+        let interactiveView = MVPSample1InteractiveView(
             handle:(
                 starButton: rootView.starButton,
                 navigationButton: rootView.navigationButton
@@ -53,10 +53,10 @@ class MVPSample1ViewController: UIViewController {
                 starModel: self.model,
                 navigationModel: navigationModel
             ),
-            and: viewHandler
+            and: interactiveView
         )
 
-        viewHandler.delegate = presenter
+        interactiveView.delegate = presenter
         rootView.delegate = presenter
         self.presenter = presenter
     }

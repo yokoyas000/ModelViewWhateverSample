@@ -36,7 +36,7 @@ class MVCSample1ViewController: UIViewController {
             observe: model
         )
 
-        let viewHandler = MVCSample1PassiveView(
+        let passiveView = MVCSample1PassiveView(
             willUpdate: rootView.starButton,
             observe: (
                 starModel: self.model,
@@ -55,7 +55,7 @@ class MVCSample1ViewController: UIViewController {
                 starModel: self.model,
                 navigationModel: navigationModel
             ),
-            update: viewHandler
+            update: passiveView
         )
 
         self.controller = controller
