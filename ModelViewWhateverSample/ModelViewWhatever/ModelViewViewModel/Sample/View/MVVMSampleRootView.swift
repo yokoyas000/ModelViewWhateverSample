@@ -8,6 +8,7 @@
 
 import UIKit
 
+protocol MVVMSampleRootViewInput: MVVMSampleStarViewModelOutput {}
 protocol MVVMSampleRootViewStarOutput: class {
     func didTapStarButton()
 }
@@ -15,10 +16,10 @@ protocol MVVMSampleRootViewNavigationOutput: class {
     func didTapnavigationButton()
 }
 
-// ViewModel
-// (xib を View とすると このクラスは ViewModel):
+// View:
+//  - 画面の構築/表示
 //  - ユーザー操作の受付
-class MVVMSampleRootView: UIView {
+class MVVMSampleRootView: UIView, MVVMSampleRootViewInput {
 
     @IBOutlet var starButton: UIButton!
     @IBOutlet var navigationButton: UIButton!
@@ -62,10 +63,33 @@ class MVVMSampleRootView: UIView {
 }
 
 extension MVVMSampleRootView: MVVMSampleStarViewModelOutput {
-    func update(title: String, color: UIColor, isEnable: Bool) {
-        self.starButton.setTitle(title, for: .normal)
-        self.starButton.setTitleColor(color, for: .normal)
-        self.starButton.isEnabled = isEnable
+
+    var title: String? {
+        get {
+            return self.starButton.titleLabel?.text
+        }
+        set {
+            self.starButton.setTitle(newValue, for: .normal)
+        }
     }
+
+    var color: UIColor? {
+        get {
+            return self.starButton.titleLabel?.textColor
+        }
+        set {
+            self.starButton.setTitleColor(newValue, for: .normal)
+        }
+    }
+
+    var isEnable: Bool {
+        get {
+            return self.starButton.isEnabled
+        }
+        set {
+            self.starButton.isEnabled = newValue
+        }
+    }
+
 }
 

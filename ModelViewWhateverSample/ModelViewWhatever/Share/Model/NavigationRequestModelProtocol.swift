@@ -6,7 +6,7 @@
 //  Copyright © 2018年 yokoyas000. All rights reserved.
 //
 
-/// Model の機能
+/// Modelの役割:
 protocol NavigationRequestModelProtocol: class {
     // - 状態・値を持つ
     var state: NavigationRequestModelState { get }

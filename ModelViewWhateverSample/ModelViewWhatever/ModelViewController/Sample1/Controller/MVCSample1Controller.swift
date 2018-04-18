@@ -8,14 +8,11 @@
 
 import UIKit
 
-// Controllerの役割:
-//  - UI要素とアクションの接続
-//  - 状態に適したアクションの振り分け
-class MVCSample1Controller {
+class MVCSample1Controller: MVCSample1ControllerProtocol {
 
     private let starModel: DelayStarModelProtocol
     private let navigationModel: NavigationRequestModelProtocol
-    private let view: MVCSample1ViewHandler
+    private let view: MVCSample1PassiveViewProtocol
 
     init(
         reactTo handle: (
@@ -26,7 +23,7 @@ class MVCSample1Controller {
             starModel: DelayStarModelProtocol,
             navigationModel: NavigationRequestModelProtocol
         ),
-        update view: MVCSample1ViewHandler
+        update view: MVCSample1PassiveViewProtocol
     ) {
         self.starModel = models.starModel
         self.navigationModel = models.navigationModel

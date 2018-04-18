@@ -13,7 +13,7 @@
 		3E0528662080A6E00096094E /* SyncStarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0528652080A6E00096094E /* SyncStarViewController.swift */; };
 		3E0528682080A7DF0096094E /* SyncStarViewHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0528672080A7DF0096094E /* SyncStarViewHandler.swift */; };
 		3E0528742081C6950096094E /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3E0528732081C6950096094E /* Info.plist */; };
-		3E05287620821FF50096094E /* MVCSample1RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E05287520821FF50096094E /* MVCSample1RootView.swift */; };
+		3E05287620821FF50096094E /* MVCSampleRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E05287520821FF50096094E /* MVCSampleRootView.swift */; };
 		3E58A8E72082925D00DDC738 /* MVVMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E58A8E62082925D00DDC738 /* MVVMViewController.swift */; };
 		3E6460F1208351CA0066F98A /* NavigationRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6460F0208351CA0066F98A /* NavigationRequestModel.swift */; };
 		3E6460F3208363A90066F98A /* MVVMSampleRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6460F2208363A90066F98A /* MVVMSampleRootView.swift */; };
@@ -22,6 +22,16 @@
 		3E6460FC2083B5600066F98A /* AddActionRootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E6460FB2083B5600066F98A /* AddActionRootView.xib */; };
 		3E6460FE208708F80066F98A /* DelayStarModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6460FD208708F80066F98A /* DelayStarModelProtocol.swift */; };
 		3E64610020870C9E0066F98A /* NavigationRequestModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6460FF20870C9E0066F98A /* NavigationRequestModelProtocol.swift */; };
+		3E64610220876D900066F98A /* MVCSample1PassiveViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E64610120876D900066F98A /* MVCSample1PassiveViewProtocol.swift */; };
+		3E64610620876DEE0066F98A /* MVCSample1ControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E64610520876DEE0066F98A /* MVCSample1ControllerProtocol.swift */; };
+		3E64610B20876E260066F98A /* MVCSample2PassiveViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E64610A20876E260066F98A /* MVCSample2PassiveViewProtocol.swift */; };
+		3E64610D20876E530066F98A /* MVCSample2ControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E64610C20876E530066F98A /* MVCSample2ControllerProtocol.swift */; };
+		3E64610F20876EB40066F98A /* MVPSample1InteractiveViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E64610E20876EB40066F98A /* MVPSample1InteractiveViewProtocol.swift */; };
+		3E64611120876EE90066F98A /* MVPSample1PresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E64611020876EE90066F98A /* MVPSample1PresenterProtocol.swift */; };
+		3E64611520876F270066F98A /* MVPSample2InteractiveViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E64611420876F270066F98A /* MVPSample2InteractiveViewProtocol.swift */; };
+		3E64611720876F570066F98A /* MVPSample2PresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E64611620876F570066F98A /* MVPSample2PresenterProtocol.swift */; };
+		3E64611B2087822F0066F98A /* MVVMSampleStarViewModelInOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E64611A2087822F0066F98A /* MVVMSampleStarViewModelInOut.swift */; };
+		3E64611D208782AF0066F98A /* MVVMSampleNavigationViewModelInOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E64611C208782AF0066F98A /* MVVMSampleNavigationViewModelInOut.swift */; };
 		3E8CCD612079F498004B0E3F /* ModelViewWhateverSampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8CCD602079F498004B0E3F /* ModelViewWhateverSampleTests.swift */; };
 		3E8CCD6C2079F499004B0E3F /* ModelViewWhateverSampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8CCD6B2079F499004B0E3F /* ModelViewWhateverSampleUITests.swift */; };
 		3EC2E455207CD5000025A8AF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EC2E449207CD5000025A8AF /* LaunchScreen.storyboard */; };
@@ -44,15 +54,15 @@
 		3EC2E49E207DD0C50025A8AF /* WeakPool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC2E49D207DD0C50025A8AF /* WeakPool.swift */; };
 		3EE6CA912082317B003069B6 /* MVPSampleRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE6CA902082317B003069B6 /* MVPSampleRootView.swift */; };
 		3EF1EEDC207F4AB900A4E1DB /* MVCSample1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF1EED9207F4AB900A4E1DB /* MVCSample1ViewController.swift */; };
-		3EF1EEDD207F4AB900A4E1DB /* MVCSample1ViewHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF1EEDA207F4AB900A4E1DB /* MVCSample1ViewHandler.swift */; };
+		3EF1EEDD207F4AB900A4E1DB /* MVCSample1PassiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF1EEDA207F4AB900A4E1DB /* MVCSample1PassiveView.swift */; };
 		3EF1EEDE207F4AB900A4E1DB /* MVCSample1Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF1EEDB207F4AB900A4E1DB /* MVCSample1Controller.swift */; };
 		3EF1EEE3207F4AF000A4E1DB /* MVPSample1Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF1EEE0207F4AF000A4E1DB /* MVPSample1Presenter.swift */; };
-		3EF1EEE4207F4AF000A4E1DB /* MVPSample1ViewHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF1EEE1207F4AF000A4E1DB /* MVPSample1ViewHandler.swift */; };
+		3EF1EEE4207F4AF000A4E1DB /* MVPSample1InteractiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF1EEE1207F4AF000A4E1DB /* MVPSample1InteractiveView.swift */; };
 		3EF1EEE5207F4AF000A4E1DB /* MVPSample1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF1EEE2207F4AF000A4E1DB /* MVPSample1ViewController.swift */; };
-		3EF1EEE9207F4E3F00A4E1DB /* MVPSample2ViewHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF1EEE8207F4E3F00A4E1DB /* MVPSample2ViewHandler.swift */; };
+		3EF1EEE9207F4E3F00A4E1DB /* MVPSample2InteractiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF1EEE8207F4E3F00A4E1DB /* MVPSample2InteractiveView.swift */; };
 		3EF1EEEB207F4E4A00A4E1DB /* MVPSample2Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF1EEEA207F4E4A00A4E1DB /* MVPSample2Presenter.swift */; };
 		3EF1EEED207F7A9000A4E1DB /* MVCSample2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF1EEEC207F7A9000A4E1DB /* MVCSample2ViewController.swift */; };
-		3EF1EEEF207F7ABA00A4E1DB /* MVCSample2ViewHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF1EEEE207F7ABA00A4E1DB /* MVCSample2ViewHandler.swift */; };
+		3EF1EEEF207F7ABA00A4E1DB /* MVCSample2PassiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF1EEEE207F7ABA00A4E1DB /* MVCSample2PassiveView.swift */; };
 		3EF1EEF1207F7AC400A4E1DB /* MVCSample2Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF1EEF0207F7AC400A4E1DB /* MVCSample2Controller.swift */; };
 		3EF1EEF7207F876C00A4E1DB /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF1EEF6207F876C00A4E1DB /* TopViewController.swift */; };
 		3EF1EEF9207F87A400A4E1DB /* Top.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EF1EEF8207F87A400A4E1DB /* Top.storyboard */; };
@@ -85,7 +95,7 @@
 		3E0528652080A6E00096094E /* SyncStarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncStarViewController.swift; sourceTree = "<group>"; };
 		3E0528672080A7DF0096094E /* SyncStarViewHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncStarViewHandler.swift; sourceTree = "<group>"; };
 		3E0528732081C6950096094E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3E05287520821FF50096094E /* MVCSample1RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVCSample1RootView.swift; sourceTree = "<group>"; };
+		3E05287520821FF50096094E /* MVCSampleRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVCSampleRootView.swift; sourceTree = "<group>"; };
 		3E58A8E62082925D00DDC738 /* MVVMViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVVMViewController.swift; sourceTree = "<group>"; };
 		3E6460F0208351CA0066F98A /* NavigationRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationRequestModel.swift; sourceTree = "<group>"; };
 		3E6460F2208363A90066F98A /* MVVMSampleRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVVMSampleRootView.swift; sourceTree = "<group>"; };
@@ -94,6 +104,16 @@
 		3E6460FB2083B5600066F98A /* AddActionRootView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddActionRootView.xib; sourceTree = "<group>"; };
 		3E6460FD208708F80066F98A /* DelayStarModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelayStarModelProtocol.swift; sourceTree = "<group>"; };
 		3E6460FF20870C9E0066F98A /* NavigationRequestModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationRequestModelProtocol.swift; sourceTree = "<group>"; };
+		3E64610120876D900066F98A /* MVCSample1PassiveViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVCSample1PassiveViewProtocol.swift; sourceTree = "<group>"; };
+		3E64610520876DEE0066F98A /* MVCSample1ControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVCSample1ControllerProtocol.swift; sourceTree = "<group>"; };
+		3E64610A20876E260066F98A /* MVCSample2PassiveViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVCSample2PassiveViewProtocol.swift; sourceTree = "<group>"; };
+		3E64610C20876E530066F98A /* MVCSample2ControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVCSample2ControllerProtocol.swift; sourceTree = "<group>"; };
+		3E64610E20876EB40066F98A /* MVPSample1InteractiveViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVPSample1InteractiveViewProtocol.swift; sourceTree = "<group>"; };
+		3E64611020876EE90066F98A /* MVPSample1PresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVPSample1PresenterProtocol.swift; sourceTree = "<group>"; };
+		3E64611420876F270066F98A /* MVPSample2InteractiveViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVPSample2InteractiveViewProtocol.swift; sourceTree = "<group>"; };
+		3E64611620876F570066F98A /* MVPSample2PresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVPSample2PresenterProtocol.swift; sourceTree = "<group>"; };
+		3E64611A2087822F0066F98A /* MVVMSampleStarViewModelInOut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVVMSampleStarViewModelInOut.swift; sourceTree = "<group>"; };
+		3E64611C208782AF0066F98A /* MVVMSampleNavigationViewModelInOut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVVMSampleNavigationViewModelInOut.swift; sourceTree = "<group>"; };
 		3E8CCD482079F498004B0E3F /* ModelViewWhateverSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ModelViewWhateverSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E8CCD5C2079F498004B0E3F /* ModelViewWhateverSampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ModelViewWhateverSampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E8CCD602079F498004B0E3F /* ModelViewWhateverSampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelViewWhateverSampleTests.swift; sourceTree = "<group>"; };
@@ -122,15 +142,15 @@
 		3EC2E49F207F40750025A8AF /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		3EE6CA902082317B003069B6 /* MVPSampleRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVPSampleRootView.swift; sourceTree = "<group>"; };
 		3EF1EED9207F4AB900A4E1DB /* MVCSample1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVCSample1ViewController.swift; sourceTree = "<group>"; };
-		3EF1EEDA207F4AB900A4E1DB /* MVCSample1ViewHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVCSample1ViewHandler.swift; sourceTree = "<group>"; };
+		3EF1EEDA207F4AB900A4E1DB /* MVCSample1PassiveView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVCSample1PassiveView.swift; sourceTree = "<group>"; };
 		3EF1EEDB207F4AB900A4E1DB /* MVCSample1Controller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVCSample1Controller.swift; sourceTree = "<group>"; };
 		3EF1EEE0207F4AF000A4E1DB /* MVPSample1Presenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVPSample1Presenter.swift; sourceTree = "<group>"; };
-		3EF1EEE1207F4AF000A4E1DB /* MVPSample1ViewHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVPSample1ViewHandler.swift; sourceTree = "<group>"; };
+		3EF1EEE1207F4AF000A4E1DB /* MVPSample1InteractiveView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVPSample1InteractiveView.swift; sourceTree = "<group>"; };
 		3EF1EEE2207F4AF000A4E1DB /* MVPSample1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVPSample1ViewController.swift; sourceTree = "<group>"; };
-		3EF1EEE8207F4E3F00A4E1DB /* MVPSample2ViewHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVPSample2ViewHandler.swift; sourceTree = "<group>"; };
+		3EF1EEE8207F4E3F00A4E1DB /* MVPSample2InteractiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVPSample2InteractiveView.swift; sourceTree = "<group>"; };
 		3EF1EEEA207F4E4A00A4E1DB /* MVPSample2Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVPSample2Presenter.swift; sourceTree = "<group>"; };
 		3EF1EEEC207F7A9000A4E1DB /* MVCSample2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVCSample2ViewController.swift; sourceTree = "<group>"; };
-		3EF1EEEE207F7ABA00A4E1DB /* MVCSample2ViewHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVCSample2ViewHandler.swift; sourceTree = "<group>"; };
+		3EF1EEEE207F7ABA00A4E1DB /* MVCSample2PassiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVCSample2PassiveView.swift; sourceTree = "<group>"; };
 		3EF1EEF0207F7AC400A4E1DB /* MVCSample2Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVCSample2Controller.swift; sourceTree = "<group>"; };
 		3EF1EEF6207F876C00A4E1DB /* TopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
 		3EF1EEF8207F87A400A4E1DB /* Top.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Top.storyboard; sourceTree = "<group>"; };
@@ -225,11 +245,101 @@
 			isa = PBXGroup;
 			children = (
 				3E58A8E62082925D00DDC738 /* MVVMViewController.swift */,
-				3E6460F2208363A90066F98A /* MVVMSampleRootView.swift */,
-				3E6460F62083773F0066F98A /* MVVMSampleStarViewModel.swift */,
-				3E6460F82083777F0066F98A /* MVVMSampleNavigationViewModel.swift */,
+				3E64611F208782D00066F98A /* ViewModel */,
+				3E64611E208782CB0066F98A /* View */,
 			);
 			path = Sample;
+			sourceTree = "<group>";
+		};
+		3E64610320876DCC0066F98A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3EF1EEDA207F4AB900A4E1DB /* MVCSample1PassiveView.swift */,
+				3E64610120876D900066F98A /* MVCSample1PassiveViewProtocol.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3E64610420876DD20066F98A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3EF1EEDB207F4AB900A4E1DB /* MVCSample1Controller.swift */,
+				3E64610520876DEE0066F98A /* MVCSample1ControllerProtocol.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		3E64610720876E090066F98A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3EF1EEEE207F7ABA00A4E1DB /* MVCSample2PassiveView.swift */,
+				3E64610A20876E260066F98A /* MVCSample2PassiveViewProtocol.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3E64610920876E180066F98A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3EF1EEF0207F7AC400A4E1DB /* MVCSample2Controller.swift */,
+				3E64610C20876E530066F98A /* MVCSample2ControllerProtocol.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		3E64611220876EFA0066F98A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3EF1EEE1207F4AF000A4E1DB /* MVPSample1InteractiveView.swift */,
+				3E64610E20876EB40066F98A /* MVPSample1InteractiveViewProtocol.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3E64611320876F040066F98A /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				3EF1EEE0207F4AF000A4E1DB /* MVPSample1Presenter.swift */,
+				3E64611020876EE90066F98A /* MVPSample1PresenterProtocol.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		3E646118208781CC0066F98A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3EF1EEE8207F4E3F00A4E1DB /* MVPSample2InteractiveView.swift */,
+				3E64611420876F270066F98A /* MVPSample2InteractiveViewProtocol.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3E646119208781D10066F98A /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				3EF1EEEA207F4E4A00A4E1DB /* MVPSample2Presenter.swift */,
+				3E64611620876F570066F98A /* MVPSample2PresenterProtocol.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		3E64611E208782CB0066F98A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3E6460F2208363A90066F98A /* MVVMSampleRootView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3E64611F208782D00066F98A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3E6460F62083773F0066F98A /* MVVMSampleStarViewModel.swift */,
+				3E6460F82083777F0066F98A /* MVVMSampleNavigationViewModel.swift */,
+				3E64611C208782AF0066F98A /* MVVMSampleNavigationViewModelInOut.swift */,
+				3E64611A2087822F0066F98A /* MVVMSampleStarViewModelInOut.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		3E8CCD3F2079F498004B0E3F = {
@@ -374,7 +484,7 @@
 		3EC2E4A0207F419A0025A8AF /* ModelViewController */ = {
 			isa = PBXGroup;
 			children = (
-				3E05287520821FF50096094E /* MVCSample1RootView.swift */,
+				3E05287520821FF50096094E /* MVCSampleRootView.swift */,
 				3EF1EED8207F4AB900A4E1DB /* Sample1 */,
 				3EF1EEE6207F4DBE00A4E1DB /* Sample2 */,
 			);
@@ -395,8 +505,8 @@
 			isa = PBXGroup;
 			children = (
 				3EF1EED9207F4AB900A4E1DB /* MVCSample1ViewController.swift */,
-				3EF1EEDA207F4AB900A4E1DB /* MVCSample1ViewHandler.swift */,
-				3EF1EEDB207F4AB900A4E1DB /* MVCSample1Controller.swift */,
+				3E64610420876DD20066F98A /* Controller */,
+				3E64610320876DCC0066F98A /* View */,
 			);
 			path = Sample1;
 			sourceTree = "<group>";
@@ -405,8 +515,8 @@
 			isa = PBXGroup;
 			children = (
 				3EF1EEE2207F4AF000A4E1DB /* MVPSample1ViewController.swift */,
-				3EF1EEE1207F4AF000A4E1DB /* MVPSample1ViewHandler.swift */,
-				3EF1EEE0207F4AF000A4E1DB /* MVPSample1Presenter.swift */,
+				3E64611320876F040066F98A /* Presenter */,
+				3E64611220876EFA0066F98A /* View */,
 			);
 			path = Sample1;
 			sourceTree = "<group>";
@@ -415,8 +525,8 @@
 			isa = PBXGroup;
 			children = (
 				3EF1EEEC207F7A9000A4E1DB /* MVCSample2ViewController.swift */,
-				3EF1EEEE207F7ABA00A4E1DB /* MVCSample2ViewHandler.swift */,
-				3EF1EEF0207F7AC400A4E1DB /* MVCSample2Controller.swift */,
+				3E64610920876E180066F98A /* Controller */,
+				3E64610720876E090066F98A /* View */,
 			);
 			path = Sample2;
 			sourceTree = "<group>";
@@ -425,8 +535,8 @@
 			isa = PBXGroup;
 			children = (
 				3EF1EF01207F930500A4E1DB /* MVPSample2ViewController.swift */,
-				3EF1EEE8207F4E3F00A4E1DB /* MVPSample2ViewHandler.swift */,
-				3EF1EEEA207F4E4A00A4E1DB /* MVPSample2Presenter.swift */,
+				3E646119208781D10066F98A /* Presenter */,
+				3E646118208781CC0066F98A /* View */,
 			);
 			path = Sample2;
 			sourceTree = "<group>";
@@ -603,11 +713,15 @@
 				3EC2E498207D1AFC0025A8AF /* StarModel2.swift in Sources */,
 				3EF1EEEB207F4E4A00A4E1DB /* MVPSample2Presenter.swift in Sources */,
 				3EC2E496207D1AFC0025A8AF /* MainViewController.swift in Sources */,
-				3EF1EEE9207F4E3F00A4E1DB /* MVPSample2ViewHandler.swift in Sources */,
+				3E64610620876DEE0066F98A /* MVCSample1ControllerProtocol.swift in Sources */,
+				3EF1EEE9207F4E3F00A4E1DB /* MVPSample2InteractiveView.swift in Sources */,
 				3E6460F72083773F0066F98A /* MVVMSampleStarViewModel.swift in Sources */,
+				3E64610D20876E530066F98A /* MVCSample2ControllerProtocol.swift in Sources */,
 				3E0528682080A7DF0096094E /* SyncStarViewHandler.swift in Sources */,
+				3E64611D208782AF0066F98A /* MVVMSampleNavigationViewModelInOut.swift in Sources */,
 				3EF1EEF7207F876C00A4E1DB /* TopViewController.swift in Sources */,
-				3EF1EEEF207F7ABA00A4E1DB /* MVCSample2ViewHandler.swift in Sources */,
+				3E64610220876D900066F98A /* MVCSample1PassiveViewProtocol.swift in Sources */,
+				3EF1EEEF207F7ABA00A4E1DB /* MVCSample2PassiveView.swift in Sources */,
 				3EF1EEDE207F4AB900A4E1DB /* MVCSample1Controller.swift in Sources */,
 				3EC2E49E207DD0C50025A8AF /* WeakPool.swift in Sources */,
 				3EF1EEED207F7A9000A4E1DB /* MVCSample2ViewController.swift in Sources */,
@@ -615,7 +729,9 @@
 				3EC2E495207D1AFC0025A8AF /* Sub2ViewController.swift in Sources */,
 				3EF1EEE5207F4AF000A4E1DB /* MVPSample1ViewController.swift in Sources */,
 				3E05285D207FB59F0096094E /* ModelPresenter.swift in Sources */,
+				3E64611120876EE90066F98A /* MVPSample1PresenterProtocol.swift in Sources */,
 				3EE6CA912082317B003069B6 /* MVPSampleRootView.swift in Sources */,
+				3E64611520876F270066F98A /* MVPSample2InteractiveViewProtocol.swift in Sources */,
 				3EF1EEF1207F7AC400A4E1DB /* MVCSample2Controller.swift in Sources */,
 				3E58A8E72082925D00DDC738 /* MVVMViewController.swift in Sources */,
 				3EC2E491207D1AFC0025A8AF /* SubViewHandler.swift in Sources */,
@@ -629,17 +745,21 @@
 				3EC2E45A207CD5000025A8AF /* AppDelegate.swift in Sources */,
 				3E6460F3208363A90066F98A /* MVVMSampleRootView.swift in Sources */,
 				3E6460FE208708F80066F98A /* DelayStarModelProtocol.swift in Sources */,
-				3EF1EEE4207F4AF000A4E1DB /* MVPSample1ViewHandler.swift in Sources */,
+				3EF1EEE4207F4AF000A4E1DB /* MVPSample1InteractiveView.swift in Sources */,
+				3E64610B20876E260066F98A /* MVCSample2PassiveViewProtocol.swift in Sources */,
 				3EF1EEDC207F4AB900A4E1DB /* MVCSample1ViewController.swift in Sources */,
+				3E64611720876F570066F98A /* MVPSample2PresenterProtocol.swift in Sources */,
 				3EC2E49A207D1AFC0025A8AF /* Weak.swift in Sources */,
-				3EF1EEDD207F4AB900A4E1DB /* MVCSample1ViewHandler.swift in Sources */,
+				3EF1EEDD207F4AB900A4E1DB /* MVCSample1PassiveView.swift in Sources */,
 				3EF1EEFE207F8D7100A4E1DB /* RootView.swift in Sources */,
 				3EC2E494207D1AFC0025A8AF /* Sub2RootView.swift in Sources */,
 				3EC2E490207D1AFC0025A8AF /* SubViewController.swift in Sources */,
 				3E6460F92083777F0066F98A /* MVVMSampleNavigationViewModel.swift in Sources */,
-				3E05287620821FF50096094E /* MVCSample1RootView.swift in Sources */,
+				3E64610F20876EB40066F98A /* MVPSample1InteractiveViewProtocol.swift in Sources */,
+				3E05287620821FF50096094E /* MVCSampleRootView.swift in Sources */,
 				3E6460F1208351CA0066F98A /* NavigationRequestModel.swift in Sources */,
 				3EC2E49B207D1AFC0025A8AF /* StarModel.swift in Sources */,
+				3E64611B2087822F0066F98A /* MVVMSampleStarViewModelInOut.swift in Sources */,
 				3E052862208099BF0096094E /* DelayStarModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

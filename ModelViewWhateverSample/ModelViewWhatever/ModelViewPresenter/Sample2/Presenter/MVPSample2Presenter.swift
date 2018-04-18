@@ -8,22 +8,18 @@
 
 import UIKit
 
-// Presenterの役割:
-//  - 内部表現を視覚表現へ変換する
-//  - 状態に適したアクションの振り分け
-//  - アクションの結果/途中経過を受け取る
-class MVPSample2Presenter {
+class MVPSample2Presenter: MVPSample2PresenterProtocol {
 
     private weak var starModel: DelayStarModelProtocol?
     private weak var navigationModel: NavigationRequestModelProtocol?
-    private let view: MVPSample2ViewHandler
+    private let view: MVPSample2InteractiveView
 
     init(
         interchange models: (
             starModel: DelayStarModelProtocol,
             navigationModel: NavigationRequestModelProtocol
         ),
-        willUpdate view: MVPSample2ViewHandler
+        willUpdate view: MVPSample2InteractiveView
     ) {
         self.starModel = models.starModel
         self.navigationModel = models.navigationModel
@@ -35,7 +31,7 @@ class MVPSample2Presenter {
 
 }
 
-extension MVPSample2Presenter: MVPSampleRootViewDelegate, MVPSample2ViewHandlerDelegate {
+extension MVPSample2Presenter: MVPSampleRootViewDelegate, MVPSample2InteractiveViewDelegate {
  
     @objc func didTapnavigationButton() {
         guard let model = self.starModel else {

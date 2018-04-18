@@ -8,20 +8,13 @@
 
 import UIKit
 
-// Viewの役割:
-//  - 画面の構築/表示
-//  - UI要素とアクションの接続
-protocol MVPSample2ViewHandlerDelegate: class {
-    func didRequestForceNavigate()
-}
-
-class MVPSample2ViewHandler {
+class MVPSample2InteractiveView: MVPSample2InteractiveViewProtocol {
 
     private let navigationButton: UIButton
     private let starButton: UIButton
     private let navigator: NavigatorProtocol
     private let modalPresenter: ModalPresenterContract
-    weak var delegate: MVPSample2ViewHandlerDelegate?
+    weak var delegate: MVPSample2InteractiveViewDelegate?
 
     init(
         handle: (

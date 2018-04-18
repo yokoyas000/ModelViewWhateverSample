@@ -12,7 +12,7 @@ class MVPSample1ViewController: UIViewController {
 
     private let model: DelayStarModelProtocol
     private let navigator: NavigatorProtocol
-    private var presenter: MVPSample1Presenter?
+    private var presenter: MVPSample1PresenterProtocol?
 
     init(
         model: DelayStarModelProtocol,
@@ -36,7 +36,7 @@ class MVPSample1ViewController: UIViewController {
             observe: self.model
         )
 
-        let viewHandler = MVPSample1ViewHandler(
+        let viewHandler = MVPSample1InteractiveView(
             handle:(
                 starButton: rootView.starButton,
                 navigationButton: rootView.navigationButton

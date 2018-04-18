@@ -12,7 +12,7 @@ class MVCSample1ViewController: UIViewController {
 
     private let model: DelayStarModelProtocol
     private let navigator: NavigatorProtocol
-    private var controller: MVCSample1Controller?
+    private var controller: MVCSample1ControllerProtocol?
 
     init(
         model: DelayStarModelProtocol,
@@ -36,7 +36,7 @@ class MVCSample1ViewController: UIViewController {
             observe: model
         )
 
-        let viewHandler = MVCSample1ViewHandler(
+        let viewHandler = MVCSample1PassiveView(
             willUpdate: rootView.starButton,
             observe: (
                 starModel: self.model,

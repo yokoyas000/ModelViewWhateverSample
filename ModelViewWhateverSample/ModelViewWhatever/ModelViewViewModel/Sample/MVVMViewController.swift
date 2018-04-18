@@ -8,14 +8,13 @@
 
 import UIKit
 
-
 class MVVMSampleViewController: UIViewController {
 
     private let model: DelayStarModelProtocol
     private let navigator: NavigatorProtocol
     private var navigationModel: NavigationRequestModelProtocol?
-    private var starViewModel: MVVMSampleStarViewModel?
-    private var navigationViewModel: MVVMSampleNavigationViewModel?
+    private var starViewModel: MVVMSampleStarViewModelInput?
+    private var navigationViewModel: MVVMSampleNavigationViewModelInput?
 
     init(
         model: DelayStarModelProtocol,

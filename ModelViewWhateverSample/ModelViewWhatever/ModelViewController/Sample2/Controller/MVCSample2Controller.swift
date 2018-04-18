@@ -8,15 +8,11 @@
 
 import UIKit
 
-// Controllerの役割:
-//  - UI要素とアクションの接続
-//  - 状態に適したアクションの振り分け
-//  - アクションの結果/途中経過を受け取る
-class MVCSample2Controller {
+class MVCSample2Controller: MVCSample2ControllerProtocol {
 
     private weak var starModel: DelayStarModelProtocol?
     private weak var navigationModel: NavigationRequestModelProtocol?
-    private let view: MVCSample2ViewHandler
+    private let view: MVCSample2PassiveViewProtocol
 
     init(
         reactTo handle: (
@@ -27,7 +23,7 @@ class MVCSample2Controller {
             starModel: DelayStarModelProtocol,
             navigationModel: NavigationRequestModelProtocol
         ),
-        command view: MVCSample2ViewHandler
+        update view: MVCSample2PassiveViewProtocol
     ) {
         self.starModel = models.starModel
         self.navigationModel = models.navigationModel

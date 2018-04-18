@@ -8,16 +8,6 @@
 
 import UIKit
 
-protocol MVVMSampleStarViewModelInput: MVVMSampleRootViewStarOutput {}
-protocol MVVMSampleStarViewModelOutput: class {
-    func update(title: String, color: UIColor, isEnable: Bool)
-}
-
-// ViewModel:
-//  - UI要素とアクションの接続
-//  - 内部表現を視覚表現へ変換する
-//  - 状態に適したアクションの振り分け
-//  - アクションの結果/途中経過を受け取る
 class MVVMSampleStarViewModel: MVVMSampleStarViewModelInput {
 
     private weak var starModel: DelayStarModelProtocol?
@@ -33,16 +23,27 @@ class MVVMSampleStarViewModel: MVVMSampleStarViewModelInput {
     private func update(by starState: DelayStarModelState) {
         switch starState {
         case .processing(next: .star):
-            self.output?.update(title: "★", color: .darkGray, isEnable: false)
+            self.output?.title = "★"
+            self.output?.color = .darkGray
+            self.output?.isEnable = false
         case .processing(next: .unstar):
-            self.output?.update(title: "☆", color: .darkGray, isEnable: false)
+            self.output?.title = "☆"
+            self.output?.color = .darkGray
+            self.output?.isEnable = false
         case .sleeping(current: .star):
-            self.output?.update(title: "★", color: .red, isEnable: true)
+            self.output?.title = "★"
+            self.output?.color = .red
+            self.output?.isEnable = true
         case .sleeping(current: .unstar):
-            self.output?.update(title: "☆", color: .red, isEnable: true)
+            self.output?.title = "☆"
+            self.output?.color = .red
+            self.output?.isEnable = true
         }
     }
 
+}
+
+extension MVVMSampleStarViewModel :MVVMSampleRootViewStarOutput {
     func didTapStarButton() {
         self.starModel?.toggleStar()
     }

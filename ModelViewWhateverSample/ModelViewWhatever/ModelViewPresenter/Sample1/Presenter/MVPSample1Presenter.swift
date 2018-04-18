@@ -8,20 +8,18 @@
 
 import UIKit
 
-// Presenterの役割:
-// - 状態に適したアクションの振り分け
-class MVPSample1Presenter {
+class MVPSample1Presenter: MVPSample1PresenterProtocol {
 
     private let starModel: DelayStarModelProtocol
     private let navigationModel: NavigationRequestModelProtocol
-    private let view: MVPSample1ViewHandler
+    private let view: MVPSample1InteractiveViewProtocol
 
     init(
         willCommand models:(
             starModel: DelayStarModelProtocol,
             navigationModel: NavigationRequestModelProtocol
         ),
-        and view: MVPSample1ViewHandler
+        and view: MVPSample1InteractiveViewProtocol
     ) {
         self.starModel = models.starModel
         self.navigationModel = models.navigationModel
@@ -30,7 +28,7 @@ class MVPSample1Presenter {
 
 }
 
-extension MVPSample1Presenter: MVPSampleRootViewDelegate, MVPSample1ViewHandlerDelegate {
+extension MVPSample1Presenter: MVPSampleRootViewDelegate, MVPSample1InteractiveViewDelegate {
 
     @objc func didTapnavigationButton() {
         // 現在の Model の状態による分岐処理

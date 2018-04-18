@@ -1,5 +1,5 @@
 //
-//  MVCSample1RootView.swift
+//  MVCSampleRootView.swift
 //  ModelViewWhateverSample
 //
 //  Created by yokoyas000 on 2018/04/14.

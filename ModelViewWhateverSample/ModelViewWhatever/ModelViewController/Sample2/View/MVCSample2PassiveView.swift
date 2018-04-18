@@ -8,10 +8,7 @@
 
 import UIKit
 
-// Viewの役割:
-//  - 画面の構築/表示
-//  - 内部表現を視覚表現へ変換する
-class MVCSample2ViewHandler {
+class MVCSample2PassiveView: MVCSample2PassiveViewProtocol {
 
     private let starButton: UIButton
     private let navigator: NavigatorProtocol

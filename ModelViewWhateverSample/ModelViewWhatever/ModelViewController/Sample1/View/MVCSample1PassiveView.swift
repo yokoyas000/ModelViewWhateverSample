@@ -8,11 +8,7 @@
 
 import UIKit
 
-// Viewの役割:
-//  - 画面の構築/表示
-//  - 内部表現を視覚表現へ変換する
-//  - アクションの結果/途中経過を受け取る
-class MVCSample1ViewHandler {
+class MVCSample1PassiveView: MVCSample1PassiveViewProtocol {
 
     private let starButton: UIButton
     private weak var starModel: DelayStarModelProtocol?
@@ -56,9 +52,8 @@ class MVCSample1ViewHandler {
 
 }
 
-extension MVCSample1ViewHandler: DelayStarModelReceiver {
+extension MVCSample1PassiveView: DelayStarModelReceiver {
 
-    // Modelの変更を画面へ反映する
     func receive(starState: DelayStarModelState) {
         switch starState {
         case .processing(next: .star):
@@ -82,7 +77,8 @@ extension MVCSample1ViewHandler: DelayStarModelReceiver {
 
 }
 
-extension MVCSample1ViewHandler: NavigationRequestModelReceiver {
+extension MVCSample1PassiveView: NavigationRequestModelReceiver {
+
     func receive(requestState: NavigationRequestModelState) {
         switch requestState {
         case .haveNeverRequest, .notReady:
@@ -91,5 +87,6 @@ extension MVCSample1ViewHandler: NavigationRequestModelReceiver {
             self.navigate()
         }
     }
+
 }
 

@@ -8,14 +8,6 @@
 
 import UIKit
 
-protocol MVVMSampleNavigationViewModelInput: MVVMSampleRootViewNavigationOutput {}
-
-
-// ViewModel:
-//  - UI要素とアクションの接続
-//  - 内部表現を視覚表現へ変換する
-//  - 状態に適したアクションの振り分け
-//  - アクションの結果/途中経過を受け取る
 class MVVMSampleNavigationViewModel: MVVMSampleNavigationViewModelInput {
 
     typealias Dependency = (
@@ -36,6 +28,10 @@ class MVVMSampleNavigationViewModel: MVVMSampleNavigationViewModelInput {
 
         self.navigationModel?.append(receiver: self)
     }
+
+}
+
+extension MVVMSampleNavigationViewModel: MVVMSampleRootViewNavigationOutput {
 
     func didTapnavigationButton() {
         switch self.dependency.starModel.state {

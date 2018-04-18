@@ -5,19 +5,9 @@
 //  Created by yokoyas000 on 2018/04/12.
 //  Copyright © 2018年 yokoyas000. All rights reserved.
 //
-
 import UIKit
 
-// Viewの役割:
-//  - 画面の構築/表示
-//  - UI要素とアクションの接続
-//  - 内部表現を視覚表現へ変換する
-//  - アクションの結果/途中経過を受け取る
-protocol MVPSample1ViewHandlerDelegate: class {
-    func didRequestForceNavigate()
-}
-
-class MVPSample1ViewHandler {
+class MVPSample1InteractiveView: MVPSample1InteractiveViewProtocol {
 
     private let navigationButton: UIButton
     private let starButton: UIButton
@@ -25,7 +15,7 @@ class MVPSample1ViewHandler {
     private weak var navigationModel: NavigationRequestModelProtocol?
     private let navigator: NavigatorProtocol
     private let modalPresenter: ModalPresenterContract
-    weak var delegate: MVPSample1ViewHandlerDelegate?
+    weak var delegate: MVPSample1InteractiveViewDelegate?
 
     init(
         handle: (
@@ -83,9 +73,8 @@ class MVPSample1ViewHandler {
 
         return alert
     }
-}
 
-extension MVPSample1ViewHandler: DelayStarModelReceiver {
+    // - MARK: DelayStarModelReceiver
 
     // Modelの変更を画面へ反映する
     func receive(starState: DelayStarModelState) {
@@ -104,9 +93,9 @@ extension MVPSample1ViewHandler: DelayStarModelReceiver {
             self.starButton.setTitleColor(.red, for: .normal)
         }
     }
-}
 
-extension MVPSample1ViewHandler: NavigationRequestModelReceiver {
+    // - MARK: NavigationRequestModelReceiver
+
     func receive(requestState: NavigationRequestModelState) {
         switch requestState {
         case .haveNeverRequest, .notReady:

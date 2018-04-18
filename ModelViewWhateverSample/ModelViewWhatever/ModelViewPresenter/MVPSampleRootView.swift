@@ -8,9 +8,10 @@
 
 import UIKit
 
-// Viewの役割:
+/// Viewの役割:
 //  - 画面の構築/表示
 //  - ユーザー操作の受付
+
 @objc
 protocol MVPSampleRootViewDelegate: class {
     func didTapStarButton()
