@@ -10,15 +10,15 @@ import UIKit
 
 class MVPSample1ViewController: UIViewController {
 
-    private let model: DelayStarModelProtocol
+    private let starModel: DelayStarModelProtocol
     private let navigator: NavigatorProtocol
     private var presenter: MVPSample1PresenterProtocol?
 
     init(
-        model: DelayStarModelProtocol,
+        starModel: DelayStarModelProtocol,
         navigator: NavigatorProtocol
     ) {
-        self.model = model
+        self.starModel = starModel
         self.navigator = navigator
 
         super.init(nibName: nil, bundle: nil)
@@ -33,24 +33,25 @@ class MVPSample1ViewController: UIViewController {
         self.view = rootView
 
         let navigationModel = NavigationRequestModel(
-            observe: self.model
+            observe: self.starModel
         )
 
         let interactiveView = MVPSample1InteractiveView(
-            handle:(
+            handle: (
                 starButton: rootView.starButton,
-                navigationButton: rootView.navigationButton
+                navigationButton: rootView.navigationButton,
+                navigator: self.navigator,
+                modalPresenter: ModalPresenter(using: self)
             ),
+            dependency: self.starModel,
             observe:  (
-                starModel: self.model,
+                starModel: self.starModel,
                 navigationModel: navigationModel
-            ),
-            navigateBy: self.navigator,
-            presentBy: ModalPresenter(using: self)
+            )
         )
         let presenter = MVPSample1Presenter(
             willCommand: (
-                starModel: self.model,
+                starModel: self.starModel,
                 navigationModel: navigationModel
             ),
             and: interactiveView

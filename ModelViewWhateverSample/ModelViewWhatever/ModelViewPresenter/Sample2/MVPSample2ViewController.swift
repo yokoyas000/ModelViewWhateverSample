@@ -35,10 +35,10 @@ class MVPSample2ViewController: UIViewController {
         let interactiveView = MVPSample2InteractiveView(
             handle:(
                 starButton: rootView.starButton,
-                navigationButton: rootView.navigationButton
-            ),
-            navigateBy: navigator,
-            presentBy: ModalPresenter(using: self)
+                navigationButton: rootView.navigationButton,
+                navigator: self.navigator,
+                modalPresenter: ModalPresenter(using: self)
+            )
         )
         let navigationModel = NavigationRequestModel(
             observe: self.model

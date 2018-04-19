@@ -13,7 +13,7 @@ class MVVMSampleNavigationViewModel: MVVMSampleNavigationViewModelInput {
     typealias Dependency = (
         starModel: DelayStarModelProtocol,
         navigator: NavigatorProtocol,
-        modalPresenter: ModalPresenter
+        modalPresenter: ModalPresenterProtocol
     )
 
     private let dependency: Dependency

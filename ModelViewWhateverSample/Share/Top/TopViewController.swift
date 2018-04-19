@@ -51,7 +51,7 @@ class TopViewController: UIViewController {
     @IBAction func presentMVPSample1(_ sender: UIButton) {
         self.navigationController?.pushViewController(
             MVPSample1ViewController(
-                model: DelayStarModel(initialState: .sleeping(current: .unstar)),
+                starModel: DelayStarModel(initialState: .sleeping(current: .unstar)),
                 navigator: Navigator(using: self)
             ),
             animated: true

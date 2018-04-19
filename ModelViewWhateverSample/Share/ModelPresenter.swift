@@ -8,11 +8,11 @@
 
 import UIKit
 
-protocol ModalPresenterContract {
+protocol ModalPresenterProtocol {
     func present(to next: UIViewController)
 }
 
-class ModalPresenter: ModalPresenterContract {
+class ModalPresenter: ModalPresenterProtocol {
 
     private weak var viewController: UIViewController?
 

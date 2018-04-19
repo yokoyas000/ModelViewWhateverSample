@@ -11,7 +11,6 @@ import UIKit
 class MVCSample1ViewController: UIViewController {
 
     private let starModel: DelayStarModelProtocol
-    private let navigationModel: NavigationRequestModel
     private let navigator: NavigatorProtocol
     private var controller: MVCSample1ControllerProtocol?
 
@@ -20,7 +19,6 @@ class MVCSample1ViewController: UIViewController {
         navigator: NavigatorProtocol
     ) {
         self.starModel = starModel
-        self.navigationModel = NavigationRequestModel(observe: starModel)
         self.navigator = navigator
 
         super.init(nibName: nil, bundle: nil)
@@ -34,16 +32,18 @@ class MVCSample1ViewController: UIViewController {
         let rootView = MVCSampleRootView()
         self.view = rootView
 
+        let navigationModel = NavigationRequestModel(observe: self.starModel)
+
         let passiveView = MVCSample1PassiveView(
-            dependency: (
-                starModel: self.starModel,
+            handle: (
+                starButton: rootView.starButton,
                 navigator: self.navigator,
                 modalPresenter: ModalPresenter(using: self)
             ),
-            willUpdate: rootView.starButton,
+            dependency: self.starModel,
             observe: (
                 starModel: self.starModel,
-                navigationModel: self.navigationModel
+                navigationModel: navigationModel
             )
         )
 
@@ -54,7 +54,7 @@ class MVCSample1ViewController: UIViewController {
             ),
             command: (
                 starModel: self.starModel,
-                navigationModel: self.navigationModel
+                navigationModel: navigationModel
             ),
             update: passiveView
         )

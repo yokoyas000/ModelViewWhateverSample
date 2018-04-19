@@ -33,9 +33,11 @@ class MVCSample2ViewController: UIViewController {
         self.view = rootView
 
         let passiveView = MVCSample2PassiveView(
-            willUpdate: rootView.starButton,
-            navigateBy: self.navigator,
-            presentBy: ModalPresenter(using: self)
+            handle: (
+                starButton: rootView.starButton,
+                navigator: self.navigator,
+                modalPresenter: ModalPresenter(using: self)
+            )
         )
 
         let navigationModel = NavigationRequestModel(observe: self.starModel)
