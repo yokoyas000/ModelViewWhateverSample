@@ -10,43 +10,45 @@ import UIKit
 
 class MVCSample1PassiveView: MVCSample1PassiveViewProtocol {
 
-    private let starButton: UIButton
-    private let starModel: DelayStarModelProtocol
-    private let navigationModel: NavigationRequestModelProtocol
-    private let navigator: NavigatorProtocol
-    private let modalPresenter: ModalPresenterContract
+    typealias Views = (
+        starButton: UIButton,
+        navigator: NavigatorProtocol,
+        modalPresenter: ModalPresenterProtocol
+    )
+    typealias Dependency = DelayStarModelProtocol
+
+    private let views: Views
+    private let dependency: Dependency
     private lazy var starModelReceiver: AnyDelayStarModelReceiver = {
         AnyDelayStarModelReceiver(self)
     }()
 
     init(
-        willUpdate starButton: UIButton,
+        handle views: Views,
+        dependency: Dependency,
         observe models: (
             starModel: DelayStarModelProtocol,
             navigationModel: NavigationRequestModelProtocol
-        ),
-        navigateBy navigator: NavigatorProtocol,
-        presentBy modalPresenter: ModalPresenterContract
+        )
     ) {
-        self.starButton = starButton
-        self.starModel = models.starModel
-        self.navigationModel = models.navigationModel
-        self.navigator = navigator
-        self.modalPresenter = modalPresenter
+        self.views = views
+        self.dependency = dependency
 
         // Modelの監視を開始する
-        self.starModel.append(receiver: self.starModelReceiver)
-        self.navigationModel.append(receiver: self)
+        models.starModel.append(receiver: self.starModelReceiver)
+        models.navigationModel.append(receiver: self)
     }
 
     func navigate() {
-        self.navigator.navigate(
-            to: SyncStarViewController(model: self.starModel)
+        self.views.navigator.navigate(
+            to: SyncStarViewController(
+                model: self.dependency
+            )
         )
     }
 
     func present(alert: UIAlertController) {
-        self.modalPresenter.present(to: alert)
+        self.views.modalPresenter.present(to: alert)
     }
 
 }
@@ -56,21 +58,21 @@ extension MVCSample1PassiveView: DelayStarModelReceiver {
     func receive(starState: DelayStarModelState) {
         switch starState {
         case .processing(next: .star):
-            self.starButton.setTitle("★", for: .normal)
-            self.starButton.setTitleColor(.darkGray, for: .normal)
-            self.starButton.isEnabled = false
+            self.views.starButton.setTitle("★", for: .normal)
+            self.views.starButton.setTitleColor(.darkGray, for: .normal)
+            self.views.starButton.isEnabled = false
         case .processing(next: .unstar):
-            self.starButton.setTitle("☆", for: .normal)
-            self.starButton.setTitleColor(.darkGray, for: .normal)
-            self.starButton.isEnabled = false
+            self.views.starButton.setTitle("☆", for: .normal)
+            self.views.starButton.setTitleColor(.darkGray, for: .normal)
+            self.views.starButton.isEnabled = false
         case .sleeping(current: .star):
-            self.starButton.setTitle("★", for: .normal)
-            self.starButton.setTitleColor(.red, for: .normal)
-            self.starButton.isEnabled = true
+            self.views.starButton.setTitle("★", for: .normal)
+            self.views.starButton.setTitleColor(.red, for: .normal)
+            self.views.starButton.isEnabled = true
         case .sleeping(current: .unstar):
-            self.starButton.setTitle("☆", for: .normal)
-            self.starButton.setTitleColor(.red, for: .normal)
-            self.starButton.isEnabled = true
+            self.views.starButton.setTitle("☆", for: .normal)
+            self.views.starButton.setTitleColor(.red, for: .normal)
+            self.views.starButton.isEnabled = true
         }
     }
 

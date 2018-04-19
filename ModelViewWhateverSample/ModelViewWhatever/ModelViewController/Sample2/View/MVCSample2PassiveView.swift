@@ -10,48 +10,48 @@ import UIKit
 
 class MVCSample2PassiveView: MVCSample2PassiveViewProtocol {
 
-    private let starButton: UIButton
-    private let navigator: NavigatorProtocol
-    private let modalPresenter: ModalPresenterContract
+    typealias Views = (
+        starButton: UIButton,
+        navigator: NavigatorProtocol,
+        modalPresenter: ModalPresenterProtocol
+    )
+
+    private let views: Views
 
     init(
-        willUpdate starButton: UIButton,
-        navigateBy navigator: NavigatorProtocol,
-        presentBy modalPresenter: ModalPresenterContract
+        handle views: Views
     ) {
-        self.starButton = starButton
-        self.navigator = navigator
-        self.modalPresenter = modalPresenter
+        self.views = views
     }
 
     func navigate(with model: DelayStarModelProtocol) {
-        self.navigator.navigate(
+        self.views.navigator.navigate(
             to: SyncStarViewController(model: model)
         )
     }
 
     func present(alert: UIAlertController) {
-        self.modalPresenter.present(to: alert)
+        self.views.modalPresenter.present(to: alert)
     }
 
     func update(by starState: DelayStarModelState) {
         switch starState {
         case .processing(next: .star):
-            self.starButton.setTitle("★", for: .normal)
-            self.starButton.setTitleColor(.darkGray, for: .normal)
-            self.starButton.isEnabled = false
+            self.views.starButton.setTitle("★", for: .normal)
+            self.views.starButton.setTitleColor(.darkGray, for: .normal)
+            self.views.starButton.isEnabled = false
         case .processing(next: .unstar):
-            self.starButton.setTitle("☆", for: .normal)
-            self.starButton.setTitleColor(.darkGray, for: .normal)
-            self.starButton.isEnabled = false
+            self.views.starButton.setTitle("☆", for: .normal)
+            self.views.starButton.setTitleColor(.darkGray, for: .normal)
+            self.views.starButton.isEnabled = false
         case .sleeping(current: .star):
-            self.starButton.setTitle("★", for: .normal)
-            self.starButton.setTitleColor(.red, for: .normal)
-            self.starButton.isEnabled = true
+            self.views.starButton.setTitle("★", for: .normal)
+            self.views.starButton.setTitleColor(.red, for: .normal)
+            self.views.starButton.isEnabled = true
         case .sleeping(current: .unstar):
-            self.starButton.setTitle("☆", for: .normal)
-            self.starButton.setTitleColor(.red, for: .normal)
-            self.starButton.isEnabled = true
+            self.views.starButton.setTitle("☆", for: .normal)
+            self.views.starButton.setTitleColor(.red, for: .normal)
+            self.views.starButton.isEnabled = true
         }
     }
 

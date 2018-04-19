@@ -10,39 +10,35 @@ import UIKit
 
 class MVPSample2InteractiveView: MVPSample2InteractiveViewProtocol {
 
-    private let navigationButton: UIButton
-    private let starButton: UIButton
-    private let navigator: NavigatorProtocol
-    private let modalPresenter: ModalPresenterContract
+    typealias Views = (
+        starButton: UIButton,
+        navigationButton: UIButton,
+        navigator: NavigatorProtocol,
+        modalPresenter: ModalPresenterProtocol
+    )
+
+    private let views: Views
     weak var delegate: MVPSample2InteractiveViewDelegate?
 
     init(
-        handle: (
-            starButton: UIButton,
-            navigationButton: UIButton
-        ),
-        navigateBy navigator: NavigatorProtocol,
-        presentBy modalPresenter: ModalPresenterContract
+        handle views: Views
     ) {
-        self.starButton = handle.starButton
-        self.navigationButton = handle.navigationButton
-        self.navigator = navigator
-        self.modalPresenter = modalPresenter
+        self.views = views
     }
 
     func navigate(with model: DelayStarModelProtocol) {
-        self.navigator.navigate(
+        self.views.navigator.navigate(
             to: SyncStarViewController(model: model)
         )
     }
 
     func updateStarButton(title: String, color: UIColor) {
-        self.starButton.setTitle(title, for: .normal)
-        self.starButton.setTitleColor(color, for: .normal)
+        self.views.starButton.setTitle(title, for: .normal)
+        self.views.starButton.setTitleColor(color, for: .normal)
     }
 
     func alertForNavigation() {
-        self.modalPresenter.present(
+        self.views.modalPresenter.present(
             to: self.createNavigateAlert()
         )
     }
