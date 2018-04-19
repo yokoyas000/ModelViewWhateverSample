@@ -17,7 +17,7 @@ class MVVMSampleNavigationViewModel: MVVMSampleNavigationViewModelInput {
     )
 
     private let dependency: Dependency
-    private weak var navigationModel: NavigationRequestModelProtocol?
+    private let navigationModel: NavigationRequestModelProtocol
 
     init(
         dependency: Dependency,
@@ -25,13 +25,8 @@ class MVVMSampleNavigationViewModel: MVVMSampleNavigationViewModelInput {
     ) {
         self.dependency = dependency
         self.navigationModel = navigationModel
-
-        self.navigationModel?.append(receiver: self)
+        self.navigationModel.append(receiver: self)
     }
-
-}
-
-extension MVVMSampleNavigationViewModel: MVVMSampleRootViewNavigationOutput {
 
     func didTapnavigationButton() {
         switch self.dependency.starModel.state {
@@ -52,7 +47,7 @@ extension MVVMSampleNavigationViewModel: MVVMSampleRootViewNavigationOutput {
             title: "無視して遷移する",
             style: .default
         ) { [weak self] _ in
-            self?.navigationModel?.requestToNavigate()
+            self?.navigationModel.requestToNavigate()
             self?.dependency.starModel.star()
         }
 

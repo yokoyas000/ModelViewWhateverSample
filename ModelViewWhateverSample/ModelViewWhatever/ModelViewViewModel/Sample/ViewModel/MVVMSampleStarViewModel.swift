@@ -10,14 +10,22 @@ import UIKit
 
 class MVVMSampleStarViewModel: MVVMSampleStarViewModelInput {
 
-    private weak var starModel: DelayStarModelProtocol?
-    weak var output: MVVMSampleStarViewModelOutput?
+    private let starModel: DelayStarModelProtocol
+    private lazy var starModelReceiver: AnyDelayStarModelReceiver = {
+        AnyDelayStarModelReceiver(self)
+    }()
+    
+    weak var output: MVVMSampleStarViewModelOutput? {
+        didSet {
+            self.update(by: self.starModel.state)
+        }
+    }
 
     init(
         observe starModel: DelayStarModelProtocol
     ) {
         self.starModel = starModel
-        self.starModel?.append(receiver: self)
+        self.starModel.append(receiver: self.starModelReceiver)
     }
 
     private func update(by starState: DelayStarModelState) {
@@ -41,11 +49,8 @@ class MVVMSampleStarViewModel: MVVMSampleStarViewModelInput {
         }
     }
 
-}
-
-extension MVVMSampleStarViewModel :MVVMSampleRootViewStarOutput {
     func didTapStarButton() {
-        self.starModel?.toggleStar()
+        self.starModel.toggleStar()
     }
 }
 

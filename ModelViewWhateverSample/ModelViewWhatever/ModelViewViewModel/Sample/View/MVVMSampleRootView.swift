@@ -9,12 +9,6 @@
 import UIKit
 
 protocol MVVMSampleRootViewInput: MVVMSampleStarViewModelOutput {}
-protocol MVVMSampleRootViewStarOutput: class {
-    func didTapStarButton()
-}
-protocol MVVMSampleRootViewNavigationOutput: class {
-    func didTapnavigationButton()
-}
 
 // View:
 //  - 画面の構築/表示
@@ -23,8 +17,22 @@ class MVVMSampleRootView: UIView, MVVMSampleRootViewInput {
 
     @IBOutlet var starButton: UIButton!
     @IBOutlet var navigationButton: UIButton!
-    weak var starButtonOutput: MVVMSampleRootViewStarOutput?
-    weak var navigationButtonOutput: MVVMSampleRootViewNavigationOutput?
+    private var starViewModel: MVVMSampleStarViewModelInput!
+    private var navigationViewModel: MVVMSampleNavigationViewModelInput!
+
+    convenience init(
+        observe viewModels: (
+            starViewModel: MVVMSampleStarViewModelInput,
+            navigationViewModel: MVVMSampleNavigationViewModelInput
+        )
+    ) {
+        self.init()
+
+        self.starViewModel = viewModels.starViewModel
+        self.navigationViewModel = viewModels.navigationViewModel
+
+        self.starViewModel.output = self
+    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -37,11 +45,11 @@ class MVVMSampleRootView: UIView, MVVMSampleRootViewInput {
     }
 
     @IBAction func didTapStarButton(_ sender: UIButton) {
-        self.starButtonOutput?.didTapStarButton()
+        self.starViewModel.didTapStarButton()
     }
 
     @IBAction func didTapNavigationButton(_ sender: UIButton) {
-        self.navigationButtonOutput?.didTapnavigationButton()
+        self.navigationViewModel.didTapnavigationButton()
     }
 
     private func setup() {
@@ -49,7 +57,6 @@ class MVVMSampleRootView: UIView, MVVMSampleRootViewInput {
     }
 
     private func loadFromXib() {
-        // xib が View
         guard let view = Bundle.main
             .loadNibNamed("AddActionRootView", owner: self, options: nil)?
             .first as? UIView else {

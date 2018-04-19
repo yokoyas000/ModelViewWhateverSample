@@ -10,5 +10,7 @@
 //  - 内部表現を視覚表現へ変換する
 //  - アクションを定義する
 //  - アクションの結果/途中経過を受け取る
-protocol MVVMSampleNavigationViewModelInput: MVVMSampleRootViewNavigationOutput, NavigationRequestModelReceiver {}
+protocol MVVMSampleNavigationViewModelInput: NavigationRequestModelReceiver {
+    func didTapnavigationButton()
+}
 

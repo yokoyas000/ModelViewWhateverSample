@@ -10,17 +10,14 @@ import UIKit
 
 class MVVMSampleViewController: UIViewController {
 
-    private let model: DelayStarModelProtocol
+    private let starModel: DelayStarModelProtocol
     private let navigator: NavigatorProtocol
-    private var navigationModel: NavigationRequestModelProtocol?
-    private var starViewModel: MVVMSampleStarViewModelInput?
-    private var navigationViewModel: MVVMSampleNavigationViewModelInput?
 
     init(
-        model: DelayStarModelProtocol,
+        starModel: DelayStarModelProtocol,
         navigator: NavigatorProtocol
     ) {
-        self.model = model
+        self.starModel = starModel
         self.navigator = navigator
 
         super.init(nibName: nil, bundle: nil)
@@ -31,31 +28,28 @@ class MVVMSampleViewController: UIViewController {
     }
 
     override func loadView() {
-        let rootView = MVVMSampleRootView()
-        self.view = rootView
-
         let starViewModel = MVVMSampleStarViewModel(
-            observe: self.model
+            observe: self.starModel
         )
-        self.starViewModel = starViewModel
 
-        let navigationModel = NavigationRequestModel(
-            observe: self.model
-        )
-        self.navigationModel = navigationModel
-
+        let navigationModel = NavigationRequestModel(observe: starModel)
         let navigationViewModel = MVVMSampleNavigationViewModel(
             dependency: (
-                starModel: self.model,
+                starModel: self.starModel,
                 navigator: self.navigator,
                 modalPresenter: ModalPresenter(using: self)
             ),
             observe: navigationModel
         )
-        self.navigationViewModel = navigationViewModel
+        
+        let rootView = MVVMSampleRootView(
+            observe: (
+                starViewModel: starViewModel,
+                navigationViewModel: navigationViewModel
+            )
+        )
+        self.view = rootView
 
-        rootView.starButtonOutput = starViewModel
-        rootView.navigationButtonOutput = navigationViewModel
         starViewModel.output = rootView
     }
 }
