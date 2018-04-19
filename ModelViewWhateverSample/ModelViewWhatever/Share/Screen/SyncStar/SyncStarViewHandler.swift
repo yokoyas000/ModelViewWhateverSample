@@ -17,19 +17,18 @@ import UIKit
 class SyncStarViewHandler {
 
     private let starButton: UIButton
-    private weak var model: DelayStarModelProtocol?
-    private let modalPresenter: ModalPresenter
+    private let model: DelayStarModelProtocol
+    private lazy var starModelReceiver: AnyDelayStarModelReceiver = {
+        AnyDelayStarModelReceiver(self)
+    }()
 
     init(
         handle starButton: UIButton,
-        interchange model: DelayStarModelProtocol,
-        presentBy modalPresenter: ModalPresenter
+        interchange model: DelayStarModelProtocol
     ) {
         self.starButton = starButton
         self.model = model
-        self.modalPresenter = modalPresenter
-
-        self.model?.append(receiver: self)
+        self.model.append(receiver: self.starModelReceiver)
 
         self.starButton.addTarget(
             self,
@@ -39,7 +38,7 @@ class SyncStarViewHandler {
     }
 
     @objc private func didTapStarButton() {
-        self.model?.toggleStar()
+        self.model.toggleStar()
     }
 
     private func update(star isStar: Bool, color: UIColor) {

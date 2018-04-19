@@ -6,7 +6,7 @@
 //  Copyright © 2018年 yokoyas000. All rights reserved.
 //
 
-struct Weak<T: AnyObject> {
+final class Weak<T: AnyObject> {
     // 弱参照
     private(set) weak var value: T?
 

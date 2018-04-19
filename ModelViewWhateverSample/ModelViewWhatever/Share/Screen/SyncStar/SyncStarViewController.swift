@@ -29,8 +29,7 @@ class SyncStarViewController: UIViewController {
 
         self.viewHandler = SyncStarViewHandler(
             handle: rootView.starButton,
-            interchange: self.model,
-            presentBy: ModalPresenter(using: self)
+            interchange: self.model
         )
     }
 

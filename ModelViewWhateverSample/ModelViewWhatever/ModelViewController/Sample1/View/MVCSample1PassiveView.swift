@@ -11,10 +11,13 @@ import UIKit
 class MVCSample1PassiveView: MVCSample1PassiveViewProtocol {
 
     private let starButton: UIButton
-    private weak var starModel: DelayStarModelProtocol?
-    private weak var navigationModel: NavigationRequestModelProtocol?
+    private let starModel: DelayStarModelProtocol
+    private let navigationModel: NavigationRequestModelProtocol
     private let navigator: NavigatorProtocol
     private let modalPresenter: ModalPresenterContract
+    private lazy var starModelReceiver: AnyDelayStarModelReceiver = {
+        AnyDelayStarModelReceiver(self)
+    }()
 
     init(
         willUpdate starButton: UIButton,
@@ -32,17 +35,13 @@ class MVCSample1PassiveView: MVCSample1PassiveViewProtocol {
         self.modalPresenter = modalPresenter
 
         // Modelの監視を開始する
-        self.starModel?.append(receiver: self)
-        self.navigationModel?.append(receiver: self)
+        self.starModel.append(receiver: self.starModelReceiver)
+        self.navigationModel.append(receiver: self)
     }
 
     func navigate() {
-        guard let model = self.starModel else {
-            return
-        }
-
         self.navigator.navigate(
-            to: SyncStarViewController(model: model)
+            to: SyncStarViewController(model: self.starModel)
         )
     }
 

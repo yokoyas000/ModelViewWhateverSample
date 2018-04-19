@@ -10,9 +10,12 @@ import UIKit
 
 class MVCSample2Controller: MVCSample2ControllerProtocol {
 
-    private weak var starModel: DelayStarModelProtocol?
-    private weak var navigationModel: NavigationRequestModelProtocol?
+    private let starModel: DelayStarModelProtocol
+    private let navigationModel: NavigationRequestModelProtocol
     private let view: MVCSample2PassiveViewProtocol
+    private lazy var starModelReceiver: AnyDelayStarModelReceiver = {
+        AnyDelayStarModelReceiver(self)
+    }()
 
     init(
         reactTo handle: (
@@ -30,8 +33,8 @@ class MVCSample2Controller: MVCSample2ControllerProtocol {
         self.view = view
 
         // Modelの監視を開始する
-        self.starModel?.append(receiver: self)
-        self.navigationModel?.append(receiver: self)
+        self.starModel.append(receiver: self.starModelReceiver)
+        self.navigationModel.append(receiver: self)
 
         // ユーザー動作の受付
         handle.navigationButton.addTarget(
@@ -47,14 +50,10 @@ class MVCSample2Controller: MVCSample2ControllerProtocol {
     }
 
     @objc private func didTapnavigationButton() {
-        guard let model = self.starModel else {
-            return
-        }
-
         // 現在の Model の状態による分岐処理
-        switch model.state {
+        switch self.starModel.state {
         case .sleeping(current: .star):
-            self.view.navigate(with: model)
+            self.view.navigate(with: self.starModel)
         case .sleeping(current: .unstar), .processing:
             self.view.present(
                 alert: self.createNavigateAlert()
@@ -63,7 +62,7 @@ class MVCSample2Controller: MVCSample2ControllerProtocol {
     }
 
     @objc private func didTapStarButton() {
-        self.starModel?.toggleStar()
+        self.starModel.toggleStar()
     }
 
     private func createNavigateAlert() -> UIAlertController {
@@ -72,8 +71,8 @@ class MVCSample2Controller: MVCSample2ControllerProtocol {
             title: "無視して遷移する",
             style: .default
         ) { [weak self] _ in
-            self?.navigationModel?.requestToNavigate()
-            self?.starModel?.star()
+            self?.navigationModel.requestToNavigate()
+            self?.starModel.star()
         }
 
         let cancel = UIAlertAction(
@@ -102,10 +101,7 @@ extension MVCSample2Controller: NavigationRequestModelReceiver {
         case .haveNeverRequest, .notReady:
             return
         case .ready:
-            guard let model = self.starModel else {
-                return
-            }
-            self.view.navigate(with: model)
+            self.view.navigate(with: starModel)
         }
     }
 }

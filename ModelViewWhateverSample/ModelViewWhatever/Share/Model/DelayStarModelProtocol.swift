@@ -16,7 +16,7 @@ protocol DelayStarModelProtocol: class {
     func star()
 
     // - 状態・値の変化をModelの外へ **間接的に** 知らせる機能持つ
-    func append(receiver: DelayStarModelReceiver)
+    func append(receiver: AnyDelayStarModelReceiver)
 }
 
 /// Model の変更を受け取るためのプロトコル

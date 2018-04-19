@@ -11,7 +11,7 @@ import Foundation
 /// Model本体
 class DelayStarModel: DelayStarModelProtocol {
 
-    private var receiveers: [DelayStarModelReceiver] = []
+    private var receiveers = WeekPool<AnyDelayStarModelReceiver>()
     private(set) var state: DelayStarModelState {
         didSet {
             self.notify()
@@ -65,7 +65,7 @@ class DelayStarModel: DelayStarModelProtocol {
         }
     }
 
-    func append(receiver: DelayStarModelReceiver) {
+    func append(receiver: AnyDelayStarModelReceiver) {
         self.receiveers.append(receiver)
         receiver.receive(starState: self.state)
     }
@@ -79,7 +79,7 @@ class DelayStarModel: DelayStarModelProtocol {
     private func starImpl() {
         // 状態の変更、外部への通知までにタイムラグがある
         DispatchQueue.global(qos: .default).async { [weak self] in
-            sleep(UInt32(3.0))
+            sleep(UInt32(1.0))
 
             DispatchQueue.main.async {
                 self?.state = .sleeping(current: .star)
@@ -90,7 +90,7 @@ class DelayStarModel: DelayStarModelProtocol {
     private func unstarImpl() {
         // 状態の変更、外部への通知までにタイムラグがある
         DispatchQueue.global(qos: .default).async { [weak self] in
-            sleep(UInt32(2.0))
+            sleep(UInt32(1.0))
 
             DispatchQueue.main.async {
                 self?.state = .sleeping(current: .unstar)

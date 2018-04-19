@@ -13,13 +13,17 @@ class NavigationRequestModel: NavigationRequestModelProtocol {
             self.receiver?.receive(requestState: self.state)
         }
     }
-    private var receiver: NavigationRequestModelReceiver?
+
+    private weak var receiver: NavigationRequestModelReceiver?
+    private lazy var starModelReceiver: AnyDelayStarModelReceiver = {
+        AnyDelayStarModelReceiver(self)
+    }()
 
     init(
         observe model: DelayStarModelProtocol
     ) {
         self.state = .haveNeverRequest
-        model.append(receiver: self)
+        model.append(receiver: self.starModelReceiver)
     }
 
     func requestToNavigate() {

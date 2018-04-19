@@ -10,15 +10,15 @@ import UIKit
 
 class MVCSample1ViewController: UIViewController {
 
-    private let model: DelayStarModelProtocol
+    private let starModel: DelayStarModelProtocol
     private let navigator: NavigatorProtocol
     private var controller: MVCSample1ControllerProtocol?
 
     init(
-        model: DelayStarModelProtocol,
+        starModel: DelayStarModelProtocol,
         navigator: NavigatorProtocol
     ) {
-        self.model = model
+        self.starModel = starModel
         self.navigator = navigator
 
         super.init(nibName: nil, bundle: nil)
@@ -29,17 +29,15 @@ class MVCSample1ViewController: UIViewController {
     }
 
     override func loadView() {
-        let rootView = RootView()
+        let rootView = MVCSampleRootView()
         self.view = rootView
 
-        let navigationModel = NavigationRequestModel(
-            observe: model
-        )
+        let navigationModel = NavigationRequestModel(observe: self.starModel)
 
         let passiveView = MVCSample1PassiveView(
             willUpdate: rootView.starButton,
             observe: (
-                starModel: self.model,
+                starModel: self.starModel,
                 navigationModel: navigationModel
             ),
             navigateBy: self.navigator,
@@ -52,7 +50,7 @@ class MVCSample1ViewController: UIViewController {
                 navigationButton: rootView.navigationButton
             ),
             command: (
-                starModel: self.model,
+                starModel: self.starModel,
                 navigationModel: navigationModel
             ),
             update: passiveView

@@ -52,6 +52,7 @@
 		3EC2E49B207D1AFC0025A8AF /* StarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC2E48C207D1AFC0025A8AF /* StarModel.swift */; };
 		3EC2E49C207D1AFC0025A8AF /* MainViewHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC2E48E207D1AFC0025A8AF /* MainViewHandler.swift */; };
 		3EC2E49E207DD0C50025A8AF /* WeakPool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC2E49D207DD0C50025A8AF /* WeakPool.swift */; };
+		3ED3A5EB2088597C002E2410 /* AnyDelayStarModelReceiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED3A5EA2088597C002E2410 /* AnyDelayStarModelReceiver.swift */; };
 		3EE6CA912082317B003069B6 /* MVPSampleRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE6CA902082317B003069B6 /* MVPSampleRootView.swift */; };
 		3EF1EEDC207F4AB900A4E1DB /* MVCSample1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF1EED9207F4AB900A4E1DB /* MVCSample1ViewController.swift */; };
 		3EF1EEDD207F4AB900A4E1DB /* MVCSample1PassiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF1EEDA207F4AB900A4E1DB /* MVCSample1PassiveView.swift */; };
@@ -140,6 +141,7 @@
 		3EC2E48E207D1AFC0025A8AF /* MainViewHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewHandler.swift; sourceTree = "<group>"; };
 		3EC2E49D207DD0C50025A8AF /* WeakPool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakPool.swift; sourceTree = "<group>"; };
 		3EC2E49F207F40750025A8AF /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		3ED3A5EA2088597C002E2410 /* AnyDelayStarModelReceiver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyDelayStarModelReceiver.swift; sourceTree = "<group>"; };
 		3EE6CA902082317B003069B6 /* MVPSampleRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVPSampleRootView.swift; sourceTree = "<group>"; };
 		3EF1EED9207F4AB900A4E1DB /* MVCSample1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVCSample1ViewController.swift; sourceTree = "<group>"; };
 		3EF1EEDA207F4AB900A4E1DB /* MVCSample1PassiveView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVCSample1PassiveView.swift; sourceTree = "<group>"; };
@@ -187,10 +189,11 @@
 		3E052860208099B10096094E /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				3E6460FD208708F80066F98A /* DelayStarModelProtocol.swift */,
 				3E052861208099BF0096094E /* DelayStarModel.swift */,
-				3E6460FF20870C9E0066F98A /* NavigationRequestModelProtocol.swift */,
+				3E6460FD208708F80066F98A /* DelayStarModelProtocol.swift */,
+				3ED3A5EA2088597C002E2410 /* AnyDelayStarModelReceiver.swift */,
 				3E6460F0208351CA0066F98A /* NavigationRequestModel.swift */,
+				3E6460FF20870C9E0066F98A /* NavigationRequestModelProtocol.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -335,9 +338,9 @@
 			isa = PBXGroup;
 			children = (
 				3E6460F62083773F0066F98A /* MVVMSampleStarViewModel.swift */,
+				3E64611A2087822F0066F98A /* MVVMSampleStarViewModelInOut.swift */,
 				3E6460F82083777F0066F98A /* MVVMSampleNavigationViewModel.swift */,
 				3E64611C208782AF0066F98A /* MVVMSampleNavigationViewModelInOut.swift */,
-				3E64611A2087822F0066F98A /* MVVMSampleStarViewModelInOut.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -466,8 +469,6 @@
 				3EC2E489207D1AFC0025A8AF /* StarModel2.swift */,
 				3E05285E208007E50096094E /* StarModel3.swift */,
 				3EC2E48A207D1AFC0025A8AF /* AnyStarModelReceiver.swift */,
-				3EC2E48B207D1AFC0025A8AF /* Weak.swift */,
-				3EC2E49D207DD0C50025A8AF /* WeakPool.swift */,
 			);
 			path = Ver_PureSwift;
 			sourceTree = "<group>";
@@ -499,6 +500,15 @@
 				3EF1EEE7207F4DDA00A4E1DB /* Sample2 */,
 			);
 			path = ModelViewPresenter;
+			sourceTree = "<group>";
+		};
+		3ED3A5EE20885F73002E2410 /* Weak */ = {
+			isa = PBXGroup;
+			children = (
+				3EC2E48B207D1AFC0025A8AF /* Weak.swift */,
+				3EC2E49D207DD0C50025A8AF /* WeakPool.swift */,
+			);
+			path = Weak;
 			sourceTree = "<group>";
 		};
 		3EF1EED8207F4AB900A4E1DB /* Sample1 */ = {
@@ -544,6 +554,7 @@
 		3EF1EEFA207F8D2C00A4E1DB /* Share */ = {
 			isa = PBXGroup;
 			children = (
+				3ED3A5EE20885F73002E2410 /* Weak */,
 				3EF1EEFB207F8D3B00A4E1DB /* Top */,
 				3EC2E47E207D1AFC0025A8AF /* Navigator.swift */,
 				3E05285C207FB59F0096094E /* ModelPresenter.swift */,
@@ -713,6 +724,7 @@
 				3EC2E498207D1AFC0025A8AF /* StarModel2.swift in Sources */,
 				3EF1EEEB207F4E4A00A4E1DB /* MVPSample2Presenter.swift in Sources */,
 				3EC2E496207D1AFC0025A8AF /* MainViewController.swift in Sources */,
+				3ED3A5EB2088597C002E2410 /* AnyDelayStarModelReceiver.swift in Sources */,
 				3E64610620876DEE0066F98A /* MVCSample1ControllerProtocol.swift in Sources */,
 				3EF1EEE9207F4E3F00A4E1DB /* MVPSample2InteractiveView.swift in Sources */,
 				3E6460F72083773F0066F98A /* MVVMSampleStarViewModel.swift in Sources */,

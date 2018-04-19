@@ -31,7 +31,7 @@ class TopViewController: UIViewController {
     @IBAction func presentMVCSample1(_ sender: UIButton) {
         self.navigationController?.pushViewController(
             MVCSample1ViewController(
-                model: DelayStarModel(initialState: .sleeping(current: .unstar)),
+                starModel: DelayStarModel(initialState: .sleeping(current: .unstar)),
                 navigator: Navigator(using: self)
             ),
             animated: true
@@ -41,7 +41,7 @@ class TopViewController: UIViewController {
     @IBAction func presentMVCSample2(_ sender: UIButton) {
         self.navigationController?.pushViewController(
             MVCSample2ViewController(
-                model: DelayStarModel(initialState: .sleeping(current: .unstar)),
+                starModel: DelayStarModel(initialState: .sleeping(current: .unstar)),
                 navigator: Navigator(using: self)
             ),
             animated: true
@@ -71,7 +71,7 @@ class TopViewController: UIViewController {
     @IBAction func presentMVVMSample(_ sender: UIButton) {
         self.navigationController?.pushViewController(
             MVVMSampleViewController(
-                model: DelayStarModel(initialState: .sleeping(current: .unstar)),
+                starModel: DelayStarModel(initialState: .sleeping(current: .unstar)),
                 navigator: Navigator(using: self)
             ),
             animated: true

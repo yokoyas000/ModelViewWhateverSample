@@ -12,7 +12,6 @@ class MVPSample2ViewController: UIViewController {
 
     private let model: DelayStarModelProtocol
     private let navigator: NavigatorProtocol
-    private var navigationModel: NavigationRequestModelProtocol?
     private var presenter: MVPSample2PresenterProtocol?
 
     init(
@@ -52,7 +51,6 @@ class MVPSample2ViewController: UIViewController {
             willUpdate: interactiveView
         )
 
-        self.navigationModel = navigationModel
         rootView.delegate = presenter
         interactiveView.delegate = presenter
         self.presenter = presenter
