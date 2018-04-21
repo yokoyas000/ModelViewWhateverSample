@@ -22,13 +22,18 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gxS-hE-fQK">
-                    <rect key="frame" x="156" y="174" width="63" height="97"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="71"/>
+                    <rect key="frame" x="133.5" y="176" width="107" height="157"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="121"/>
                     <state key="normal" title="★"/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UfE-GQ-fbz">
-                    <rect key="frame" x="171.5" y="270" width="31" height="30"/>
+                    <rect key="frame" x="127" y="341" width="121" height="55"/>
                     <color key="backgroundColor" red="1" green="0.73731702566146851" blue="0.22925651073455811" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="55" id="agc-ij-e1S"/>
+                        <constraint firstAttribute="width" constant="121" id="m5H-2a-DEA"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="45"/>
                     <state key="normal" title="遷移">
                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                     </state>
@@ -36,10 +41,10 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="gxS-hE-fQK" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="154" id="1Tz-A9-3i6"/>
+                <constraint firstItem="UfE-GQ-fbz" firstAttribute="top" secondItem="gxS-hE-fQK" secondAttribute="bottom" constant="8" id="6Iq-5E-qqy"/>
                 <constraint firstItem="UfE-GQ-fbz" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Da4-lz-60b"/>
-                <constraint firstItem="UfE-GQ-fbz" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="250" id="WsK-Ry-fj1"/>
                 <constraint firstItem="gxS-hE-fQK" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="g6k-e7-4fU"/>
+                <constraint firstItem="gxS-hE-fQK" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="156" id="o6V-dk-EyY"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="33.5" y="71.5"/>
