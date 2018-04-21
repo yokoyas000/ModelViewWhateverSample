@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MVCSampleRootView" customModule="ModelViewWhateverSample" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RootView" customModule="ModelViewWhateverSample" customModuleProvider="target">
             <connections>
                 <outlet property="navigationButton" destination="UfE-GQ-fbz" id="mk7-CA-1IG"/>
                 <outlet property="starButton" destination="gxS-hE-fQK" id="Mp0-ss-QHf"/>
@@ -21,15 +21,13 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gxS-hE-fQK">
-                    <rect key="frame" x="140" y="174" width="93" height="60"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gxS-hE-fQK">
+                    <rect key="frame" x="156" y="174" width="63" height="97"/>
                     <fontDescription key="fontDescription" type="system" pointSize="71"/>
                     <state key="normal" title="★"/>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UfE-GQ-fbz">
-                    <rect key="frame" x="147" y="249" width="80" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UfE-GQ-fbz">
+                    <rect key="frame" x="171.5" y="270" width="31" height="30"/>
                     <color key="backgroundColor" red="1" green="0.73731702566146851" blue="0.22925651073455811" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <state key="normal" title="遷移">
                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -37,6 +35,12 @@
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="gxS-hE-fQK" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="154" id="1Tz-A9-3i6"/>
+                <constraint firstItem="UfE-GQ-fbz" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Da4-lz-60b"/>
+                <constraint firstItem="UfE-GQ-fbz" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="250" id="WsK-Ry-fj1"/>
+                <constraint firstItem="gxS-hE-fQK" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="g6k-e7-4fU"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="33.5" y="71.5"/>
         </view>

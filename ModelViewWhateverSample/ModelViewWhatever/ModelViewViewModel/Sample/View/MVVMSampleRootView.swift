@@ -8,17 +8,28 @@
 
 import UIKit
 
-protocol MVVMSampleRootViewInput: MVVMSampleStarViewModelOutput {}
-
 // View:
 //  - 画面の構築/表示
 //  - ユーザー操作の受付
+//  - 内部表現を視覚表現へ変換する
+protocol MVVMSampleRootViewInput: MVVMSampleStarViewModelOutput {}
+
 class MVVMSampleRootView: UIView, MVVMSampleRootViewInput {
 
     @IBOutlet var starButton: UIButton!
     @IBOutlet var navigationButton: UIButton!
     private var starViewModel: MVVMSampleStarViewModelInput!
     private var navigationViewModel: MVVMSampleNavigationViewModelInput!
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.setup()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.setup()
+    }
 
     convenience init(
         observe viewModels: (
@@ -32,16 +43,6 @@ class MVVMSampleRootView: UIView, MVVMSampleRootViewInput {
         self.navigationViewModel = viewModels.navigationViewModel
 
         self.starViewModel.output = self
-    }
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.setup()
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        self.setup()
     }
 
     @IBAction func didTapStarButton(_ sender: UIButton) {
@@ -62,8 +63,8 @@ class MVVMSampleRootView: UIView, MVVMSampleRootViewInput {
             .first as? UIView else {
                 return
         }
+        view.frame = self.frame
 
-        self.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(view)
     }
     

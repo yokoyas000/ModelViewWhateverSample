@@ -8,7 +8,6 @@
 
 import UIKit
 
-@IBDesignable
 class RootView: UIView {
 
     @IBOutlet var starButton: UIButton!
@@ -25,13 +24,13 @@ class RootView: UIView {
     }
 
     private func loadFromXib() {
-        guard let view = Bundle(for: self.classForCoder)
+        guard let view = Bundle.main
             .loadNibNamed("RootView", owner: self, options: nil)?
             .first as? UIView else {
                 return
         }
+        view.frame = self.frame
 
-        self.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(view)
     }
 

@@ -44,8 +44,8 @@ class MVPSampleRootView: UIView {
             .first as? UIView else {
                 return
         }
+        view.frame = self.frame
 
-        self.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(view)
     }
 

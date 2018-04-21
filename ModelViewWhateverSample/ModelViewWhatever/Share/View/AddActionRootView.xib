@@ -21,18 +21,16 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fuU-cf-fO5">
-                    <rect key="frame" x="140" y="174" width="93" height="60"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fuU-cf-fO5">
+                    <rect key="frame" x="156" y="174" width="63" height="97"/>
                     <fontDescription key="fontDescription" type="system" pointSize="71"/>
                     <state key="normal" title="★"/>
                     <connections>
                         <action selector="didTapStarButton:" destination="-1" eventType="touchUpInside" id="zcm-c7-hlQ"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4zK-EM-LJU">
-                    <rect key="frame" x="147" y="249" width="80" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4zK-EM-LJU">
+                    <rect key="frame" x="171.5" y="270" width="31" height="30"/>
                     <color key="backgroundColor" red="1" green="0.73731702570000002" blue="0.2292565107" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <state key="normal" title="遷移">
                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -43,6 +41,12 @@
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="fuU-cf-fO5" firstAttribute="centerX" secondItem="RtN-6w-UTH" secondAttribute="centerX" id="6HU-2E-WQY"/>
+                <constraint firstItem="4zK-EM-LJU" firstAttribute="centerX" secondItem="RtN-6w-UTH" secondAttribute="centerX" id="Eob-sa-qhw"/>
+                <constraint firstItem="4zK-EM-LJU" firstAttribute="top" secondItem="vc7-7G-rfU" secondAttribute="top" constant="250" id="HEh-Fu-oGU"/>
+                <constraint firstItem="fuU-cf-fO5" firstAttribute="top" secondItem="vc7-7G-rfU" secondAttribute="top" constant="154" id="N9h-vo-5xx"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="vc7-7G-rfU"/>
             <point key="canvasLocation" x="33.5" y="71.5"/>
         </view>
