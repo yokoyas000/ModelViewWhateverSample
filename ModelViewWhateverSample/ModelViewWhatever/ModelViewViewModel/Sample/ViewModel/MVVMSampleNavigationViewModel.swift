@@ -44,7 +44,7 @@ class MVVMSampleNavigationViewModel: MVVMSampleNavigationViewModelInput {
     private func createNavigateAlert() -> UIAlertController {
         let alert = UIAlertController(title: "", message: "★にしないと遷移できません。", preferredStyle: .alert)
         let navigate = UIAlertAction(
-            title: "無視して遷移する",
+            title: "★にして遷移する",
             style: .default
         ) { [weak self] _ in
             self?.navigationModel.requestToNavigate()
