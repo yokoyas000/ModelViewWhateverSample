@@ -35,6 +35,7 @@ class MVCSample2ViewController: UIViewController {
         let passiveView = MVCSample2PassiveView(
             handle: (
                 starButton: rootView.starButton,
+                navigationButton: rootView.navigationButton,
                 navigator: self.navigator,
                 modalPresenter: ModalPresenter(using: self)
             )

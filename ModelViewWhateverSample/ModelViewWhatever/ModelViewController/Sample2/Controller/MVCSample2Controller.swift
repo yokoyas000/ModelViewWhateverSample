@@ -68,7 +68,7 @@ class MVCSample2Controller: MVCSample2ControllerProtocol {
     private func createNavigateAlert() -> UIAlertController {
         let alert = UIAlertController(title: "", message: "★にしないと遷移できません。", preferredStyle: .alert)
         let navigate = UIAlertAction(
-            title: "無視して遷移する",
+            title: "★にして遷移する",
             style: .default
         ) { [weak self] _ in
             self?.navigationModel.requestToNavigate()
@@ -91,7 +91,35 @@ class MVCSample2Controller: MVCSample2ControllerProtocol {
 
 extension MVCSample2Controller: DelayStarModelReceiver {
     func receive(starState: DelayStarModelState) {
-        self.view.update(by: starState)
+        switch starState {
+        case .processing(next: .star):
+            self.view.update(
+                star: "★",
+                starColor: .darkGray,
+                isStarButtonEnable: false,
+                isNavigationButtonEnable: false
+            )
+        case .processing(next: .unstar):
+            self.view.update(
+                star: "☆",
+                starColor: .darkGray,
+                isStarButtonEnable: false,
+                isNavigationButtonEnable: false
+            )
+        case .sleeping(current: .star):self.view.update(
+            star: "★",
+            starColor: .red,
+            isStarButtonEnable: true,
+            isNavigationButtonEnable: true
+            )
+        case .sleeping(current: .unstar):
+            self.view.update(
+                star: "☆",
+                starColor: .red,
+                isStarButtonEnable: true,
+                isNavigationButtonEnable: true
+            )
+        }
     }
 }
 
@@ -101,7 +129,7 @@ extension MVCSample2Controller: NavigationRequestModelReceiver {
         case .haveNeverRequest, .notReady:
             return
         case .ready:
-            self.view.navigate(with: starModel)
+            self.view.navigate(with: self.starModel)
         }
     }
 }

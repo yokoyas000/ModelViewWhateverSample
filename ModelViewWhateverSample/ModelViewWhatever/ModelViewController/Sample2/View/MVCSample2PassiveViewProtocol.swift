@@ -13,6 +13,5 @@ import UIKit
 protocol MVCSample2PassiveViewProtocol {
     func navigate(with model: DelayStarModelProtocol)
     func present(alert: UIAlertController)
-    func update(by starState: DelayStarModelState)
-}
+    func update(star: String, starColor: UIColor, isStarButtonEnable: Bool, isNavigationButtonEnable: Bool)}
 

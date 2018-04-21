@@ -37,6 +37,7 @@ class MVCSample1ViewController: UIViewController {
         let passiveView = MVCSample1PassiveView(
             handle: (
                 starButton: rootView.starButton,
+                navigationButton: rootView.navigationButton,
                 navigator: self.navigator,
                 modalPresenter: ModalPresenter(using: self)
             ),

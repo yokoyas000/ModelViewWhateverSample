@@ -7,7 +7,6 @@
 //
 
 /// Presenterの役割:
-///  - 内部表現を視覚表現へ変換する
 ///  - 状態に適したアクションの振り分け
 ///  - アクションの結果/途中経過を受け取る
 protocol MVPSample2PresenterProtocol

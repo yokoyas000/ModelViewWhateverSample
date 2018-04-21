@@ -32,9 +32,16 @@ class MVPSample2InteractiveView: MVPSample2InteractiveViewProtocol {
         )
     }
 
-    func updateStarButton(title: String, color: UIColor) {
-        self.views.starButton.setTitle(title, for: .normal)
-        self.views.starButton.setTitleColor(color, for: .normal)
+    func update(
+        star: String,
+        starColor: UIColor,
+        isStarButtonEnable: Bool,
+        isNavigationButtonEnable: Bool
+    ) {
+        self.views.starButton.setTitle(star, for: .normal)
+        self.views.starButton.setTitleColor(starColor, for: .normal)
+        self.views.starButton.isEnabled = isStarButtonEnable
+        self.views.navigationButton.isEnabled = isNavigationButtonEnable
     }
 
     func alertForNavigation() {
@@ -46,7 +53,7 @@ class MVPSample2InteractiveView: MVPSample2InteractiveViewProtocol {
     private func createNavigateAlert() -> UIAlertController {
         let alert = UIAlertController(title: "", message: "★にしないと遷移できません。", preferredStyle: .alert)
         let navigate = UIAlertAction(
-            title: "無視して遷移する",
+            title: "★にして遷移する",
             style: .default
         ) { [weak self] _ in
             self?.delegate?.didRequestForceNavigate()

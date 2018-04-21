@@ -12,7 +12,7 @@ class MVPSample2Presenter: MVPSample2PresenterProtocol {
 
     private let starModel: DelayStarModelProtocol
     private let navigationModel: NavigationRequestModelProtocol
-    private let view: MVPSample2InteractiveView
+    private let view: MVPSample2InteractiveViewProtocol
     private lazy var starModelReceiver: AnyDelayStarModelReceiver = {
         AnyDelayStarModelReceiver(self)
     }()
@@ -58,13 +58,32 @@ extension MVPSample2Presenter: MVPSampleRootViewDelegate, MVPSample2InteractiveV
     private func update(by state: DelayStarModelState) {
         switch state {
         case .processing(next: .star):
-            self.view.updateStarButton(title: "★", color: .darkGray)
+            self.view.update(
+                star: "★",
+                starColor: .darkGray,
+                isStarButtonEnable: false,
+                isNavigationButtonEnable: false
+            )
         case .processing(next: .unstar):
-            self.view.updateStarButton(title: "☆", color: .darkGray)
-        case .sleeping(current: .star):
-            self.view.updateStarButton(title: "★", color: .red)
+            self.view.update(
+                star: "☆",
+                starColor: .darkGray,
+                isStarButtonEnable: false,
+                isNavigationButtonEnable: false
+            )
+        case .sleeping(current: .star):self.view.update(
+            star: "★",
+            starColor: .red,
+            isStarButtonEnable: true,
+            isNavigationButtonEnable: true
+        )
         case .sleeping(current: .unstar):
-            self.view.updateStarButton(title: "☆", color: .red)
+            self.view.update(
+                star: "☆",
+                starColor: .red,
+                isStarButtonEnable: true,
+                isNavigationButtonEnable: true
+            )
         }
     }
 

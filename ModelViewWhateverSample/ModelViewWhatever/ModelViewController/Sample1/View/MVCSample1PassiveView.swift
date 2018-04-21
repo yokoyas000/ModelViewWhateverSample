@@ -10,11 +10,15 @@ import UIKit
 
 class MVCSample1PassiveView: MVCSample1PassiveViewProtocol {
 
+    // 視覚表現のために必要なUI要素
     typealias Views = (
         starButton: UIButton,
+        navigationButton: UIButton,
         navigator: NavigatorProtocol,
         modalPresenter: ModalPresenterProtocol
     )
+
+    // 視覚表現のために必要だが、UI要素でないもの
     typealias Dependency = DelayStarModelProtocol
 
     private let views: Views
@@ -61,18 +65,22 @@ extension MVCSample1PassiveView: DelayStarModelReceiver {
             self.views.starButton.setTitle("★", for: .normal)
             self.views.starButton.setTitleColor(.darkGray, for: .normal)
             self.views.starButton.isEnabled = false
+            self.views.navigationButton.isEnabled = false
         case .processing(next: .unstar):
             self.views.starButton.setTitle("☆", for: .normal)
             self.views.starButton.setTitleColor(.darkGray, for: .normal)
             self.views.starButton.isEnabled = false
+            self.views.navigationButton.isEnabled = false
         case .sleeping(current: .star):
             self.views.starButton.setTitle("★", for: .normal)
             self.views.starButton.setTitleColor(.red, for: .normal)
             self.views.starButton.isEnabled = true
+            self.views.navigationButton.isEnabled = true
         case .sleeping(current: .unstar):
             self.views.starButton.setTitle("☆", for: .normal)
             self.views.starButton.setTitleColor(.red, for: .normal)
             self.views.starButton.isEnabled = true
+            self.views.navigationButton.isEnabled = true
         }
     }
 

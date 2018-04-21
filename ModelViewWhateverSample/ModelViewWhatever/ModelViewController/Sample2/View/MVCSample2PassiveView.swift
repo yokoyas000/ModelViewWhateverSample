@@ -12,6 +12,7 @@ class MVCSample2PassiveView: MVCSample2PassiveViewProtocol {
 
     typealias Views = (
         starButton: UIButton,
+        navigationButton: UIButton,
         navigator: NavigatorProtocol,
         modalPresenter: ModalPresenterProtocol
     )
@@ -34,25 +35,16 @@ class MVCSample2PassiveView: MVCSample2PassiveViewProtocol {
         self.views.modalPresenter.present(to: alert)
     }
 
-    func update(by starState: DelayStarModelState) {
-        switch starState {
-        case .processing(next: .star):
-            self.views.starButton.setTitle("★", for: .normal)
-            self.views.starButton.setTitleColor(.darkGray, for: .normal)
-            self.views.starButton.isEnabled = false
-        case .processing(next: .unstar):
-            self.views.starButton.setTitle("☆", for: .normal)
-            self.views.starButton.setTitleColor(.darkGray, for: .normal)
-            self.views.starButton.isEnabled = false
-        case .sleeping(current: .star):
-            self.views.starButton.setTitle("★", for: .normal)
-            self.views.starButton.setTitleColor(.red, for: .normal)
-            self.views.starButton.isEnabled = true
-        case .sleeping(current: .unstar):
-            self.views.starButton.setTitle("☆", for: .normal)
-            self.views.starButton.setTitleColor(.red, for: .normal)
-            self.views.starButton.isEnabled = true
-        }
+    func update(
+        star: String,
+        starColor: UIColor,
+        isStarButtonEnable: Bool,
+        isNavigationButtonEnable: Bool
+    ) {
+        self.views.starButton.setTitle(star, for: .normal)
+        self.views.starButton.setTitleColor(starColor, for: .normal)
+        self.views.starButton.isEnabled = isStarButtonEnable
+        self.views.navigationButton.isEnabled = isNavigationButtonEnable
     }
 
 }
