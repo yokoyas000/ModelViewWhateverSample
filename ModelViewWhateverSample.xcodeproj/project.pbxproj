@@ -122,6 +122,7 @@
 		3E8CCD672079F499004B0E3F /* ModelViewWhateverSampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ModelViewWhateverSampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E8CCD6B2079F499004B0E3F /* ModelViewWhateverSampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelViewWhateverSampleUITests.swift; sourceTree = "<group>"; };
 		3E8CCD6D2079F499004B0E3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3E8D4D3E208EED9400FE36E1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		3EC2E449207CD5000025A8AF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3EC2E44A207CD5000025A8AF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3EC2E450207CD5000025A8AF /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -140,7 +141,6 @@
 		3EC2E48C207D1AFC0025A8AF /* StarModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarModel.swift; sourceTree = "<group>"; };
 		3EC2E48E207D1AFC0025A8AF /* MainViewHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewHandler.swift; sourceTree = "<group>"; };
 		3EC2E49D207DD0C50025A8AF /* WeakPool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakPool.swift; sourceTree = "<group>"; };
-		3EC2E49F207F40750025A8AF /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		3ED3A5EA2088597C002E2410 /* AnyDelayStarModelReceiver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyDelayStarModelReceiver.swift; sourceTree = "<group>"; };
 		3EE6CA902082317B003069B6 /* MVPSampleRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVPSampleRootView.swift; sourceTree = "<group>"; };
 		3EF1EED9207F4AB900A4E1DB /* MVCSample1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVCSample1ViewController.swift; sourceTree = "<group>"; };
@@ -348,6 +348,8 @@
 		3E8CCD3F2079F498004B0E3F = {
 			isa = PBXGroup;
 			children = (
+				3E8D4D3F208EEDE900FE36E1 /* images */,
+				3E8D4D3E208EED9400FE36E1 /* README.md */,
 				3EC2E448207CD5000025A8AF /* ModelViewWhateverSample */,
 				3E8CCD5F2079F498004B0E3F /* ModelViewWhateverSampleTests */,
 				3E8CCD6A2079F499004B0E3F /* ModelViewWhateverSampleUITests */,
@@ -383,6 +385,13 @@
 			path = ModelViewWhateverSampleUITests;
 			sourceTree = "<group>";
 		};
+		3E8D4D3F208EEDE900FE36E1 /* images */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
 		3EC2E448207CD5000025A8AF /* ModelViewWhateverSample */ = {
 			isa = PBXGroup;
 			children = (
@@ -403,7 +412,6 @@
 				3EC2E484207D1AFC0025A8AF /* Main */,
 				3EC2E478207D1AFC0025A8AF /* Sub */,
 				3EC2E47F207D1AFC0025A8AF /* Sub2 */,
-				3EC2E49F207F40750025A8AF /* README.md */,
 			);
 			path = OnlyModelAndView;
 			sourceTree = "<group>";
