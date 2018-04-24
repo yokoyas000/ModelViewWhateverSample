@@ -18,28 +18,41 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gdB-QT-KRc">
-                                <rect key="frame" x="172.5" y="40" width="30" height="30"/>
-                                <state key="normal" title="Star"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sk3-Ei-t5z">
+                                <rect key="frame" x="134" y="223" width="107" height="157"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="157" id="1Vs-Z4-8SP"/>
+                                    <constraint firstAttribute="width" constant="107" id="y2p-Xg-sGr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="121"/>
+                                <state key="normal" title="星"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="feY-Rv-GJB">
-                                <rect key="frame" x="120.5" y="70" width="134" height="30"/>
-                                <state key="normal" title="Sub画面へ遷移する"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="07n-jq-j6x">
+                                <rect key="frame" x="127" y="388" width="121" height="55"/>
+                                <color key="backgroundColor" red="1" green="0.73731702570000002" blue="0.2292565107" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="cSW-pm-TiG"/>
+                                    <constraint firstAttribute="width" constant="121" id="zMN-Sd-exh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="45"/>
+                                <state key="normal" title="遷移">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="gdB-QT-KRc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="dWC-Gz-RRn"/>
-                            <constraint firstItem="feY-Rv-GJB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="o6B-4l-foH"/>
-                            <constraint firstItem="gdB-QT-KRc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="qmK-L5-GIR"/>
-                            <constraint firstItem="feY-Rv-GJB" firstAttribute="top" secondItem="gdB-QT-KRc" secondAttribute="bottom" id="sp6-Xj-ooX"/>
+                            <constraint firstItem="07n-jq-j6x" firstAttribute="top" secondItem="Sk3-Ei-t5z" secondAttribute="bottom" constant="8" id="6CG-ED-vfa"/>
+                            <constraint firstItem="Sk3-Ei-t5z" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="HFc-qU-qL3"/>
+                            <constraint firstItem="07n-jq-j6x" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Xpj-o3-Hyn"/>
+                            <constraint firstItem="Sk3-Ei-t5z" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="203" id="gxp-R9-LCU"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="udL-6Q-9ab"/>
                     <connections>
-                        <outlet property="navigateToSubViewButton" destination="feY-Rv-GJB" id="8CE-85-2ZW"/>
-                        <outlet property="starButton" destination="gdB-QT-KRc" id="nQ7-7C-oxE"/>
+                        <outlet property="navigateToSubViewButton" destination="07n-jq-j6x" id="fxn-pq-wbD"/>
+                        <outlet property="starButton" destination="Sk3-Ei-t5z" id="ZPV-2m-rVn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

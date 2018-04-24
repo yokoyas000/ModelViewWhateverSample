@@ -18,20 +18,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QrX-3T-SSp">
-                                <rect key="frame" x="172" y="40" width="30" height="30"/>
-                                <state key="normal" title="Star"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RCi-0g-J7Z">
+                                <rect key="frame" x="134" y="223" width="107" height="157"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="157" id="PSL-q2-mV8"/>
+                                    <constraint firstAttribute="width" constant="107" id="o7P-56-Y39"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="121"/>
+                                <state key="normal" title="星"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="QrX-3T-SSp" firstAttribute="top" secondItem="0G7-jD-bi0" secondAttribute="top" constant="20" id="Fvx-vx-zaw"/>
-                            <constraint firstItem="QrX-3T-SSp" firstAttribute="centerX" secondItem="eJs-3H-2m4" secondAttribute="centerX" id="QL9-H0-8Y5"/>
+                            <constraint firstItem="RCi-0g-J7Z" firstAttribute="centerX" secondItem="eJs-3H-2m4" secondAttribute="centerX" id="Emd-Dr-fwX"/>
+                            <constraint firstItem="RCi-0g-J7Z" firstAttribute="top" secondItem="0G7-jD-bi0" secondAttribute="top" constant="203" id="PQV-bn-vyD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0G7-jD-bi0"/>
                     </view>
                     <connections>
-                        <outlet property="starButton" destination="QrX-3T-SSp" id="6dr-gW-Wlg"/>
+                        <outlet property="starButton" destination="RCi-0g-J7Z" id="TP0-y3-d0p"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B5w-AF-EVv" userLabel="First Responder" sceneMemberID="firstResponder"/>
